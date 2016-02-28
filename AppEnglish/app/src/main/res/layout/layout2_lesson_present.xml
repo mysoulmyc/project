@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:gravity="center|center_horizontal">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/linearLayout4">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="back"
+            android:id="@+id/button_back"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Present Tense"
+                    android:id="@+id/textView3"
+                    android:textSize="40dp"
+                    android:textStyle="bold"
+                    android:textColor="#181818" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="                      Simple                     "
+                    android:id="@+id/but_lessPre1"
+                    android:layout_marginTop="30dp"
+                    android:height="60dp"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="                Continuous                "
+                    android:id="@+id/but_lessPre2"
+                    android:layout_marginTop="20dp"
+                    android:height="60dp"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="                    Perfect                    "
+                    android:id="@+id/but_lessPre3"
+                    android:layout_marginTop="20dp"
+                    android:height="60dp"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="       Perfect continuous       "
+                    android:id="@+id/but_lessPre4"
+                    android:layout_marginTop="20dp"
+                    android:height="60dp"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+</RelativeLayout>
