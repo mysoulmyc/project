@@ -154,7 +154,7 @@ public class Fragment3_testPage extends Fragment {
                     b.putInt("score", score); //Your score
                     intent.putExtras(b); //Put your score to your next Intent
                     startActivity(intent);
-                    //finish();
+                    //fffffffinish();
                 }
             }
         });
