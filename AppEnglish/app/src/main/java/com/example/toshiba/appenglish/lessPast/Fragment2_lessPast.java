@@ -9,12 +9,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.toshiba.appenglish.Fragment2_lesson;
 import com.example.toshiba.appenglish.R;
-import com.example.toshiba.appenglish.lessPast.Fragment2_lessonPast_page1;
 
 /**
  * Created by Toshiba on 5/1/2559.
@@ -57,7 +55,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
         }
         else if (v.getId()==R.id.but_lessPast2){
             FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page1()).commit();
+            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page2()).commit();
             Toast.makeText(getActivity(), " Lesson Past Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
         }
         else if (v.getId()==R.id.but_lessPast3){

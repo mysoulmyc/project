@@ -1,18 +1,20 @@
 package com.example.toshiba.appenglish;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.toshiba.appenglish.DB.DatabaseAccess;
 import com.example.toshiba.appenglish.DB.DbHelper;
 import com.example.toshiba.appenglish.DB.Question;
 
@@ -37,15 +39,104 @@ public class Fragment3_testPage extends Fragment {
     int qid = 0;
     Question currentQ;
     TextView txtQuestion;
-    RadioButton rda, rdb, rdc;
+    RadioButton rda, rdb, rdc,rdd;
     Button butNext;
 
+    SQLiteDatabase mDb;
+    DbHelper mHelper;
+    //Cursor mCursor;
+
+    //DbHelper mHelper;
+
+    private static Context myContext;
     public static boolean btlog;
+
+    ListView listView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.layout3_test_page, container, false);
+
+        listView = (ListView) rootview.findViewById(R.id.listView);
+
+        txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
+        butNext = (Button) rootview.findViewById(R.id.button_next);
+
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
+        databaseAccess.open();
+        quesList = databaseAccess.getPOIs();
+        //final List<Question> pois = databaseAccess.getPOIs();
+        databaseAccess.close();
+
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, pois);
+        //listView.setAdapter(adapter);
+
+
+        //quesList = mDb.getPOIs();
+        currentQ = quesList.get(qid);
+
+        butNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(qid < 5){
+                    currentQ = quesList.get(qid);
+                    txtQuestion.setText(currentQ.getQUESTION());
+                    qid++;
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+
+
+
+        ///////////////////////////////
+
+        //checkDatabase();
+
+/*
+        DbHelper db = new DbHelper(getActivity());
+        try {
+            db.createDataBase();
+            //db.openDataBase();
+        }catch (SQLException e){
+            throw new Error("Unable to create database");
+            //db.checkDataBase();
+
+        }
+*/
+
+        /*mDb = db.getReadableDatabase();
+        quesList = db.getAllQuestions();
+        currentQ = quesList.get(qid);
+        txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
+        rda = (RadioButton) rootview.findViewById(R.id.radioButton1);
+        rdb = (RadioButton) rootview.findViewById(R.id.radioButton2);
+        rdc = (RadioButton) rootview.findViewById(R.id.radioButton3);
+        butNext = (Button) rootview.findViewById(R.id.button_next);
+
+        setQuestionView();
+
+
+        butNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (qid < 2) {
+                    currentQ = quesList.get(qid);
+                    setQuestionView();
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
+                    startActivity(intent);
+                }
+
+            }
+        });*/
+
 
 /*
         ListView listView1 = (ListView)rootview.findViewById(R.id.listView1);
@@ -110,7 +201,7 @@ public class Fragment3_testPage extends Fragment {
         });
 */
 
-        DbHelper db = new DbHelper(getActivity());
+/*      DbHelper db = new DbHelper(getActivity());
         quesList = db.getAllQuestions();
         currentQ = quesList.get(qid);
         txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
@@ -134,7 +225,7 @@ public class Fragment3_testPage extends Fragment {
                     currentQ = quesList.get(qid);
                     setQuestionView();
                 }
-/*                if (btlog!=answer.isChecked()){
+*//*                if (btlog!=answer.isChecked()){
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                     dialog.setTitle("Error");
                     dialog.setCancelable(false);
@@ -147,7 +238,7 @@ public class Fragment3_testPage extends Fragment {
 
                     dialog.show();
 
-                }*/
+                }*//*
                 else {
                     Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
                     Bundle b = new Bundle();
@@ -157,21 +248,68 @@ public class Fragment3_testPage extends Fragment {
                     //fffffffinish();
                 }
             }
-        });
+        });*/
+
+/*        DbHelper db = new DbHelper(getActivity());
+        try {
+            db.createDataBase();
+            db.openDataBase();
+        }catch (SQLException e){
+
+        }
+        try{
+            Cursor cursor =
+        }*/
+
 
         return rootview;
     }
 
-    private void setQuestionView() {
+/*    private void setQuestionView() {
         txtQuestion.setText(currentQ.getQUESTION());
         rda.setText(currentQ.getOPTA());
         rdb.setText(currentQ.getOPTB());
         rdc.setText(currentQ.getOPTC());
         qid++;
-    }
+    }*/
 
 
 /*    public void onPause() {
+        super.onPause();
+        mHelper.close();
+        mDb.close();
+    }*/
+
+/*    public void checkDatabase() {
+        String url = "/data/data/com.example.toshiba.appenglish/databases/data";
+        File f = new File(url);
+        if (!f.exists()) {
+            try {
+                mHelper = new DbHelper(getActivity());
+                mDb = mHelper.getWritableDatabase();
+                mDb.close();
+                mHelper.close();
+                InputStream in = getActivity().getAssets().open("data");
+                OutputStream out = new FileOutputStream(url);
+                byte[] buffer = new byte[1024];
+                //in.read(buffer);
+                //out.write(buffer, 0, buffer.length);
+                int length;
+                while ((length = in.read(buffer)) > 0) {
+                    out.write(buffer, 0, length);
+                }
+
+                in.close();
+                out.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void onPause() {
         super.onPause();
         mHelper.close();
         mDb.close();

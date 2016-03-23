@@ -1,10 +1,8 @@
 package com.example.toshiba.appenglish;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -25,7 +23,7 @@ public class Fragment3_Answer extends Activity {
 //get text view
         TextView t=(TextView)findViewById(R.id.textResult);
         //get button
-        bt = (Button) findViewById(R.id.button_score);
+/*        bt = (Button) findViewById(R.id.button_score);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +49,7 @@ public class Fragment3_Answer extends Activity {
             case 5:t.setText("Who are you? A trivia wizard???");
                 break;
         }
-
+*/
     }
 
     @Override
