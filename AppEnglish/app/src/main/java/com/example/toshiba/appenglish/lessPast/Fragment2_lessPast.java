@@ -20,12 +20,13 @@ import com.example.toshiba.appenglish.R;
 public class Fragment2_lessPast extends Fragment implements OnClickListener {
 
     View rootview;
-    Button butback,butSim,butCon,butPer,butPerCon;
+    Button butback, butSim, butCon, butPer, butPerCon;
+    int a = 0;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootview = inflater.inflate(R.layout.layout2_lesson_past,container,false);
+        rootview = inflater.inflate(R.layout.layout2_lesson_past, container, false);
 
         butback = (Button) rootview.findViewById(R.id.button_back);
         butSim = (Button) rootview.findViewById(R.id.but_lessPast1);
@@ -44,29 +45,45 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.button_back){
+        if (v.getId() == R.id.button_back) {
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lesson()).commit();
-        }
-        else if (v.getId()==R.id.but_lessPast1){
-            FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page1()).commit();
-            Toast.makeText(getActivity(), " Lesson Past Simple Tense was selected. ", Toast.LENGTH_LONG).show();
-        }
-        else if (v.getId()==R.id.but_lessPast2){
-            FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page2()).commit();
-            Toast.makeText(getActivity(), " Lesson Past Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
-        }
-        else if (v.getId()==R.id.but_lessPast3){
-            FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page3()).commit();
-            Toast.makeText(getActivity(), " Lesson Past Perfect Tense was selected. ", Toast.LENGTH_LONG).show();
-        }
-        else if (v.getId()==R.id.but_lessPast4){
-            FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page4()).commit();
-            Toast.makeText(getActivity(), " Lesson Past Perfect Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
+        } else if (v.getId() == R.id.but_lessPast1) {
+            if (a == 1) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page1()).commit();
+                Toast.makeText(getActivity(), " Lesson Past Simple Tense was selected. ", Toast.LENGTH_LONG).show();
+            } else {
+                butSim.setClickable(false);
+                Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Present Perfect Continuous tense ก่อน ", Toast.LENGTH_LONG).show();
+            }
+        } else if (v.getId() == R.id.but_lessPast2) {
+            if (a == 2) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page2()).commit();
+                Toast.makeText(getActivity(), " Lesson Past Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
+            } else {
+                butCon.setClickable(false);
+                Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Past Simple tense ก่อน ", Toast.LENGTH_LONG).show();
+            }
+        } else if (v.getId() == R.id.but_lessPast3) {
+            if (a == 3) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page3()).commit();
+                Toast.makeText(getActivity(), " Lesson Past Perfect Tense was selected. ", Toast.LENGTH_LONG).show();
+            } else {
+                butPer.setClickable(false);
+                Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Past Continuous tense ก่อน ", Toast.LENGTH_LONG).show();
+            }
+        } else if (v.getId() == R.id.but_lessPast4) {
+            if (a == 4) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPast_page4()).commit();
+                Toast.makeText(getActivity(), " Lesson Past Perfect Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
+            } else {
+                butPerCon.setClickable(false);
+                Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Past Perfect tense ก่อน ", Toast.LENGTH_LONG).show();
+            }
         }
 
     }

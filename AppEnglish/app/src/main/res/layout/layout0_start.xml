@@ -55,7 +55,7 @@
                     android:height="60dp"
                     android:textSize="20dp" />
 
-                <Button
+                <!--<Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="         Credit         "
@@ -63,7 +63,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:textSize="20dp" />
+                    android:textSize="20dp" />-->
 
 
 

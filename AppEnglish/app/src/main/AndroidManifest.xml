@@ -40,9 +40,6 @@
         <activity android:name=".Fragment3_Answer" />
 
 
-
-
-
     </application>
 
 </manifest>

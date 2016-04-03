@@ -1,11 +1,8 @@
 package com.example.toshiba.appenglish;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,10 +18,10 @@ public class StartActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.layout0_start);
 
         butstart = (Button) findViewById(R.id.but_start);
-        butcredit = (Button) findViewById(R.id.but_credit);
+        //butcredit = (Button) findViewById(R.id.but_credit);
 
         butstart.setOnClickListener(this);
-        butcredit.setOnClickListener(this);
+        //butcredit.setOnClickListener(this);
 
     }
 
@@ -34,10 +31,11 @@ public class StartActivity extends Activity implements View.OnClickListener {
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
             finish();
-        } else if (v.getId() == R.id.but_credit){
+        }
+        /*else if (v.getId() == R.id.but_credit){
             Intent i = new Intent(getApplicationContext(), Fragment6_credit.class);
             startActivity(i);
-        }
+        }*/
     }
 
 /*    public void onBackPressed() {

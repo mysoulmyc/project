@@ -6,14 +6,18 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.toshiba.appenglish.DB.Answer;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
 import com.example.toshiba.appenglish.DB.DbHelper;
 import com.example.toshiba.appenglish.DB.Question;
@@ -34,22 +38,39 @@ public class Fragment3_testPage extends Fragment {
     DbHelper mHelper;
     Cursor mCursor;*/
 
+    //Score currentS;
     List<Question> quesList;
+    List<Answer> answerList;
     int score = 0;
     int qid = 0;
+    int ans = 0;
     Question currentQ;
+    Answer currentA;
     TextView txtQuestion;
-    RadioButton rda, rdb, rdc,rdd;
+    RadioButton rda, rdb, rdc, rdd;
     Button butNext;
+    //RadioGroup grp;
+    //String answer;
+    //String aa;
+
+    String choice;
 
     SQLiteDatabase mDb;
     DbHelper mHelper;
+    DatabaseAccess mDba;
     //Cursor mCursor;
 
     //DbHelper mHelper;
 
+    private static final int rda_id = 1000;//first radio button id
+    private static final int rdB_id = 1001;//second radio button id
+    private static final int rdC_id = 1002;//third radio button id
+    private static final int rdCDid = 1003;//third radio button id
+
     private static Context myContext;
     public static boolean btlog;
+
+    //private int radioCheckedId = -1;
 
     ListView listView;
 
@@ -61,37 +82,183 @@ public class Fragment3_testPage extends Fragment {
         listView = (ListView) rootview.findViewById(R.id.listView);
 
         txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
+        rda = (RadioButton) rootview.findViewById(R.id.radioButton1);
+        rdb = (RadioButton) rootview.findViewById(R.id.radioButton2);
+        rdc = (RadioButton) rootview.findViewById(R.id.radioButton3);
+        rdd = (RadioButton) rootview.findViewById(R.id.radioButton4);
         butNext = (Button) rootview.findViewById(R.id.button_next);
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
+
+        //grp = (RadioGroup) rootview.findViewById(R.id.radioGroup1);
+        //final RadioButton answer = (RadioButton) rootview.findViewById(grp.getCheckedRadioButtonId());
+
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
-        quesList = databaseAccess.getPOIs();
+        quesList = databaseAccess.getTest();
+        answerList = databaseAccess.getChoice();
+
         //final List<Question> pois = databaseAccess.getPOIs();
         databaseAccess.close();
+
 
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, pois);
         //listView.setAdapter(adapter);
 
 
         //quesList = mDb.getPOIs();
+        //currentQ = quesList.get(qid);
+        //++qid;
         currentQ = quesList.get(qid);
+        currentA = answerList.get(ans);
+        setQuestionView();
+/*        txtQuestion.setText(currentQ.getQUESTION());
+        rda.setText(currentQ.getOPTA());
+        rdb.setText(currentQ.getOPTB());
+        rdc.setText(currentQ.getOPTC());
+        rdd.setText(currentQ.getOPTD());*/
+
+        /*RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.radioGroup1);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // find which radio button is selected
+                radioCheckedId = checkedId;
+            }
+        });*/
+
+
 
         butNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(qid < 5){
-                    currentQ = quesList.get(qid);
-                    txtQuestion.setText(currentQ.getQUESTION());
-                    qid++;
+
+                RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.radioGroup1);
+
+                int radioCheckedId = radioGroup.getCheckedRadioButtonId();
+
+                switch (radioCheckedId){
+                    case R.id.radioButton1 : setActivity();
+                        break;
+                    case R.id.radioButton2 : setActivity();
+                        break;
+                    case R.id.radioButton3 : setActivity();
+                        break;
+                    case R.id.radioButton4 : setActivity();
+                        break;
+                    case -1 : Toast.makeText(getActivity(), "Please select your choice.", Toast.LENGTH_LONG).show();
+                        break;
                 }
-                else {
-                    Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
-                    startActivity(intent);
+
+
+                //for(int i = 0;i<quesList.size();i++) {
+                //do {
+
+                /*final RadioGroup grp = (RadioGroup) getActivity().findViewById(R.id.radioGroup1);
+                final RadioButton answer = (RadioButton) getActivity().findViewById(grp.getCheckedRadioButtonId());*/
+                //grp.getCheckedRadioButtonId();
+                //check button
+                /*grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        // find which radio button is selected
+                        if (checkedId == R.id.radioButton1) {
+                            Toast.makeText(getActivity(), "choice: " + answer.getText(),
+                                    Toast.LENGTH_SHORT).show();
+                        } else if (checkedId == R.id.radioButton2) {
+                            Toast.makeText(getActivity(), "choice: " + answer.getText(),
+                                    Toast.LENGTH_SHORT).show();
+                        } else if (checkedId == R.id.radioButton3) {
+                            Toast.makeText(getActivity(), "choice: " + answer.getText(),
+                                    Toast.LENGTH_SHORT).show();
+                        } else if (checkedId == R.id.radioButton4) {
+                            Toast.makeText(getActivity(), "choice: " + answer.getText(),
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(),
+                                    "No item is Selected", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                grp.clearCheck();
+                int selectedId = grp.getCheckedRadioButtonId();*/
+
+
+                /*int btn = grp.getCheckedRadioButtonId();
+                switch (selectedId){
+                    case R.id.radioButton1: setQuestionView();
+                        break;
+                    case R.id.radioButton2: setQuestionView();
+                        break;
+                    case R.id.radioButton3: setQuestionView();
+                        break;
+                    case R.id.radioButton4: setQuestionView();
+                        break;
+                    case -1: Toast.makeText(getActivity(), "Please select your choice.", Toast.LENGTH_LONG).show();
+                        break;
+                }*/
+
+
+                    //Log.d("yourans", currentA.getANSWER() + " " + answer.getText());
+
+/*                for (int i = 0; i < quesList.size(); i++) {
+                    if (grp.getCheckedRadioButtonId() == -1) {
+                        Toast.makeText(getActivity(), "Please select your choice.", Toast.LENGTH_LONG).show();
+                    } else {
+                        if (currentA.getANSWER().equals(answer.getText())) {
+                            score++;
+                            Log.d("score", "Your score" + score);
+                        }
+                    }
+                }*/
+
+                    /////////////////////////////////////////////////////////////////////////////
+                   /* if (selectedId != answer.getId()) {
+                        grp.setClickable(false);
+                        butNext.setClickable(false);
+                        Toast.makeText(getActivity(), "Please select your choice.", Toast.LENGTH_LONG).show();
+                    }*/
+
+                /*if (grp.getCheckedRadioButtonId()==-1){
+                    butNext.setClickable(false);
+                    Toast.makeText(getActivity(), "Please select your choice.", Toast.LENGTH_LONG).show();
+                }*/
+                /* if (currentA.getANSWER().equals(answer.getText())==false){
+                    Toast.makeText(getActivity(), "Please select your choice.", Toast.LENGTH_LONG).show();
+                }*/
+                    /*if (currentA.getANSWER().equals(answer.getText())) {
+                        //checkQuestion();
+                        score++;
+                        Log.d("score", "Your score" + score);
+
+                    }
+                    if (qid < quesList.size() && ans != 0) {
+                        currentQ = quesList.get(qid);
+                        currentA = answerList.get(ans);
+                        *//*txtQuestion.setText(currentQ.getQUESTION());
+                        rda.setText(currentQ.getOPTA());
+                        rdb.setText(currentQ.getOPTB());
+                        rdc.setText(currentQ.getOPTC());
+                        rdd.setText(currentQ.getOPTD());
+                        qid++;*//*
+                        setQuestionView();
+
+                    } else {
+                        Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
+                        Bundle b = new Bundle();
+                        b.putInt("score", score); //Your score
+                        b.putString("yourans", currentA.getANSWER());
+                        intent.putExtras(b); //Put your score to your next Intent
+                        startActivity(intent);
+                        getActivity().finish();
+                    }*/
+////////////////////////////////////////////////////////////////////////////////////////
+
+                    //} while (quesList.size()==10);
+                    //}
                 }
-            }
+
         });
-
-
 
 
         ///////////////////////////////
@@ -261,9 +428,77 @@ public class Fragment3_testPage extends Fragment {
             Cursor cursor =
         }*/
 
-
         return rootview;
     }
+
+    private void setQuestionView() {
+        txtQuestion.setText(currentQ.getQUESTION());
+        rda.setText(currentA.getOPTA());
+        rdb.setText(currentA.getOPTB());
+        rdc.setText(currentA.getOPTC());
+        rdd.setText(currentA.getOPTD());
+        qid++;
+        ans++;
+    }
+
+    private void setActivity(){
+
+        final RadioGroup grp = (RadioGroup) getActivity().findViewById(R.id.radioGroup1);
+        final RadioButton answer = (RadioButton) getActivity().findViewById(grp.getCheckedRadioButtonId());
+
+        grp.clearCheck();
+
+        if (currentA.getANSWER().equals(answer.getText())) {
+            //checkQuestion();
+            score++;
+            Log.d("score", "Your score" + score);
+
+        }
+        if (qid < quesList.size() && ans != 0) {
+            currentQ = quesList.get(qid);
+            currentA = answerList.get(ans);
+                        /*txtQuestion.setText(currentQ.getQUESTION());
+                        rda.setText(currentQ.getOPTA());
+                        rdb.setText(currentQ.getOPTB());
+                        rdc.setText(currentQ.getOPTC());
+                        rdd.setText(currentQ.getOPTD());
+                        qid++;*/
+            setQuestionView();
+
+        } else {
+            Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
+            Bundle b = new Bundle();
+            b.putInt("score", score); //Your score
+            b.putString("yourans", currentA.getANSWER());
+            intent.putExtras(b); //Put your score to your next Intent
+            startActivity(intent);
+            getActivity().finish();
+        }
+    }
+
+/*    private void checkQuestion() {
+        grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == rda.getId()) {
+                    aa = rda.getText().toString();
+
+
+                } else if (checkedId == rdb.getId()) {
+                    aa = rdb.getText().toString();
+
+
+                } else if (checkedId == rdc.getId()) {
+                    aa = rdc.getText().toString();
+
+                } else if (checkedId == rdd.getId()) {
+                    aa = rdd.getText().toString();
+
+
+                }
+            }
+        });
+    }*/
 
 /*    private void setQuestionView() {
         txtQuestion.setText(currentQ.getQUESTION());
@@ -313,6 +548,11 @@ public class Fragment3_testPage extends Fragment {
         super.onPause();
         mHelper.close();
         mDb.close();
+    }*/
+
+/*    public void onStop(){
+        super.onStop();
+        quesList.clear();
     }*/
 
 }

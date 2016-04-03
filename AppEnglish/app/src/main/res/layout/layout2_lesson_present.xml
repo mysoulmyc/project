@@ -47,6 +47,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable = "false"
                     android:text="                Continuous                "
                     android:id="@+id/but_lessPre2"
                     android:layout_marginTop="20dp"
@@ -56,6 +57,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable = "false"
                     android:text="                    Perfect                    "
                     android:id="@+id/but_lessPre3"
                     android:layout_marginTop="20dp"
@@ -65,6 +67,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable = "false"
                     android:text="       Perfect continuous       "
                     android:id="@+id/but_lessPre4"
                     android:layout_marginTop="20dp"

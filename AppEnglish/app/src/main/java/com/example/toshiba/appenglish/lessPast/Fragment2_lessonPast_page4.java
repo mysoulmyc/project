@@ -32,7 +32,6 @@ public class Fragment2_lessonPast_page4 extends Fragment implements View.OnClick
 
         webView = (WebView) rootview.findViewById(R.id.webview);
         webView.loadUrl("file:///android_asset/Past/PastPerCon.html");
-        //webView.loadUrl("file:///android_asset/Past/PastPerCon.html");
 
         butback = (Button) rootview.findViewById(R.id.button_back);
         butback.setOnClickListener(this);

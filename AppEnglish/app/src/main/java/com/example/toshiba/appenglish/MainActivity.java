@@ -1,36 +1,24 @@
 package com.example.toshiba.appenglish;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-//import android.support.v4.app.Fragment;
-import android.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Adapter;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
-import java.util.List;
+//import android.support.v4.app.Fragment;
 
 
 
@@ -132,6 +120,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case 4:
                 objFragment = new Fragment5_scroe();
+                mDrawerLayout.closeDrawers();
+                break;
+            case 5:
+                objFragment = new Fragment6_credit();
                 mDrawerLayout.closeDrawers();
                 break;
         }

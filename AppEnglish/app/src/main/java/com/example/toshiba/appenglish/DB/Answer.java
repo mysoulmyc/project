@@ -1,52 +1,39 @@
 package com.example.toshiba.appenglish.DB;
 
-/*
- * Created by Toshiba on 27/2/2559.
+/**
+ * Created by Toshiba on 27/3/2559.
  */
-
-public class Question {
+public class Answer {
     private int ID;
-    private String QUESTION;
-//    private String OPTA;
-//    private String OPTB;
-//    private String OPTC;
-//    private String OPTD;
-//    private String ANSWER;
+    private String OPTA;
+    private String OPTB;
+    private String OPTC;
+    private String OPTD;
+    private String ANSWER;
 
-    public Question() {
+    public Answer() {
         ID = 0;
-        QUESTION = "";
-/*        OPTA = "";
+        OPTA = "";
         OPTB = "";
         OPTC = "";
         OPTD = "";
-        ANSWER = "";*/
-        //Boolean
-        //ANSWER != null ? true : false;
+        ANSWER = "";
     }
 
-    public Question(Integer id, String qUESTION) {
-
+    public Answer(Integer id, String oPTA, String oPTB, String oPTC, String oPTD, String aNSWER) {
         ID = id;
-        QUESTION = qUESTION;
-/*        OPTA = oPTA;
+        OPTA = oPTA;
         OPTB = oPTB;
         OPTC = oPTC;
         OPTD = oPTD;
-        ANSWER = aNSWER;*/
-        //Boolean, String oPTA, String oPTB, String oPTC, String oPTD, String aNSWER
+        ANSWER = aNSWER;
     }
-
 
     public int getID() {
         return ID;
     }
 
-    public String getQUESTION() {
-        return QUESTION;
-    }
-
-/*   public String getOPTA() {
+    public String getOPTA() {
         return OPTA;
     }
 
@@ -65,17 +52,13 @@ public class Question {
     public String getANSWER() {
         //Boolean
         return ANSWER;
-    }*/
+    }
 
     public void setID(int id) {
         ID = id;
     }
 
-    public void setQUESTION(String qUESTION) {
-        QUESTION = qUESTION;
-    }
-
-/*   public void setOPTA(String oPTA) {
+    public void setOPTA(String oPTA) {
         OPTA = oPTA;
     }
 
@@ -94,7 +77,7 @@ public class Question {
     public void setANSWER(String aNSWER) {
         //Boolean
         ANSWER = aNSWER;
-    }*/
+    }
+
 
 }
-

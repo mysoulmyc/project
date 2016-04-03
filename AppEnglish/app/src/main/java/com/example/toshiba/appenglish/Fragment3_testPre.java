@@ -15,6 +15,7 @@ import android.widget.Button;
 public class Fragment3_testPre extends Fragment implements View.OnClickListener {
     View rootview;
     Button butback,butSim,butCon,butPer,butPerCon;
+    int score = 0;
 
     @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.maincontent, new Fragment3_test()).commit();
         }
+
         if (v.getId()==R.id.but_testPre1){
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPage()).commit();

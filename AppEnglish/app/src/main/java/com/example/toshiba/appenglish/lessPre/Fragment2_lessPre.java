@@ -29,6 +29,8 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
     ImageView imageView;
     WebView webView;
 
+    int a, b, c = 0;
+
     //String[] mPre;
     private ListView mlistView;
 
@@ -41,7 +43,6 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
             R.drawable.tespic1
     };
 */
-
 
 
     //private Integer images[] = {R.drawable.testpic2};
@@ -85,7 +86,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
 
 /*        mlistView = (ListView) rootview.findViewById(R.id.drawer);
         mlistView.setAdapter(new ImageAdapter(getActivity()));*/
-
+        a = 1;
 
 
         butback = (Button) rootview.findViewById(R.id.button_back);
@@ -205,21 +206,35 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
         }*/
 
 
-        else if (v.getId()==R.id.but_lessPre2){
-            FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page2()).commit();
+        else if (v.getId() == R.id.but_lessPre2) {
+            if (a == 2) {
+                butCon.setClickable(true);
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page2()).commit();
 
-            Toast.makeText(getActivity(), " Lesson Present Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
-        }
-        else if (v.getId()==R.id.but_lessPre3){
-            FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page3()).commit();
-            Toast.makeText(getActivity(), " Lesson Present Perfect Tense was selected. ", Toast.LENGTH_LONG).show();
-        }
-        else if (v.getId()==R.id.but_lessPre4){
-            FragmentManager fm = getFragmentManager();
-            fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page4()).commit();
-            Toast.makeText(getActivity(), " Lesson Present Perfect Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), " Lesson Present Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
+            } else {
+                butCon.setClickable(false);
+                Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Present simple tense ก่อน ", Toast.LENGTH_LONG).show();
+            }
+        } else if (v.getId() == R.id.but_lessPre3) {
+            if (a == 3) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page3()).commit();
+                Toast.makeText(getActivity(), " Lesson Present Perfect Tense was selected. ", Toast.LENGTH_LONG).show();
+            } else {
+                butPer.setClickable(false);
+                Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Present continuous tense ก่อน ", Toast.LENGTH_LONG).show();
+            }
+        } else if (v.getId() == R.id.but_lessPre4) {
+            if (a == 4) {
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page4()).commit();
+                Toast.makeText(getActivity(), " Lesson Present Perfect Continuous Tense was selected. ", Toast.LENGTH_LONG).show();
+            } else {
+                butPerCon.setClickable(false);
+                Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ", Toast.LENGTH_LONG).show();
+            }
         }
 
     }
