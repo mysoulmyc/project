@@ -5,9 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Toshiba on 23/3/2559.
@@ -39,8 +43,50 @@ public class DatabaseAccess {
         }
     }
 
-    public List<Question> getTest() {
+    ////////////////////// add score test to database  //////////////////////////////////
+    public void addScore(int id ,int score) {
+
+/*        ContentValues values = new ContentValues();
+        values.put("point", score.getScore());
+
         database = openHelper.getWritableDatabase();
+
+        database.insert("Point", null, values);
+        //database.update();
+        database.close();*/
+
+        //, Locale.getDefault()
+        //"yyyy-MM-dd HH:mm:ss"
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+
+        //database = openHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("id_tense", id);
+        values.put("point", score);
+        values.put("date", dateFormat.format(date));
+
+        database.insert("Point", null, values);
+
+        Log.d("DB insert : ", "Insert score....");
+
+        //database.close();
+        //return 1;
+
+    }
+
+    public int updateScore(int id, int score) {
+        ContentValues values = new ContentValues();
+        values.put("point", score);
+        return database.update("Point", values, "id_tense" + " = " + id, null);
+    }
+
+
+    ////////////////////// Test Present Simple  //////////////////////////////////
+    public List<Question> getTest() {
+        database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=1 ", null);
         //Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=2 ORDER BY RANDOM() Limit 6", null);
@@ -77,7 +123,7 @@ public class DatabaseAccess {
     }
 
     public List<Answer> getChoice() {
-        database = openHelper.getWritableDatabase();
+        database = openHelper.getReadableDatabase();
         List<Answer> ans = new ArrayList<>();
         //int num = 0;ORDER BY RANDOM() Limit 4
         Cursor cs = database.rawQuery("SELECT * FROM answer WHERE id_Question=1 ", null);
@@ -108,31 +154,243 @@ public class DatabaseAccess {
         return ans;
     }*/
 
-    public int addScore(Score score) {
-
-/*        ContentValues values = new ContentValues();
-        values.put("point", score.getScore());
-
+    /*public List<Score> getScoreTest(){
         database = openHelper.getWritableDatabase();
+        List<Score> sc = new ArrayList<>();
+        //int num = 0;
+        Cursor cs = database.rawQuery("SELECT * FROM Point Where id_tense= 1 " , null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    Score st = new Score();
+                    st.setiD(cs.getInt(0));
+                    st.setScore(cs.getInt(1));
+                    *//*st.setOPTB(cs.getString(2));
+                    choice.setOPTC(cs.getString(3));
+                    choice.setOPTD(cs.getString(4));
+                    choice.setANSWER(cs.getString(5));*//*
+                    sc.add(st);
+                    //num++;
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        return sc;
 
-        database.insert("Point", null, values);
-        //database.update();
-        database.close();*/
+    }*/
 
+    public Score get_Score(){
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 1 and point>=2 ", null);
+        if(cursor != null && cursor.getCount() >0){
+            if (cursor.moveToFirst()){
+                //do{
+                    Score ss = new Score();
+                    ss.setiD(cursor.getInt(0));
+                    ss.setScore(cursor.getInt(1));
+                    ss.setDateTime(cursor.getInt(2));
+                    cursor.close();
+                    database.close();
+                    return ss;
+                //}while (cursor.moveToNext());
+            }
+        }
 
-        database = mHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("point", score.getScore());
-        database.insert("Point", null, values);
-
-        database.close();
-        return 1;
+        return null;
     }
 
+    ////////////////////// Test Present Continuous  //////////////////////////////////
+    public List<Question> getTestPre2() {
+        database = openHelper.getReadableDatabase();
+        List<Question> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=2 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    Question quest = new Question();
+                    quest.setID(cursor.getInt(0));
+                    quest.setQUESTION(cursor.getString(1));
+                    list.add(quest);
 
-    /*public void getClear() {
-        getTest().clear();
-    }*/
+                } while (cursor.moveToNext());
+            }
+        }
+        cursor.close();
+        database.close();
+        return list;
+
+    }
+
+    public List<Answer> getChoicePre2() {
+        database = openHelper.getReadableDatabase();
+        List<Answer> ans = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT * FROM answer WHERE id_Question=2 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    Answer choice = new Answer();
+                    choice.setID(cs.getInt(0));
+                    choice.setOPTA(cs.getString(1));
+                    choice.setOPTB(cs.getString(2));
+                    choice.setOPTC(cs.getString(3));
+                    choice.setOPTD(cs.getString(4));
+                    choice.setANSWER(cs.getString(5));
+                    ans.add(choice);
+
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return ans;
+    }
+
+    public Score get_ScorePre2(){
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 2 and point>=2 ", null);
+        if(cursor != null && cursor.getCount() >0){
+            if (cursor.moveToFirst()){
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+
+        return null;
+    }
+
+    ////////////////////// Test Present Perfect  //////////////////////////////////
+    public List<Question> getTestPre3() {
+        database = openHelper.getReadableDatabase();
+        List<Question> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=3 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    Question quest = new Question();
+                    quest.setID(cursor.getInt(0));
+                    quest.setQUESTION(cursor.getString(1));
+                    list.add(quest);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        cursor.close();
+        database.close();
+        return list;
+
+    }
+
+    public List<Answer> getChoicePre3() {
+        database = openHelper.getReadableDatabase();
+        List<Answer> ans = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT * FROM answer WHERE id_Question=3 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    Answer choice = new Answer();
+                    choice.setID(cs.getInt(0));
+                    choice.setOPTA(cs.getString(1));
+                    choice.setOPTB(cs.getString(2));
+                    choice.setOPTC(cs.getString(3));
+                    choice.setOPTD(cs.getString(4));
+                    choice.setANSWER(cs.getString(5));
+                    ans.add(choice);
+
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return ans;
+    }
+
+    public Score get_ScorePre3(){
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 3 and point>=2 ", null);
+        if(cursor != null && cursor.getCount() >0){
+            if (cursor.moveToFirst()){
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+
+        return null;
+    }
+
+    ////////////////////// Test Present Perfect Continuous  //////////////////////////////////
+    public List<Question> getTestPre4() {
+        database = openHelper.getReadableDatabase();
+        List<Question> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=4 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    Question quest = new Question();
+                    quest.setID(cursor.getInt(0));
+                    quest.setQUESTION(cursor.getString(1));
+                    list.add(quest);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        cursor.close();
+        database.close();
+        return list;
+
+    }
+
+    public List<Answer> getChoicePre4() {
+        database = openHelper.getReadableDatabase();
+        List<Answer> ans = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT * FROM answer WHERE id_Question=4 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    Answer choice = new Answer();
+                    choice.setID(cs.getInt(0));
+                    choice.setOPTA(cs.getString(1));
+                    choice.setOPTB(cs.getString(2));
+                    choice.setOPTC(cs.getString(3));
+                    choice.setOPTD(cs.getString(4));
+                    choice.setANSWER(cs.getString(5));
+                    ans.add(choice);
+
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return ans;
+    }
+
+    public Score get_ScorePre4(){
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 4 and point>=2 ", null);
+        if(cursor != null && cursor.getCount() >0){
+            if (cursor.moveToFirst()){
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+
+        return null;
+    }
+
 
 
 }

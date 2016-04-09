@@ -33,10 +33,6 @@
             android:screenOrientation="portrait"
             android:label="@string/app_name"/>
 
-        <activity
-            android:name=".Fragment6_credit"
-            android:label="@string/app_name"/>
-
         <activity android:name=".Fragment3_Answer" />
 
 

@@ -14,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.toshiba.appenglish.testPast.Fragment3_testPast;
+import com.example.toshiba.appenglish.testPre.Fragment3_testPre;
+
 public class Fragment3_test extends Fragment implements View.OnClickListener {
     View rootview;
     Button butTPre,butTPast,butTFuture;
