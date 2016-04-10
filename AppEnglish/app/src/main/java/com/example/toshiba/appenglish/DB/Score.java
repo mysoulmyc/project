@@ -15,7 +15,6 @@ public class Score {
     }
 
     public Score(Integer score, Integer date, Integer id) {
-
         sCORE = score;
         dATE = date;
         iD = id;
@@ -49,4 +48,5 @@ public class Score {
     public void setiD(int id) {
         iD = id;
     }
+
 }

@@ -39,7 +39,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
 
     //Boolean b;
 
-    Score scoreLt, scoreLt2, scoreLt3, scoreLt4;
+    Score scoreLt, scoreLt2, scoreLt3;
     //Score addScore;
 
     List<Score> scoreList;
@@ -76,7 +76,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         databaseAccess.close();
 
 
-        if (scoreLt != null) {
+        /*if (scoreLt != null) {
             pre1 = scoreLt.getScore();
             date = scoreLt.getDate();
         } else if (scoreLt2 != null) {
@@ -87,7 +87,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
             date = scoreLt3.getDate();
         } else {
             return null;
-        }
+        }*/
 
         //Log.d("Score", "score : " + scoreLt.getScore() );
 
@@ -125,10 +125,38 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         butPer.setOnClickListener(this);
         butPerCon.setOnClickListener(this);
 
+
+
+
         return rootview;
     }
 
     @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.button_back :
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_test()).commit();
+                break;
+            case R.id.but_testPre1 :
+                FragmentManager fm1 = getFragmentManager();
+                fm1.beginTransaction().replace(R.id.maincontent, new Fragment3_testPrePage1()).commit();
+                break;
+            case R.id.but_testPre2 :
+                setTestPreCon();
+                break;
+            case R.id.but_testPre3 :
+                setTestPrePer();
+                break;
+            case R.id.but_testPre4 :
+                setTestPrePerCon();
+                break;
+        }
+
+    }
+
+    /*@Override
     public void onClick(View v) {
         while (true){
             if (v.getId() == R.id.button_back) {
@@ -285,11 +313,138 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
             }
         }
 
+    }*/
+
+
+    /*private void setSC() {
+        currentS.getScore();
+    }*/
+
+    private void setTestPreCon(){
+        if (scoreLt != null) {
+            pre1 = scoreLt.getScore();
+            date = scoreLt.getDate();
+            if (pre1 != 0 && pre1 > 2) {
+                Log.d("score", "Your score PreSim : " + scoreLt.getScore());
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPrePage2()).commit();
+                Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
+                //getActivity().finish();
+            } else if (pre1 == 0 || pre1 < 2) {
+                Log.d("score", "Your score" + scoreLt.getScore());
+                butCon.setClickable(false);
+                //Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.setTitle("Error");
+                dialog.setCancelable(true);
+                dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ");
+
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                dialog.show();
+            }
+        } else {
+            butCon.setClickable(false);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            dialog.setTitle("Error");
+            dialog.setCancelable(true);
+            dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ");
+
+            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            dialog.show();
+        }
     }
 
+    private void setTestPrePer(){
+        if (scoreLt2 != null) {
+            pre2 = scoreLt2.getScore();
+            date = scoreLt2.getDate();
+            if (pre2 != 0 && pre2 > 2) {
+                Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPrePage3()).commit();
+                Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
+            } else if (pre2 == 0 || pre2 < 2) {
+                Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
+                butCon.setClickable(false);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.setTitle("Error");
+                dialog.setCancelable(true);
+                dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Continuous tense ก่อน ");
 
-    private void setSC() {
-        currentS.getScore();
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                dialog.show();
+            }
+        } else {
+            butCon.setClickable(false);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            dialog.setTitle("Error");
+            dialog.setCancelable(true);
+            dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Continuous tense ก่อน ");
+
+            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            dialog.show();
+        }
+    }
+
+    private void setTestPrePerCon(){
+        if (scoreLt3 != null) {
+            pre3 = scoreLt3.getScore();
+            date = scoreLt3.getDate();
+            if (pre3 != 0 && pre3 > 2) {
+                Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPrePage4()).commit();
+                Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
+            } else if (pre3 == 0 || pre3 < 2) {
+                Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
+                butCon.setClickable(false);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.setTitle("Error");
+                dialog.setCancelable(true);
+                dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ");
+
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                dialog.show();
+            }
+        } else {
+            butCon.setClickable(false);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            dialog.setTitle("Error");
+            dialog.setCancelable(true);
+            dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ");
+
+            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            dialog.show();
+        }
     }
 
 
