@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:gravity="center|center_horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|center_horizontal"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/testpre_layout">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -25,6 +29,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:gravity="center">
+                <!--android:focusable="true"-->
+                <!--android:focusableInTouchMode="true"-->
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -42,7 +49,9 @@
                     android:id="@+id/but_testPre1"
                     android:layout_marginTop="30dp"
                     android:height="60dp"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false" />
 
                 <Button
                     android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.toshiba.appenglish.lessFuture;
+package com.example.toshiba.appenglish.testFuture;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -15,16 +15,19 @@ import android.widget.Toast;
 
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
 import com.example.toshiba.appenglish.DB.Score;
-import com.example.toshiba.appenglish.Fragment2_lesson;
+import com.example.toshiba.appenglish.Fragment3_test;
 import com.example.toshiba.appenglish.R;
+import com.example.toshiba.appenglish.testPast.Fragment3_testPastPage2;
+import com.example.toshiba.appenglish.testPast.Fragment3_testPastPage3;
+import com.example.toshiba.appenglish.testPast.Fragment3_testPastPage4;
 
-/**
+/*
  * Created by Toshiba on 5/1/2559.
  */
-public class Fragment2_lessFuture extends Fragment implements View.OnClickListener {
+public class Fragment3_testFuture extends Fragment implements View.OnClickListener {
 
     View rootview;
-    Button butback,butSim,butCon,butPer,butPerCon;
+    Button butback,butSim, butCon, butPer, butPerCon;
     Score scoreLt, scoreLt2, scoreLt3, scoreLt4;
     int past4, fu1, fu2, fu3;
     int date;
@@ -32,13 +35,13 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootview = inflater.inflate(R.layout.layout2_lesson_future,container,false);
+        rootview = inflater.inflate(R.layout.layout3_test_future,container,false);
 
         butback = (Button) rootview.findViewById(R.id.button_back);
-        butSim = (Button) rootview.findViewById(R.id.but_lessFu1);
-        butCon = (Button) rootview.findViewById(R.id.but_lessFu2);
-        butPer = (Button) rootview.findViewById(R.id.but_lessFu3);
-        butPerCon = (Button) rootview.findViewById(R.id.but_lessFu4);
+        butSim = (Button) rootview.findViewById(R.id.but_testFu1);
+        butCon = (Button) rootview.findViewById(R.id.but_testFu2);
+        butPer = (Button) rootview.findViewById(R.id.but_testFu3);
+        butPerCon = (Button) rootview.findViewById(R.id.but_testFu4);
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
@@ -59,26 +62,24 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.button_back:
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lesson()).commit();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_test()).commit();
                 break;
-            case R.id.but_lessFu1:
+            case R.id.but_testFu1:
                 setTestFutureSim();
                 break;
-            case R.id.but_lessFu2:
+            case R.id.but_testFu2:
                 setTestFutureCon();
                 break;
-            case R.id.but_lessFu3:
+            case R.id.but_testFu3:
                 setTestFuturePer();
                 break;
-            case R.id.but_lessFu4:
+            case R.id.but_testFu4:
                 setTestFuturePerCon();
                 break;
         }
-
     }
 
     private void setTestFutureSim() {
@@ -88,7 +89,7 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
             if (past4 != 0 && past4 >= 2) {
                 Log.d("score", "Your score PastPerCon : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonFu_page1()).commit();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testFuturePage1()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score PastPerCon : " + scoreLt.getScore());
@@ -127,7 +128,7 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
             if (fu1 != 0 && fu1 >= 2) {
                 Log.d("score", "Your score FutureSim : " + scoreLt2.getScore());
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonFu_page2()).commit();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage2()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FutureSim : " + scoreLt2.getScore());
@@ -166,7 +167,7 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
             if (fu2 != 0 && fu2 >= 2) {
                 Log.d("score", "Your score FutureCon : " + scoreLt3.getScore());
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonFu_page3()).commit();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage3()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FutureCon : " + scoreLt3.getScore());
@@ -205,7 +206,7 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
             if (fu3 != 0 && fu3 >= 2) {
                 Log.d("score", "Your score FuturePer : " + scoreLt4.getScore());
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonFu_page4()).commit();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage4()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FuturePer : " + scoreLt4.getScore());
@@ -236,6 +237,5 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
             dialog.show();
         }
     }
-
 
 }

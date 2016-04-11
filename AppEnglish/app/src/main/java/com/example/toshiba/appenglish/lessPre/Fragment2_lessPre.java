@@ -2,9 +2,12 @@ package com.example.toshiba.appenglish.lessPre;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.toshiba.appenglish.DB.DatabaseAccess;
+import com.example.toshiba.appenglish.DB.Score;
 import com.example.toshiba.appenglish.Fragment2_lesson;
 import com.example.toshiba.appenglish.R;
 
@@ -28,6 +33,10 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
     ViewPager viewPager;
     ImageView imageView;
     WebView webView;
+
+    Score scoreLt, scoreLt2, scoreLt3, scoreLt4;
+    int pre1, pre2, pre3;
+    int date;
 
     int a, b, c = 0;
 
@@ -86,7 +95,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
 
 /*        mlistView = (ListView) rootview.findViewById(R.id.drawer);
         mlistView.setAdapter(new ImageAdapter(getActivity()));*/
-        a = 1;
+        //a = 1;
 
 
         butback = (Button) rootview.findViewById(R.id.button_back);
@@ -94,6 +103,14 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
         butCon = (Button) rootview.findViewById(R.id.but_lessPre2);
         butPer = (Button) rootview.findViewById(R.id.but_lessPre3);
         butPerCon = (Button) rootview.findViewById(R.id.but_lessPre4);
+
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
+        databaseAccess.open();
+        scoreLt = databaseAccess.get_Score();
+        scoreLt2 = databaseAccess.get_ScorePre2();
+        scoreLt3 = databaseAccess.get_ScorePre3();
+        databaseAccess.close();
+
 
         butback.setOnClickListener(this);
         butSim.setOnClickListener(this);
@@ -158,37 +175,61 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         //ImageView imageView = (ImageView) rootview.findViewById(R.id.imageLess);
 
-        if (v.getId() == R.id.button_back) {
+
+        switch (v.getId()) {
+            case R.id.button_back:
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lesson()).commit();
+                break;
+            case R.id.but_lessPre1:
+                FragmentManager fm2 = getFragmentManager();
+                fm2.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page1()).commit();
+                break;
+            case R.id.but_lessPre2:
+                setTestPreCon();
+                break;
+            case R.id.but_lessPre3:
+                setTestPrePer();
+                break;
+            case R.id.but_lessPre4:
+                setTestPrePerCon();
+                break;
+        }
+    }
+
+
+
+        /*if (v.getId() == R.id.button_back) {
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lesson()).commit();
         } else if (v.getId() == R.id.but_lessPre1) {
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page1()).commit();
-            Toast.makeText(getActivity(), " Lesson Present Simple Tense was selected. ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), " Lesson Present Simple Tense was selected. ", Toast.LENGTH_LONG).show();*/
 
 
-            //Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.a1);
-            //imageView.setImageResource(mImageIds[0]);
+    //Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.a1);
+    //imageView.setImageResource(mImageIds[0]);
 
 
-            //imageView.setImageDrawable(drawable);
+    //imageView.setImageDrawable(drawable);
 
 
-            //drawable = ContextCompat.getDrawable(getActivity(), R.drawable.kkk);
-            //imageView.setImageDrawable(drawable);
+    //drawable = ContextCompat.getDrawable(getActivity(), R.drawable.kkk);
+    //imageView.setImageDrawable(drawable);
 
 
-            //imageView.setImageResource(R.drawable.testpic2);
+    //imageView.setImageResource(R.drawable.testpic2);
 
-            //ImageView imageView = (ImageView) rootview.findViewById(R.id.imageLess);
-            //imageView.setImageResource(R.drawable.testpic2);
+    //ImageView imageView = (ImageView) rootview.findViewById(R.id.imageLess);
+    //imageView.setImageResource(R.drawable.testpic2);
 
-            //setValues(R.drawable.testpic2);
-            //imageView.setImageResource(R.drawable.testpic2);
+    //setValues(R.drawable.testpic2);
+    //imageView.setImageResource(R.drawable.testpic2);
             /*Intent i = new Intent(getActivity(),MainSwipe.class);
             startActivity(i);*/
 
-        }
+    //}
         /*else if (v.getId()==R.id.but_lessPre2){
             Intent i = new Intent(getActivity(),MainSwipe.class);
             startActivity(i);
@@ -206,7 +247,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
         }*/
 
 
-        else if (v.getId() == R.id.but_lessPre2) {
+        /*else if (v.getId() == R.id.but_lessPre2) {
             if (a == 2) {
                 butCon.setClickable(true);
                 FragmentManager fm = getFragmentManager();
@@ -235,9 +276,125 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
                 butPerCon.setClickable(false);
                 Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ", Toast.LENGTH_LONG).show();
             }
-        }
+        }*/
 
+    //}
+
+    private void setTestPreCon() {
+        if (scoreLt != null) {
+            pre1 = scoreLt.getScore();
+            date = scoreLt.getDate();
+            if (pre1 != 0 && pre1 >= 2) {
+                Log.d("score", "Your score PreSim : " + scoreLt.getScore());
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page2()).commit();
+                Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d("score", "Your score PreSim : " + scoreLt.getScore());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.setTitle("Error");
+                dialog.setCancelable(true);
+                dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ");
+
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                dialog.show();
+            }
+        } else {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            dialog.setTitle("Error");
+            dialog.setCancelable(true);
+            dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ");
+
+            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            dialog.show();
+        }
     }
+
+    private void setTestPrePer() {
+        if (scoreLt2 != null) {
+            pre2 = scoreLt2.getScore();
+            date = scoreLt2.getDate();
+            if (pre2 != 0 && pre2 >= 2) {
+                Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page3()).commit();
+                Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.setTitle("Error");
+                dialog.setCancelable(true);
+                dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Continuous tense ก่อน ");
+
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                dialog.show();
+            }
+        } else {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            dialog.setTitle("Error");
+            dialog.setCancelable(true);
+            dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Continuous tense ก่อน ");
+
+            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            dialog.show();
+        }
+    }
+
+    private void setTestPrePerCon() {
+        if (scoreLt3 != null) {
+            pre3 = scoreLt3.getScore();
+            date = scoreLt3.getDate();
+            if (pre3 != 0 && pre3 >= 2) {
+                Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
+                FragmentManager fm = getFragmentManager();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page4()).commit();
+                Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.setTitle("Error");
+                dialog.setCancelable(true);
+                dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ");
+
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                dialog.show();
+            }
+        } else {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            dialog.setTitle("Error");
+            dialog.setCancelable(true);
+            dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ");
+
+            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            dialog.show();
+        }
+    }
+}
 
 /*    public class ImageAdapter extends BaseAdapter {
         private Context mContext;
@@ -286,7 +443,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
 //    }
 
 
-    //========================== Not use
+//========================== Not use
 //    public void replaceFragment() {
 //
 //        Fragment objFragment = null;
@@ -341,4 +498,4 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
             return rootView;
         }
     }*/
-}
+

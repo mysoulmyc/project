@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
@@ -37,7 +38,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
     int pre1, pre2, pre3;
     int date;
 
-    //Boolean b;
+    Boolean a, b, c, d;
 
     Score scoreLt, scoreLt2, scoreLt3;
     //Score addScore;
@@ -51,9 +52,14 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
     private SQLiteDatabase mDb;
     Cursor mCursor;
 
+    private RelativeLayout myLayout;
+
     @Nullable
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.layout3_test_present, container, false);
+
+        /*myLayout = (RelativeLayout) rootview.findViewById(R.id.testpre_layout);
+        myLayout.requestFocus();*/
 
         butback = (Button) rootview.findViewById(R.id.button_back);
         butSim = (Button) rootview.findViewById(R.id.but_testPre1);
@@ -119,6 +125,11 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
 
         currentS.getScore();*/
 
+        /*a = butCon.isFocused();
+        b = butPer.isFocused();
+        c = butPerCon.isFocused();
+*/
+
         butback.setOnClickListener(this);
         butSim.setOnClickListener(this);
         butCon.setOnClickListener(this);
@@ -126,6 +137,8 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         butPerCon.setOnClickListener(this);
 
 
+/*        getActivity().getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);*/
 
 
         return rootview;
@@ -134,23 +147,37 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
-            case R.id.button_back :
+        switch (v.getId()) {
+            case R.id.button_back:
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment3_test()).commit();
+                //setTestpage(butback);
                 break;
-            case R.id.but_testPre1 :
+            case R.id.but_testPre1:
+                //butSim.requestFocus();
                 FragmentManager fm1 = getFragmentManager();
                 fm1.beginTransaction().replace(R.id.maincontent, new Fragment3_testPrePage1()).commit();
+                //butSim.clearFocus();
+                //setTestpage(butSim);
                 break;
-            case R.id.but_testPre2 :
+            case R.id.but_testPre2:
+                //butCon.requestFocus();
                 setTestPreCon();
+                //butCon.clearFocus();
+                //setTestpage(butCon);
                 break;
-            case R.id.but_testPre3 :
+            case R.id.but_testPre3:
+                //butPer.isFocused();
+                //butPer.requestFocus();
                 setTestPrePer();
+                //butPer.clearFocus();
+                //setTestpage(butPer);
                 break;
-            case R.id.but_testPre4 :
+            case R.id.but_testPre4:
+                //butPerCon.requestFocus();
                 setTestPrePerCon();
+                //butPerCon.clearFocus();
+                //setTestpage(butPerCon);
                 break;
         }
 
@@ -320,19 +347,23 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         currentS.getScore();
     }*/
 
-    private void setTestPreCon(){
+    private void setTestPreCon() {
         if (scoreLt != null) {
+            //butCon.isFocused();
             pre1 = scoreLt.getScore();
             date = scoreLt.getDate();
-            if (pre1 != 0 && pre1 > 2) {
+            //a = true;
+            if (pre1 != 0 && pre1 >= 2) {
                 Log.d("score", "Your score PreSim : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPrePage2()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
+                //butCon.clearFocus();
                 //getActivity().finish();
-            } else if (pre1 == 0 || pre1 < 2) {
-                Log.d("score", "Your score" + scoreLt.getScore());
-                butCon.setClickable(false);
+            } else {
+                //if (pre1 == 0 || pre1 < 2)
+                Log.d("score", "Your score PreSim : " + scoreLt.getScore());
+                //butCon.setClickable(false);
                 //Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ", Toast.LENGTH_LONG).show();
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                 dialog.setTitle("Error");
@@ -345,10 +376,19 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
                     }
                 });
 
+                /*dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        dialog.dismiss();
+                    }
+                });*/
+
                 dialog.show();
+                //butCon.clearFocus();
             }
         } else {
-            butCon.setClickable(false);
+            //a = false;
+            //butCon.setClickable(false);
             AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
             dialog.setTitle("Error");
             dialog.setCancelable(true);
@@ -361,21 +401,26 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
             });
 
             dialog.show();
+            //butCon.clearFocus();
         }
     }
 
-    private void setTestPrePer(){
+    private void setTestPrePer() {
         if (scoreLt2 != null) {
+            //butPer.isFocused();
             pre2 = scoreLt2.getScore();
             date = scoreLt2.getDate();
-            if (pre2 != 0 && pre2 > 2) {
+            //b = true;
+            if (pre2 != 0 && pre2 >= 2) {
                 Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPrePage3()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
-            } else if (pre2 == 0 || pre2 < 2) {
+                //butPer.clearFocus();
+            } else {
+                //if (pre2 == 0 || pre2 < 2)
                 Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
-                butCon.setClickable(false);
+                //butPer.setClickable(false);
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
@@ -387,9 +432,11 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
                     }
                 });
                 dialog.show();
+                //butPer.clearFocus();
             }
         } else {
-            butCon.setClickable(false);
+            //b = false;
+            //butPer.setClickable(false);
             AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
             dialog.setTitle("Error");
             dialog.setCancelable(true);
@@ -402,21 +449,24 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
             });
 
             dialog.show();
+            //butPer.clearFocus();
         }
     }
 
-    private void setTestPrePerCon(){
+    private void setTestPrePerCon() {
         if (scoreLt3 != null) {
             pre3 = scoreLt3.getScore();
             date = scoreLt3.getDate();
-            if (pre3 != 0 && pre3 > 2) {
+            if (pre3 != 0 && pre3 >= 2) {
                 Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPrePage4()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
-            } else if (pre3 == 0 || pre3 < 2) {
+                //butPerCon.clearFocus();
+            } else {
+                //if (pre3 == 0 || pre3 < 2)
                 Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
-                butCon.setClickable(false);
+                //butPerCon.setClickable(false);
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
@@ -429,9 +479,10 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
                 });
 
                 dialog.show();
+                //butPerCon.clearFocus();
             }
         } else {
-            butCon.setClickable(false);
+            //butPerCon.setClickable(false);
             AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
             dialog.setTitle("Error");
             dialog.setCancelable(true);
@@ -444,8 +495,8 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
             });
 
             dialog.show();
+            //butPerCon.clearFocus();
         }
     }
-
 
 }
