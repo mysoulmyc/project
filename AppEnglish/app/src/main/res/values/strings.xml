@@ -14,6 +14,14 @@
     <string name="drawer_open">Open Navigation drawer</string>
     <string name="drawer_close">Close Navigation drawer</string>
 
+    <string name="title_create_name">ตั้งชื่อตัวละคร</string>
+    <string name="title_select_char">เลือกเพศตัวละคร</string>
+    <string name="char_men">เพศชาย</string>
+    <string name="char_women">เพศหญิง</string>
+    <string name="char_create">สร้างตัวละคร</string>
+
+    <string name="simple">Simple</string>
+
     <!--<string-array name="drawer_presim">-->
     <!--<item >@drawable/a1</item>-->
     <!--<item >@drawable/a21</item>-->

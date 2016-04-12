@@ -43,8 +43,43 @@ public class DatabaseAccess {
         }
     }
 
+    ////////////////////// create character /////////////////////////////////////
+    public void createCharacter(String name, int sex) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+
+        ContentValues values = new ContentValues();
+        values.put("Name", name);
+        values.put("id_sex", sex);
+        values.put("date", dateFormat.format(date));
+        database.insert("Member", null, values);
+
+        Log.d("DB insert : ", "Create CharacterInfo....");
+    }
+
+    ////////////////////// read character ///////////////////////////////////////
+    public CharacterInfo getCharacter() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM member ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                CharacterInfo characterInfo = new CharacterInfo();
+                characterInfo.setID(cursor.getInt(0));
+                characterInfo.setNAME(cursor.getString(1));
+                cursor.close();
+                database.close();
+                return characterInfo;
+            }
+        }
+
+        return null;
+
+    }
+
+
     ////////////////////// add score test to database  //////////////////////////////////
-    public void addScore(int id ,int score) {
+    public void addScore(int id, int score) {
 
 /*        ContentValues values = new ContentValues();
         values.put("point", score.getScore());
@@ -179,20 +214,20 @@ public class DatabaseAccess {
 
     }*/
 
-    public Score get_Score(){
+    public Score get_Score() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 1 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 //do{
-                    Score ss = new Score();
-                    ss.setiD(cursor.getInt(0));
-                    ss.setScore(cursor.getInt(1));
-                    ss.setDateTime(cursor.getInt(2));
-                    cursor.close();
-                    database.close();
-                    return ss;
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
                 //}while (cursor.moveToNext());
             }
         }
@@ -246,12 +281,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScorePre2(){
+    public Score get_ScorePre2() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 2", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -311,12 +346,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScorePre3(){
+    public Score get_ScorePre3() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 3 ", null);
         //and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -376,12 +411,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScorePre4(){
+    public Score get_ScorePre4() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 4 ", null);
         //and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -441,12 +476,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScorePast1(){
+    public Score get_ScorePast1() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=5 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -506,12 +541,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScorePast2(){
+    public Score get_ScorePast2() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=6 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -571,12 +606,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScorePast3(){
+    public Score get_ScorePast3() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=7 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -636,12 +671,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScorePast4(){
+    public Score get_ScorePast4() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=8 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -701,12 +736,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScoreFu1(){
+    public Score get_ScoreFu1() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=9 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -766,12 +801,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScoreFu2(){
+    public Score get_ScoreFu2() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=10 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -831,12 +866,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScoreFu3(){
+    public Score get_ScoreFu3() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=11 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -896,12 +931,12 @@ public class DatabaseAccess {
         return ans;
     }
 
-    public Score get_ScoreFu4(){
+    public Score get_ScoreFu4() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=12 ", null);
         // and point>=2
-        if(cursor != null && cursor.getCount() >0){
-            if (cursor.moveToFirst()){
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
@@ -914,8 +949,6 @@ public class DatabaseAccess {
 
         return null;
     }
-
-
 
 
 }
