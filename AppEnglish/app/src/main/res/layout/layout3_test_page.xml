@@ -22,7 +22,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
 <!--            <ListView
                 android:layout_width="wrap_content"
@@ -39,43 +40,49 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Large Text" />
+                android:text="Large Text"
+                android:padding="6dp"
+                android:layout_margin="10dp"
+                android:textSize="16dp" />
 
             <RadioGroup
                 android:id="@+id/radioGroup1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="0.04"
-                android:checked="false">
+                android:checked="false"
+                android:paddingLeft="6dp">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioButton1" />
+                android:id="@+id/radioButton1"
+                android:text="A"
+                android:textSize="16dp"
+                android:checked="false" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioButton2" />
+                android:id="@+id/radioButton2"
+                android:text="B"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioButton3" />
+                android:id="@+id/radioButton3"
+                android:text="C"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/radioButton4" />
-
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/listView" />
+                android:id="@+id/radioButton4"
+                android:text="D"
+                android:textSize="16dp"
+                android:layout_marginTop="5dp" />
 
             </RadioGroup>
 

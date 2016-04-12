@@ -88,8 +88,6 @@ public class Fragment3_testPrePage1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.layout3_test_page, container, false);
 
-        listView = (ListView) rootview.findViewById(R.id.listView);
-
         txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
         rda = (RadioButton) rootview.findViewById(R.id.radioButton1);
         rdb = (RadioButton) rootview.findViewById(R.id.radioButton2);

@@ -49,7 +49,6 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         switch (radioCheckedId) {
             case R.id.radioButtonM:
                 CreateCharM();
-                //CreateChar();
                 break;
             case R.id.radioButtonW:
                 CreateCharW();
@@ -60,33 +59,6 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         }
 
     }
-
-    /*private void CreateChar() {
-        name = editName.getText().toString();
-        RadioGroup radioGroup = (RadioGroup) this.findViewById(R.id.radioGroup1);
-        radioM = (RadioButton) findViewById(R.id.radioButtonM);
-        radioW = (RadioButton) findViewById(R.id.radioButtonW);
-        radioGroup.clearCheck();
-
-        if (name.length() != 0){
-            if(radioM.isChecked()){
-                sex = 1;
-                setCreateCharacter();
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-                finish();
-            } else if(radioW.isChecked()){
-                sex = 2;
-                setCreateCharacter();
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        }
-        else {
-            AlertAddName();
-        }
-    }*/
 
     private void CreateCharM() {
         if (name.length() != 0) {
@@ -141,11 +113,10 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         dialog.show();
     }
 
-
     private void setCreateCharacter() {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        databaseAccess.createCharacter(name, sex);
+        databaseAccess.createCharacter(name, sex, 1);
         Toast.makeText(this, "Create!", Toast.LENGTH_LONG).show();
         databaseAccess.close();
     }

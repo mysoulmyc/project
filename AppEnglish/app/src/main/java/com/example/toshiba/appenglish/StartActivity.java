@@ -16,7 +16,6 @@ public class StartActivity extends Activity implements View.OnClickListener {
     Button butstart;
     CharacterInfo character;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,45 +28,21 @@ public class StartActivity extends Activity implements View.OnClickListener {
         databaseAccess.open();
         character = databaseAccess.getCharacter();
         databaseAccess.close();
-
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.but_start) {
-            if (character!=null) {
+            if (character != null) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
                 finish();
-            }
-            else {
+            } else {
                 Intent i = new Intent(getApplicationContext(), CreateCharacter.class);
                 startActivity(i);
                 finish();
             }
         }
-        /*else if (v.getId() == R.id.but_credit){
-            Intent i = new Intent(getApplicationContext(), Fragment6_credit.class);
-            startActivity(i);
-        }*/
     }
 
-/*    public void onBackPressed() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("Exit");
-        dialog.setCancelable(true);
-        dialog.setMessage("Do you want to exit?");
-        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-
-        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        dialog.show();
-    }*/
 }

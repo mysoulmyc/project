@@ -1,4 +1,8 @@
-package com.example.toshiba.appenglish.testFuture;
+package com.example.toshiba.appenglish;
+
+/*
+ * Created by Toshiba on 29/12/2558.
+ */
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -14,30 +18,18 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.toshiba.appenglish.DB.Answer;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
-import com.example.toshiba.appenglish.DB.Question;
-import com.example.toshiba.appenglish.Fragment3_Answer;
-import com.example.toshiba.appenglish.R;
+import com.example.toshiba.appenglish.DB.MixQuestAns;
 
 import java.util.List;
 
-/*
- * Created by Toshiba on 22/2/2559.
- */
-public class Fragment3_testFuturePage2 extends Fragment {
-
+public class Fragment4_mixtestPage extends Fragment {
     View rootview;
 
-    List<Question> quesList;
-    List<Answer> answerList;
-
+    List<MixQuestAns> mixList;
+    MixQuestAns currentMIX;
     int score = 0;
     int qid = 0;
-    int ans = 0;
-
-    Question currentQ;
-    Answer currentA;
 
     TextView txtQuestion;
     RadioButton rda, rdb, rdc, rdd;
@@ -45,7 +37,7 @@ public class Fragment3_testFuturePage2 extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.layout3_test_page, container, false);
 
         txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
@@ -55,17 +47,13 @@ public class Fragment3_testFuturePage2 extends Fragment {
         rdd = (RadioButton) rootview.findViewById(R.id.radioButton4);
         butNext = (Button) rootview.findViewById(R.id.button_next);
 
-
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
-        quesList = databaseAccess.getTestFu2();
-        answerList = databaseAccess.getChoiceFu2();
+        mixList = databaseAccess.getMixQuestAns();
         databaseAccess.close();
 
-        currentQ = quesList.get(qid);
-        currentA = answerList.get(ans);
+        currentMIX = mixList.get(qid);
         setQuestionView();
-
 
         butNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,20 +80,18 @@ public class Fragment3_testFuturePage2 extends Fragment {
                         break;
                 }
             }
-
         });
 
         return rootview;
     }
 
     private void setQuestionView() {
-        txtQuestion.setText(currentQ.getQUESTION());
-        rda.setText(currentA.getOPTA());
-        rdb.setText(currentA.getOPTB());
-        rdc.setText(currentA.getOPTC());
-        rdd.setText(currentA.getOPTD());
+        txtQuestion.setText(currentMIX.getMixQUESTION());
+        rda.setText(currentMIX.getMixOPTA());
+        rdb.setText(currentMIX.getMixOPTB());
+        rdc.setText(currentMIX.getMixOPTC());
+        rdd.setText(currentMIX.getMixOPTD());
         qid++;
-        ans++;
     }
 
     private void setActivity() {
@@ -115,33 +101,40 @@ public class Fragment3_testFuturePage2 extends Fragment {
 
         grp.clearCheck();
 
-        if (currentA.getANSWER().equals(answer.getText())) {
+        if (currentMIX.getMixANSWER().equals(answer.getText())) {
             score++;
-            Log.d("score", "Your score FuCon : " + score);
-
+            Log.d("score", "Your score MixTest : " + score);
         }
-        if (qid < quesList.size() && ans != 0) {
-            currentQ = quesList.get(qid);
-            currentA = answerList.get(ans);
+        if (qid < mixList.size()) {
+            currentMIX = mixList.get(qid);
             setQuestionView();
         } else {
-            setScoreTest();
-            Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
+            //setScoreTest();
+            Intent intent = new Intent(getActivity(), Fragment3_AnswerMixtest.class);
             Bundle b = new Bundle();
             b.putInt("score", score); //Your score
-            b.putString("yourans", currentA.getANSWER());
             intent.putExtras(b); //Put your score to your next Intent
             startActivity(intent);
             getActivity().finish();
         }
+
     }
 
-    private void setScoreTest() {
+
+    /*private void setScoreTest() {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
-        databaseAccess.addScore(10, score);
+        databaseAccess.addScore(9, score);
         Toast.makeText(getActivity(), "Inserted!", Toast.LENGTH_LONG).show();
         databaseAccess.close();
-    }
+    }*/
+
+
+    ////SQL
+    /*SELECT * FROM Question
+    INNER JOIN answer
+    WHERE answer.id_answer=Question.id_question
+    ORDER BY RANDOM() LIMIT 2
+*/
 
 }

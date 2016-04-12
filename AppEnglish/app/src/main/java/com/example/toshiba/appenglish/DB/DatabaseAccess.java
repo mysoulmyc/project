@@ -44,7 +44,7 @@ public class DatabaseAccess {
     }
 
     ////////////////////// create character /////////////////////////////////////
-    public void createCharacter(String name, int sex) {
+    public void createCharacter(String name, int sex, int level) {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         Date date = new Date();
@@ -53,6 +53,7 @@ public class DatabaseAccess {
         values.put("Name", name);
         values.put("id_sex", sex);
         values.put("date", dateFormat.format(date));
+        values.put("level", level);
         database.insert("Member", null, values);
 
         Log.d("DB insert : ", "Create CharacterInfo....");
@@ -72,11 +73,8 @@ public class DatabaseAccess {
                 return characterInfo;
             }
         }
-
         return null;
-
     }
-
 
     ////////////////////// add score test to database  //////////////////////////////////
     public void addScore(int id, int score) {
@@ -102,7 +100,6 @@ public class DatabaseAccess {
         values.put("id_tense", id);
         values.put("point", score);
         values.put("date", dateFormat.format(date));
-
         database.insert("Point", null, values);
 
         Log.d("DB insert : ", "Insert score....");
@@ -118,6 +115,7 @@ public class DatabaseAccess {
         return database.update("Point", values, "id_tense" + " = " + id, null);
     }
 
+//+++++++++++++++++++++++++++++++++++++++++++++ Test Part +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
     ////////////////////// Test Present Simple  //////////////////////////////////
     public List<Question> getTest() {
@@ -231,7 +229,6 @@ public class DatabaseAccess {
                 //}while (cursor.moveToNext());
             }
         }
-
         return null;
     }
 
@@ -247,7 +244,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -272,7 +268,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -296,7 +291,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -312,7 +306,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -337,7 +330,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -361,7 +353,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -377,7 +368,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -402,7 +392,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -426,7 +415,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -442,7 +430,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -467,7 +454,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -491,7 +477,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -507,7 +492,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -532,7 +516,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -556,7 +539,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -572,7 +554,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -597,7 +578,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -621,7 +601,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -637,7 +616,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -662,7 +640,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -686,7 +663,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -702,7 +678,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -727,7 +702,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -751,7 +725,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -767,7 +740,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -792,7 +764,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -816,7 +787,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -832,7 +802,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -857,7 +826,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -881,7 +849,6 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
@@ -897,7 +864,6 @@ public class DatabaseAccess {
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
                     list.add(quest);
-
                 } while (cursor.moveToNext());
             }
         }
@@ -922,7 +888,6 @@ public class DatabaseAccess {
                     choice.setOPTD(cs.getString(4));
                     choice.setANSWER(cs.getString(5));
                     ans.add(choice);
-
                 } while (cs.moveToNext());
             }
         }
@@ -946,9 +911,39 @@ public class DatabaseAccess {
                 return ss;
             }
         }
-
         return null;
     }
 
+    ////////////////////// Mix Test //////////////////////////////////
+    public List<MixQuestAns> getMixQuestAns(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question\n" +
+                "    ORDER BY RANDOM() LIMIT 5 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    //mix.setMixID(cs.getInt(0));
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++ Test Part (End) +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 }

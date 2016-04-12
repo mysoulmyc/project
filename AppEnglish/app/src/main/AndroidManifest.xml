@@ -36,6 +36,8 @@
 
         <activity android:name=".Fragment3_Answer" />
 
+        <activity android:name=".Fragment3_AnswerMixtest"/>
+
         <activity android:name=".CreateCharacter" />
 
 
