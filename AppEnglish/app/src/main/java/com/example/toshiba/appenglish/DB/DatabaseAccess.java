@@ -54,6 +54,7 @@ public class DatabaseAccess {
         values.put("id_sex", sex);
         values.put("date", dateFormat.format(date));
         values.put("level", level);
+        values.put("date_use",dateFormat.format(date));
         database.insert("Member", null, values);
 
         Log.d("DB insert : ", "Create CharacterInfo....");
@@ -74,6 +75,20 @@ public class DatabaseAccess {
             }
         }
         return null;
+    }
+
+    ////////////////////// update date time  //////////////////////////////////
+
+    public void updateTime(CharacterInfo oldTime) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        ContentValues values = new ContentValues();
+        values.put("date_use", dateFormat.format(date));
+/*        values.put("last_name", newContact.getLastName());
+        values.put("phone", newContact.getPhone());
+        values.put("email", newContact.getEmail());*/
+        database.update("Member", values, "id_mem = ?", new String[]{String.valueOf(oldTime.getID())});
+        //return oldTime;
     }
 
     ////////////////////// add score test to database  //////////////////////////////////

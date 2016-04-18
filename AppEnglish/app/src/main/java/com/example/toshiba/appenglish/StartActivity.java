@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.toshiba.appenglish.DB.CharacterInfo;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
@@ -15,7 +16,6 @@ import com.example.toshiba.appenglish.DB.DatabaseAccess;
 public class StartActivity extends Activity implements View.OnClickListener {
     Button butstart;
     CharacterInfo character;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,8 @@ public class StartActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.but_start) {
             if (character != null) {
+                updateTime();
+                //Log.d("time", "Time update : " + character);
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
                 finish();
@@ -43,6 +45,14 @@ public class StartActivity extends Activity implements View.OnClickListener {
                 finish();
             }
         }
+    }
+
+    private void updateTime() {
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        databaseAccess.open();
+        databaseAccess.updateTime(character);
+        Toast.makeText(this, "Update date time!", Toast.LENGTH_LONG).show();
+        databaseAccess.close();
     }
 
 }
