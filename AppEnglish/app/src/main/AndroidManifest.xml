@@ -1,46 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.toshiba.appenglish"
-     >
-    <!--android:versionCode="1"-->
-    <!--android:versionName="1.0"-->
-<!--    <uses-sdk
-        android:minSdkVersion="15"
-        android:maxSdkVersion="22" />-->
+    package="com.example.toshiba.appenglish">
 
-    <!--<supports-screens android:smallScreens="true"
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- android:versionCode="1" -->
+    <!-- android:versionName="1.0" -->
+    <!--
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:maxSdkVersion="22" />
+    -->
+    <!--
+<supports-screens android:smallScreens="true"
         android:normalScreens="true"
         android:largeScreens="true"
-        android:xlargeScreens="true"/>-->
-
+        android:xlargeScreens="true"/>
+    -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppThemeDark">
         <activity
             android:name=".StartActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:label="@string/app_name"/>
-
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".Fragment3_Answer" />
-
-        <activity android:name=".Fragment3_AnswerMixtest"/>
-
+        <activity android:name=".Fragment3_AnswerMixtest" />
         <activity android:name=".CreateCharacter" />
-
-
     </application>
 
 </manifest>

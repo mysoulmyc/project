@@ -103,6 +103,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:background="@color/accent_material_light"
             android:text="Next" />
     </LinearLayout>
 

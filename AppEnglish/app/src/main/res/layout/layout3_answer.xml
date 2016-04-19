@@ -38,10 +38,13 @@
 
         <Button
             android:id="@+id/button_score"
+            android:textColor="#FFFFFF"
+            android:background="@color/accent_material_light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="BACK" />
+            android:text="BACK"
+            android:textSize="20dp" />
     </LinearLayout>
 
 </RelativeLayout>

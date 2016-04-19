@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|center_horizontal"
-    android:background="#ff3eaff9">
+    android:gravity="center|center_horizontal">
+
+    /*android:background="#ff3eaff9" android:background="#eef5f9"*/
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -11,8 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="40dp"
-        android:orientation="vertical"
-        android:background="#eef5f9">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView3"
@@ -31,7 +31,7 @@
             android:height="60dp"
             android:text="START test"
             android:textSize="20dp"
-            android:background="#ff3eaff9"
+            android:backgroundTint="#FF009688"
             android:padding="16dp"
             android:textColor="#ffffff" />
 

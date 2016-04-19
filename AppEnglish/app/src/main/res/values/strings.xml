@@ -3,6 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
     <string-array name="SelectActivity">
         <item>Main</item>
         <item>Lesson</item>
@@ -10,6 +11,7 @@
         <item>Mix Test</item>
         <item>Score</item>
         <item>Credit</item>
+        <item>Setting</item>
     </string-array>
     <string name="drawer_open">Open Navigation drawer</string>
     <string name="drawer_close">Close Navigation drawer</string>
@@ -21,6 +23,24 @@
     <string name="char_create">สร้างตัวละคร</string>
 
     <string name="simple">Simple</string>
+
+    <string name="notification_ticker_text">Test Notification</string>
+    <string name="notification_content_text">yes</string>
+
+    <string name="new_message_notification_title_template">New message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="new_message_notification_placeholder_text_template">You said %1$s and lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
+        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
 
     <!--<string-array name="drawer_presim">-->
     <!--<item >@drawable/a1</item>-->

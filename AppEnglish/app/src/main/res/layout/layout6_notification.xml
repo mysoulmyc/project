@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification page" />
+
+    </LinearLayout>
+
+
+
+<!--    <TableLayout
+        android:id="@+id/tabs"
+        android:tabGravity="fill"
+        android:tabMode="fixed"
+        android:background="@color/material_blue_grey_800"
+        android:tabIndicatorColor="@color/orange"
+        android:tabSelectedTextColor="@color/orange"
+        android:tabTextColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TableLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>-->
+
+</LinearLayout>

@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -126,6 +125,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 objFragment = new Fragment6_credit();
                 mDrawerLayout.closeDrawers();
                 break;
+/*            case 6:
+                objFragment = new Notifify();
+                mDrawerLayout.closeDrawers();
+                break;*/
         }
 
         //update the main content by replacing fragment
@@ -148,12 +151,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         getSupportActionBar().setTitle(title);
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        FragmentManager fm = getFragmentManager();
+        fm.beginTransaction().replace(R.id.maincontent, new Notifify()).commit();
+
         return true;
-    }
+    }*/
 
     // exit app
     public void onBackPressed() {
@@ -187,6 +194,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onRestoreInstanceState(savedInstanceState);
     }
 
+
+    /////////////////////////////////// setting on actionbar
     /*    @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);

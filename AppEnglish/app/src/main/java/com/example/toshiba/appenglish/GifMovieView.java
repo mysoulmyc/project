@@ -189,6 +189,7 @@ public class GifMovieView extends View {
 			 * No movie set, just set minimum available size.
 			 *//*
 			setMeasuredDimension(getSuggestedMinimumWidth(), getSuggestedMinimumHeight());
+
 		}*/
 	}
 

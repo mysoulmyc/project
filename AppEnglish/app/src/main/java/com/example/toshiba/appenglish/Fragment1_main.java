@@ -28,7 +28,7 @@ public class Fragment1_main extends Fragment {
         webView.loadUrl("file:///android_asset/Credit.html");*/
 
         GifMovieView gmv = (GifMovieView) rootview.findViewById(R.id.gifMovieView);
-        gmv.setMovieResource(R.drawable.woman2);
+        gmv.setMovieResource(R.drawable.bgw2);
 
 
         return rootview;

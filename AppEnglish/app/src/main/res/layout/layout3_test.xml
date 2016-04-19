@@ -27,7 +27,9 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:textSize="20dp" />
+                    android:textColor="#181818"
+                    android:textSize="20dp"
+                    android:backgroundTint="#b2dfdb" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -37,7 +39,9 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:textSize="20dp" />
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:backgroundTint="@color/accent_material_light" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -47,7 +51,9 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:textSize="20dp" />
+                    android:textColor="#181818"
+                    android:textSize="20dp"
+                    android:backgroundTint="#b2dfdb" />
 
             </LinearLayout>
 

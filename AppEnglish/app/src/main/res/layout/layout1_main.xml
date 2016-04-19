@@ -3,36 +3,37 @@
     android:id="@+id/main_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center_horizontal"
-    android:background="@drawable/bgmain">
+    >
 
 <!--    <WebView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/webview">
-
+android:background="@drawable/bgmain2"
     </WebView>-->
 
     <com.example.toshiba.appenglish.GifMovieView
         android:id="@+id/gifMovieView"
-        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-<!--    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView" />
+
+    <!--    <ImageView android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="main page"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="main page"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />-->
 
 
 

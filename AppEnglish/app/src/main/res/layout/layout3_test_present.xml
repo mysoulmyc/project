@@ -18,9 +18,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="back"
+            android:textColor="#fff"
             android:id="@+id/button_back"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#ff4081" />
     </LinearLayout>
 
 
@@ -50,8 +52,11 @@
                     android:layout_marginTop="30dp"
                     android:height="60dp"
                     android:textSize="20dp"
+                    android:textColor="#181818"
                     android:focusable="false"
-                    android:focusableInTouchMode="false" />
+                    android:focusableInTouchMode="false"
+                    android:textColorHighlight="@color/accent_material_light"
+                    android:backgroundTint="#febed5" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -60,7 +65,9 @@
                     android:id="@+id/but_testPre2"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:textSize="20dp" />
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:backgroundTint="#ff4081" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -69,7 +76,9 @@
                     android:id="@+id/but_testPre3"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:textSize="20dp" />
+                    android:textColor="#181818"
+                    android:textSize="20dp"
+                    android:backgroundTint="#febed5" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -78,7 +87,9 @@
                     android:id="@+id/but_testPre4"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:textSize="20dp" />
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:backgroundTint="#ff4081" />
 
             </LinearLayout>
 

@@ -15,9 +15,11 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#fff"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="back" />
+            android:text="back"
+            android:backgroundTint="#3f51b5" />
     </LinearLayout>
 
 
@@ -42,8 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:height="60dp"
+            android:textColor="#181818"
             android:text="                      Simple                     "
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:backgroundTint="#c5cae9" />
 
         <Button
             android:id="@+id/but_lessPast2"
@@ -51,8 +55,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:height="60dp"
+            android:textColor="#fff"
             android:text="                Continuous                "
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:backgroundTint="#3f51b5" />
 
         <Button
             android:id="@+id/but_lessPast3"
@@ -60,8 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:height="60dp"
+            android:textColor="#181818"
             android:text="                    Perfect                    "
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:backgroundTint="#c5cae9" />
 
         <Button
             android:id="@+id/but_lessPast4"
@@ -69,8 +77,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:height="60dp"
+            android:textColor="#fff"
             android:text="       Perfect continuous       "
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:backgroundTint="#3f51b5" />
 
 
     </LinearLayout>
