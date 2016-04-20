@@ -17,6 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.toshiba.appenglish.DB.CharacterInfo;
+import com.example.toshiba.appenglish.DB.DatabaseAccess;
+
 //import android.support.v4.app.Fragment;
 
 
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ListView mlistView;
     private String[] mSelectActivity;
     private ActionBarDrawerToggle mdrawerListener;
+    CharacterInfo dateout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //load first fragment as main page
         FragmentManager fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.maincontent, new Fragment1_main()).commit();
+
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        databaseAccess.open();
+        dateout = databaseAccess.getCharacter();
+        databaseAccess.close();
 
     }
 
@@ -170,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dialog.setMessage("Do you want to exit?");
         dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
+                updateTime();
                 finish();
             }
         });
@@ -193,6 +203,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
     }
+
+    private void updateTime() {
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
+        databaseAccess.open();
+        databaseAccess.updateTimeOut(dateout);
+        Toast.makeText(this, "Update date time!", Toast.LENGTH_LONG).show();
+        databaseAccess.close();
+    }
+
+
 
 
     /////////////////////////////////// setting on actionbar

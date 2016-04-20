@@ -55,7 +55,7 @@ public class Fragment3_testPrePage1 extends Fragment {
     Answer currentA;
     Score currentS;
 
-    TextView txtQuestion;
+    TextView txtQuestion,txtScore;
     RadioButton rda, rdb, rdc, rdd;
     Button butNext;
     //RadioGroup grp;
@@ -89,6 +89,7 @@ public class Fragment3_testPrePage1 extends Fragment {
         rootview = inflater.inflate(R.layout.layout3_test_page, container, false);
 
         txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
+        txtScore = (TextView) rootview.findViewById(R.id.textView_scoretest);
         rda = (RadioButton) rootview.findViewById(R.id.radioButton1);
         rdb = (RadioButton) rootview.findViewById(R.id.radioButton2);
         rdc = (RadioButton) rootview.findViewById(R.id.radioButton3);
@@ -446,6 +447,7 @@ public class Fragment3_testPrePage1 extends Fragment {
         rdb.setText(currentA.getOPTB());
         rdc.setText(currentA.getOPTC());
         rdd.setText(currentA.getOPTD());
+        txtScore.setText(" " + score);
         qid++;
         ans++;
     }

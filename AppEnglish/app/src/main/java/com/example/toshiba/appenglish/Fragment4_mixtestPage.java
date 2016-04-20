@@ -109,7 +109,7 @@ public class Fragment4_mixtestPage extends Fragment {
             currentMIX = mixList.get(qid);
             setQuestionView();
         } else {
-            //setScoreTest();
+            setScoreTest();
             Intent intent = new Intent(getActivity(), Fragment3_AnswerMixtest.class);
             Bundle b = new Bundle();
             b.putInt("score", score); //Your score
@@ -121,13 +121,13 @@ public class Fragment4_mixtestPage extends Fragment {
     }
 
 
-    /*private void setScoreTest() {
+    private void setScoreTest() {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
-        databaseAccess.addScore(9, score);
+        databaseAccess.addScore(14, score);
         Toast.makeText(getActivity(), "Inserted!", Toast.LENGTH_LONG).show();
         databaseAccess.close();
-    }*/
+    }
 
 
     ////SQL

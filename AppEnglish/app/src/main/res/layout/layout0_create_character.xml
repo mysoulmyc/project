@@ -98,7 +98,8 @@
                 android:checked="false"
                 android:text="@string/char_men"
                 android:textSize="20sp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp"
+                android:textColor="#181818" />
 
             <RadioButton
                 android:id="@+id/radioButtonW"
@@ -106,7 +107,8 @@
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:text="@string/char_women"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#181818" />
             </RadioGroup>
 
         </LinearLayout>

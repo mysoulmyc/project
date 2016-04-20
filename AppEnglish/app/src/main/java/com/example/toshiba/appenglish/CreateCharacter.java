@@ -64,7 +64,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         if (name.length() != 0) {
             sex = 1;
             setCreateCharacter();
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            Intent i = new Intent(getApplicationContext(), PreTest.class);
             startActivity(i);
             finish();
         } else {
@@ -77,7 +77,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         if (name.length() != 0) {
             sex = 2;
             setCreateCharacter();
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            Intent i = new Intent(getApplicationContext(), PreTest.class);
             startActivity(i);
             finish();
         } else {

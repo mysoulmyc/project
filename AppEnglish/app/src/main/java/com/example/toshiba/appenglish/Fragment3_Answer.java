@@ -31,7 +31,7 @@ public class Fragment3_Answer extends Activity {
 //get text view
         TextView t = (TextView) findViewById(R.id.textResult);
         //ListView ls = (ListView)findViewById(R.id.listView2);
-        TextView t2 = (TextView) findViewById(R.id.textView2);
+        //TextView t2 = (TextView) findViewById(R.id.textView2);
         //get button
         bt = (Button) findViewById(R.id.button_score);
         bt.setOnClickListener(new View.OnClickListener() {

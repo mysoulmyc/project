@@ -18,11 +18,11 @@ import com.example.toshiba.appenglish.DB.Score;
 public class Fragment5_scroe extends Fragment {
     View rootview;
 
-    TextView pre1, pre2, pre3, pre4, past1, past2, past3, past4, fu1, fu2, fu3, fu4;
+    TextView pre, post ,pre1, pre2, pre3, pre4, past1, past2, past3, past4, fu1, fu2, fu3, fu4;
 
     TextView test;
 
-    Score scorePre1, scorePre2, scorePre3, scorePre4, scorePast1, scorePast2, scorePast3,
+    Score scorePre, scorePost, scorePre1, scorePre2, scorePre3, scorePre4, scorePast1, scorePast2, scorePast3,
             scorePast4, scoreFu1, scoreFu2, scoreFu3, scoreFu4;
 
     Score currentS;
@@ -33,6 +33,9 @@ public class Fragment5_scroe extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.layout5_scroe, container, false);
+
+        pre = (TextView) rootview.findViewById(R.id.textView_pretest1);
+        post = (TextView) rootview.findViewById(R.id.textView_posttest1);
 
         pre1 = (TextView) rootview.findViewById(R.id.textView_presimtest1);
         pre2 = (TextView) rootview.findViewById(R.id.textView_precontest1);
@@ -53,6 +56,10 @@ public class Fragment5_scroe extends Fragment {
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
+
+        scorePre = databaseAccess.get_PreScore();
+        scorePost = databaseAccess.get_ScoreMix();
+
         scorePre1 = databaseAccess.get_Score();
         scorePre2 = databaseAccess.get_ScorePre2();
         scorePre3 = databaseAccess.get_ScorePre3();
@@ -81,6 +88,9 @@ public class Fragment5_scroe extends Fragment {
     }
 
     private void setScoreView() {
+        pre.setText(" " + scorePre.getScore());
+        post.setText(" " + scorePost.getScore());
+
         pre1.setText(" " + scorePre1.getScore());
         pre2.setText(" " + scorePre2.getScore());
         pre3.setText(" " + scorePre3.getScore());

@@ -50,7 +50,7 @@
                     android:layout_marginTop="20dp"
                     android:height="60dp"
                     android:textSize="20dp"
-                    android:textColor="#181818"
+
                     android:backgroundTint="#b2dfdb" />
 
                 <Button
@@ -73,7 +73,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:textColor="#181818"
+
                     android:textSize="20dp"
                     android:backgroundTint="#b2dfdb" />
 

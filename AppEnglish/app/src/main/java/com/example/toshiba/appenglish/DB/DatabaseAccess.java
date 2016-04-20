@@ -69,6 +69,8 @@ public class DatabaseAccess {
                 CharacterInfo characterInfo = new CharacterInfo();
                 characterInfo.setID(cursor.getInt(0));
                 characterInfo.setNAME(cursor.getString(1));
+                characterInfo.setSEX(cursor.getInt(2));
+                characterInfo.setLEVEL(cursor.getInt(3));
                 cursor.close();
                 database.close();
                 return characterInfo;
@@ -77,7 +79,52 @@ public class DatabaseAccess {
         return null;
     }
 
-    ////////////////////// update date time  //////////////////////////////////
+    ////////////////////// Change Character //////////////////////////////////
+
+    //// Lv2
+    public Score getLv2() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense= 4 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
+    //// Lv3
+    public Score getLv3() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=8 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
+    ////////////////////// update Level Character //////////////////////////////////
+    public void updateLevel(CharacterInfo oldLevel, int newLevel) {
+        ContentValues values = new ContentValues();
+        values.put("level", newLevel);
+        database.update("Member", values, "id_mem = ?", new String[]{String.valueOf(oldLevel.getID())});
+        //return oldTime;
+    }
+
+
+    ////////////////////// update date time come and out application  //////////////////////////////////
 
     public void updateTime(CharacterInfo oldTime) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
@@ -89,6 +136,14 @@ public class DatabaseAccess {
         values.put("email", newContact.getEmail());*/
         database.update("Member", values, "id_mem = ?", new String[]{String.valueOf(oldTime.getID())});
         //return oldTime;
+    }
+
+    public void updateTimeOut(CharacterInfo oldTime) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        ContentValues values = new ContentValues();
+        values.put("date_out", dateFormat.format(date));
+        database.update("Member", values, "id_mem = ?", new String[]{String.valueOf(oldTime.getID())});
     }
 
     ////////////////////// add score test to database  //////////////////////////////////
@@ -131,6 +186,68 @@ public class DatabaseAccess {
     }
 
 //+++++++++++++++++++++++++++++++++++++++++++++ Test Part +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+    ////////////////////// Test Present Continuous  //////////////////////////////////
+    public List<Question> getPreTest() {
+        database = openHelper.getReadableDatabase();
+        List<Question> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=13 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    Question quest = new Question();
+                    quest.setID(cursor.getInt(0));
+                    quest.setQUESTION(cursor.getString(1));
+                    list.add(quest);
+                } while (cursor.moveToNext());
+            }
+        }
+        cursor.close();
+        database.close();
+        return list;
+
+    }
+
+    public List<Answer> getPreChoice() {
+        database = openHelper.getReadableDatabase();
+        List<Answer> ans = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT * FROM answer WHERE id_Question=13 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    Answer choice = new Answer();
+                    choice.setID(cs.getInt(0));
+                    choice.setOPTA(cs.getString(1));
+                    choice.setOPTB(cs.getString(2));
+                    choice.setOPTC(cs.getString(3));
+                    choice.setOPTD(cs.getString(4));
+                    choice.setANSWER(cs.getString(5));
+                    ans.add(choice);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return ans;
+    }
+
+    public Score get_PreScore() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 13", null);
+        // and point>=2
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
 
     ////////////////////// Test Present Simple  //////////////////////////////////
     public List<Question> getTest() {
@@ -433,7 +550,7 @@ public class DatabaseAccess {
         return null;
     }
 
-    ////////////////////// Test Past Simple  //////////////////////////////////
+        ////////////////////// Test Past Simple  //////////////////////////////////
     public List<Question> getTestPast1() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
@@ -956,6 +1073,24 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return MIX;
+    }
+
+    public Score get_ScoreMix() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense=14 ", null);
+        // and point>=2
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
     }
 
 

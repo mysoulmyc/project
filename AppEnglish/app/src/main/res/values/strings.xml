@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppEnglish</string>
+    <string name="app_name">English with Me!</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -11,7 +11,6 @@
         <item>Mix Test</item>
         <item>Score</item>
         <item>Credit</item>
-        <item>Setting</item>
     </string-array>
     <string name="drawer_open">Open Navigation drawer</string>
     <string name="drawer_close">Close Navigation drawer</string>

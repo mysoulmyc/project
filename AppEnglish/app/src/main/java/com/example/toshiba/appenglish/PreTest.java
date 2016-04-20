@@ -1,13 +1,10 @@
-package com.example.toshiba.appenglish.testFuture;
+package com.example.toshiba.appenglish;
 
-import android.app.Fragment;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -17,21 +14,16 @@ import android.widget.Toast;
 import com.example.toshiba.appenglish.DB.Answer;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
 import com.example.toshiba.appenglish.DB.Question;
-import com.example.toshiba.appenglish.Fragment3_Answer;
-import com.example.toshiba.appenglish.R;
 
 import java.util.List;
 
-/*
- * Created by Toshiba on 22/2/2559.
+/**
+ * Created by Toshiba on 20/4/2559.
  */
-public class Fragment3_testFuturePage3 extends Fragment {
-
-    View rootview;
+public class PreTest extends Activity {
 
     List<Question> quesList;
     List<Answer> answerList;
-
     int score = 0;
     int qid = 0;
     int ans = 0;
@@ -39,28 +31,26 @@ public class Fragment3_testFuturePage3 extends Fragment {
     Question currentQ;
     Answer currentA;
 
-    TextView txtQuestion,txtScore;
+    TextView txtQuestion;
     RadioButton rda, rdb, rdc, rdd;
     Button butNext;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        rootview = inflater.inflate(R.layout.layout3_test_page, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout3_test_page);
 
-        txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
-        txtScore = (TextView) rootview.findViewById(R.id.textView_scoretest);
-        rda = (RadioButton) rootview.findViewById(R.id.radioButton1);
-        rdb = (RadioButton) rootview.findViewById(R.id.radioButton2);
-        rdc = (RadioButton) rootview.findViewById(R.id.radioButton3);
-        rdd = (RadioButton) rootview.findViewById(R.id.radioButton4);
-        butNext = (Button) rootview.findViewById(R.id.button_next);
+        txtQuestion = (TextView) findViewById(R.id.textView1);
+        rda = (RadioButton) findViewById(R.id.radioButton1);
+        rdb = (RadioButton) findViewById(R.id.radioButton2);
+        rdc = (RadioButton) findViewById(R.id.radioButton3);
+        rdd = (RadioButton) findViewById(R.id.radioButton4);
+        butNext = (Button) findViewById(R.id.button_next);
 
-
-        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        quesList = databaseAccess.getTestFu3();
-        answerList = databaseAccess.getChoiceFu3();
+        quesList = databaseAccess.getPreTest();
+        answerList = databaseAccess.getPreChoice();
         databaseAccess.close();
 
         currentQ = quesList.get(qid);
@@ -72,7 +62,7 @@ public class Fragment3_testFuturePage3 extends Fragment {
             @Override
             public void onClick(View v) {
 
-                RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.radioGroup1);
+                RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
                 int radioCheckedId = radioGroup.getCheckedRadioButtonId();
 
                 switch (radioCheckedId) {
@@ -89,14 +79,12 @@ public class Fragment3_testFuturePage3 extends Fragment {
                         setActivity();
                         break;
                     case -1:
-                        Toast.makeText(getActivity(), "Please select your choice.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Please select your choice.", Toast.LENGTH_LONG).show();
                         break;
                 }
             }
 
         });
-
-        return rootview;
     }
 
     private void setQuestionView() {
@@ -105,21 +93,20 @@ public class Fragment3_testFuturePage3 extends Fragment {
         rdb.setText(currentA.getOPTB());
         rdc.setText(currentA.getOPTC());
         rdd.setText(currentA.getOPTD());
-        txtScore.setText(" " + score);
         qid++;
         ans++;
     }
 
     private void setActivity() {
 
-        final RadioGroup grp = (RadioGroup) getActivity().findViewById(R.id.radioGroup1);
-        final RadioButton answer = (RadioButton) getActivity().findViewById(grp.getCheckedRadioButtonId());
+        final RadioGroup grp = (RadioGroup) findViewById(R.id.radioGroup1);
+        final RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
 
         grp.clearCheck();
 
         if (currentA.getANSWER().equals(answer.getText())) {
             score++;
-            Log.d("score", "Your score FuPer : " + score);
+            Log.d("score", "Your score PreTest : " + score);
 
         }
         if (qid < quesList.size() && ans != 0) {
@@ -129,22 +116,21 @@ public class Fragment3_testFuturePage3 extends Fragment {
 
         } else {
             setScoreTest();
-            Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
+            Intent intent = new Intent(this, Fragment3_Answer.class);
             Bundle b = new Bundle();
             b.putInt("score", score); //Your score
             b.putString("yourans", currentA.getANSWER());
             intent.putExtras(b); //Put your score to your next Intent
             startActivity(intent);
-            getActivity().finish();
+            this.finish();
         }
     }
 
     private void setScoreTest() {
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        databaseAccess.addScore(7, score);
-        Toast.makeText(getActivity(), "Inserted!", Toast.LENGTH_LONG).show();
+        databaseAccess.addScore(13, score);
+        Toast.makeText(getApplicationContext(), "Inserted!", Toast.LENGTH_LONG).show();
         databaseAccess.close();
     }
-
 }
