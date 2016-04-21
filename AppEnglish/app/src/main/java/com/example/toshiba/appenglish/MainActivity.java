@@ -1,9 +1,12 @@
 package com.example.toshiba.appenglish;
 
+import android.app.AlarmManager;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -20,6 +23,8 @@ import android.widget.Toast;
 import com.example.toshiba.appenglish.DB.CharacterInfo;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
 
+import java.util.Calendar;
+
 //import android.support.v4.app.Fragment;
 
 
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private String[] mSelectActivity;
     private ActionBarDrawerToggle mdrawerListener;
     CharacterInfo dateout;
+    private PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +77,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         databaseAccess.open();
         dateout = databaseAccess.getCharacter();
         databaseAccess.close();
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Intent notificationIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
+        notificationIntent.addCategory("android.intent.category.DEFAULT");
+
+        pendingIntent = PendingIntent.getBroadcast(this, 100, notificationIntent, 0);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        cal.set(Calendar.HOUR_OF_DAY, 21);
+        cal.set(Calendar.HOUR_OF_DAY, 22);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
 
     }
 
