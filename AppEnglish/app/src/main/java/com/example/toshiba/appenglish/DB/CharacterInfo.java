@@ -10,6 +10,7 @@ public class CharacterInfo {
     private int DATE;
     private int LEVEL;
     private int DATEUSE;
+    private int DATEOUT;
 
     public CharacterInfo(){
         ID = 0;
@@ -18,15 +19,17 @@ public class CharacterInfo {
         DATE = 0;
         LEVEL = 0;
         DATEUSE = 0;
+        DATEOUT = 0;
     }
 
-    public CharacterInfo(Integer id, String name,Integer sex,Integer date,Integer level,Integer dateuse){
+    public CharacterInfo(Integer id, String name,Integer sex,Integer date,Integer level,Integer dateuse, Integer dateout){
         ID = id;
         NAME = name;
         SEX = sex;
         DATE = date;
         LEVEL = level;
         DATEUSE = dateuse;
+        DATEOUT = dateout;
     }
 
     public int getID(){
@@ -75,5 +78,13 @@ public class CharacterInfo {
 
     public void setDATEUSE(int dateuse){
         DATEUSE = dateuse;
+    }
+
+    public int getDATEOUT(){
+        return DATEOUT;
+    }
+
+    public void setDATEOUT(int dateout){
+        DATEOUT = dateout;
     }
 }

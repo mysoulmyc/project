@@ -115,6 +115,41 @@ public class DatabaseAccess {
         return null;
     }
 
+    /////// date in / out app
+    public CharacterInfo dateInOut(){
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT date_use, date_out , date_use - date_out AS total_date FROM Member ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                CharacterInfo characterInfo = new CharacterInfo();
+                characterInfo.setDATEUSE(cursor.getInt(0));
+                characterInfo.setDATEOUT(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return characterInfo;
+            }
+        }
+        return null;
+    }
+    //////// date test mix test
+    public Score dateScoreMix(){
+        database = openHelper.getReadableDatabase();
+        //Cursor cursor = database.rawQuery("SELECT datehp FROM Point Where id_tense=14 ", null);
+        Cursor cursor = database.rawQuery("SELECT datehp, MAX(date) FROM Point Where id_tense=14 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score sc = new Score();
+                sc.setDateMix(cursor.getInt(0));
+                sc.setDateTime(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return sc;
+            }
+        }
+        return null;
+    }
+
+
     ////////////////////// update Level Character //////////////////////////////////
     public void updateLevel(CharacterInfo oldLevel, int newLevel) {
         ContentValues values = new ContentValues();
@@ -127,7 +162,7 @@ public class DatabaseAccess {
     ////////////////////// update date time come and out application  //////////////////////////////////
 
     public void updateTime(CharacterInfo oldTime) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
         Date date = new Date();
         ContentValues values = new ContentValues();
         values.put("date_use", dateFormat.format(date));
@@ -139,7 +174,7 @@ public class DatabaseAccess {
     }
 
     public void updateTimeOut(CharacterInfo oldTime) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
         Date date = new Date();
         ContentValues values = new ContentValues();
         values.put("date_out", dateFormat.format(date));
@@ -162,6 +197,7 @@ public class DatabaseAccess {
         //"yyyy-MM-dd HH:mm:ss"
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat dateHP = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
         Date date = new Date();
 
         //database = openHelper.getWritableDatabase();
@@ -170,6 +206,7 @@ public class DatabaseAccess {
         values.put("id_tense", id);
         values.put("point", score);
         values.put("date", dateFormat.format(date));
+        values.put("datehp", dateHP.format(date));
         database.insert("Point", null, values);
 
         Log.d("DB insert : ", "Insert score....");
@@ -179,15 +216,10 @@ public class DatabaseAccess {
 
     }
 
-    public int updateScore(int id, int score) {
-        ContentValues values = new ContentValues();
-        values.put("point", score);
-        return database.update("Point", values, "id_tense" + " = " + id, null);
-    }
 
 //+++++++++++++++++++++++++++++++++++++++++++++ Test Part +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-    ////////////////////// Test Present Continuous  //////////////////////////////////
+    ////////////////////// Pre Test //////////////////////////////////
     public List<Question> getPreTest() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
@@ -248,6 +280,8 @@ public class DatabaseAccess {
         }
         return null;
     }
+
+
 
     ////////////////////// Test Present Simple  //////////////////////////////////
     public List<Question> getTest() {
@@ -364,6 +398,22 @@ public class DatabaseAccess {
         return null;
     }
 
+    public Score getScoreUnlockTest1() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=1 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
     ////////////////////// Test Present Continuous  //////////////////////////////////
     public List<Question> getTestPre2() {
         database = openHelper.getReadableDatabase();
@@ -418,6 +468,22 @@ public class DatabaseAccess {
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
                 ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
+    public Score getScoreUnlockTest2() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=2 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
                 cursor.close();
                 database.close();
                 return ss;
@@ -488,6 +554,22 @@ public class DatabaseAccess {
         return null;
     }
 
+    public Score getScoreUnlockTest3() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=3 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
     ////////////////////// Test Present Perfect Continuous  //////////////////////////////////
     public List<Question> getTestPre4() {
         database = openHelper.getReadableDatabase();
@@ -542,6 +624,22 @@ public class DatabaseAccess {
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
                 ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
+    public Score getScoreUnlockTest4() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=4 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
                 cursor.close();
                 database.close();
                 return ss;
@@ -612,6 +710,22 @@ public class DatabaseAccess {
         return null;
     }
 
+    public Score getScoreUnlockTest5() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=5 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
     ////////////////////// Test Past Continuous  //////////////////////////////////
     public List<Question> getTestPast2() {
         database = openHelper.getReadableDatabase();
@@ -666,6 +780,22 @@ public class DatabaseAccess {
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
                 ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
+    public Score getScoreUnlockTest6() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=6 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
                 cursor.close();
                 database.close();
                 return ss;
@@ -736,6 +866,22 @@ public class DatabaseAccess {
         return null;
     }
 
+    public Score getScoreUnlockTest7() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=7 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
     ////////////////////// Test Past Perfect Continuous  //////////////////////////////////
     public List<Question> getTestPast4() {
         database = openHelper.getReadableDatabase();
@@ -790,6 +936,22 @@ public class DatabaseAccess {
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
                 ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
+    public Score getScoreUnlockTest8() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=8 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
                 cursor.close();
                 database.close();
                 return ss;
@@ -860,6 +1022,22 @@ public class DatabaseAccess {
         return null;
     }
 
+    public Score getScoreUnlockTest9() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=9 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
     ////////////////////// Test Future Continuous  //////////////////////////////////
     public List<Question> getTestFu2() {
         database = openHelper.getReadableDatabase();
@@ -914,6 +1092,22 @@ public class DatabaseAccess {
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
                 ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
+    public Score getScoreUnlockTest10() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=10 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
                 cursor.close();
                 database.close();
                 return ss;
@@ -984,6 +1178,22 @@ public class DatabaseAccess {
         return null;
     }
 
+    public Score getScoreUnlockTest11() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=11 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
     ////////////////////// Test Future Perfect Continuous  //////////////////////////////////
     public List<Question> getTestFu4() {
         database = openHelper.getReadableDatabase();
@@ -1038,6 +1248,22 @@ public class DatabaseAccess {
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
                 ss.setDateTime(cursor.getInt(2));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
+    public Score getScoreUnlockTest12() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=12 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
                 cursor.close();
                 database.close();
                 return ss;

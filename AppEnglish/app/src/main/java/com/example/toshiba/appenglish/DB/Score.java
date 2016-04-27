@@ -7,17 +7,20 @@ public class Score {
     private int sCORE;
     private int dATE;
     private int iD;
+    private int dateMix;
 
     public Score(){
         sCORE = 0;
         dATE = 0;
         iD = 0;
+        dateMix = 0;
     }
 
-    public Score(Integer score, Integer date, Integer id) {
+    public Score(Integer score, Integer date, Integer id,Integer datemix) {
         sCORE = score;
         dATE = date;
         iD = id;
+        dateMix = datemix;
     }
 
 
@@ -39,6 +42,14 @@ public class Score {
         Date date = new Date();
         return dateFormat.format(date);*/
         dATE = date;
+    }
+
+    public int getDateMix() {
+        return dateMix;
+    }
+
+    public void setDateMix(int dateMix) {
+        this.dateMix = dateMix;
     }
 
     public int getiD(){

@@ -3,6 +3,7 @@
     package="com.example.toshiba.appenglish">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <!-- android:versionCode="1" -->
     <!-- android:versionName="1.0" -->
     <!--

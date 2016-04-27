@@ -30,7 +30,8 @@
         android:choiceMode="singleChoice"
         android:dividerHeight="1dp"
         android:textFilterEnabled="false"
-        android:background="#b2dfdb" />
+        android:background="#ffffff"
+        android:textAlignment="center" />
 
 <!--    <android.support.v4.view.ViewPager  android:background="#6688ab"
         android:id="@+id/pager"

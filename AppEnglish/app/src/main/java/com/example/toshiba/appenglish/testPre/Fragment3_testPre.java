@@ -75,9 +75,9 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
         //scoreList = databaseAccess.getScoreTest();
-        scoreLt = databaseAccess.get_Score();
-        scoreLt2 = databaseAccess.get_ScorePre2();
-        scoreLt3 = databaseAccess.get_ScorePre3();
+        scoreLt = databaseAccess.getScoreUnlockTest1();
+        scoreLt2 = databaseAccess.getScoreUnlockTest2();
+        scoreLt3 = databaseAccess.getScoreUnlockTest3();
         //a = scoreLt.getScore();
         databaseAccess.close();
 
@@ -351,7 +351,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         if (scoreLt != null) {
             //butCon.isFocused();
             pre1 = scoreLt.getScore();
-            date = scoreLt.getDate();
+            //date = scoreLt.getDate();
             //a = true;
             if (pre1 != 0 && pre1 >= 2) {
                 Log.d("score", "Your score PreSim : " + scoreLt.getScore());
@@ -409,7 +409,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         if (scoreLt2 != null) {
             //butPer.isFocused();
             pre2 = scoreLt2.getScore();
-            date = scoreLt2.getDate();
+            //date = scoreLt2.getDate();
             //b = true;
             if (pre2 != 0 && pre2 >= 2) {
                 Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
@@ -456,7 +456,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
     private void setTestPrePerCon() {
         if (scoreLt3 != null) {
             pre3 = scoreLt3.getScore();
-            date = scoreLt3.getDate();
+            //date = scoreLt3.getDate();
             if (pre3 != 0 && pre3 >= 2) {
                 Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
                 FragmentManager fm = getFragmentManager();

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.toshiba.appenglish.DB.DbHelper;
@@ -17,6 +18,7 @@ import com.example.toshiba.appenglish.DB.Score;
  */
 public class Fragment3_Answer extends Activity {
 
+    ImageView imageView;
     Button bt;
     SQLiteDatabase mDb;
     DbHelper mHelper;
@@ -30,6 +32,8 @@ public class Fragment3_Answer extends Activity {
         //RatingBar bar=(RatingBar)findViewById(R.id.ratingBar);
 //get text view
         TextView t = (TextView) findViewById(R.id.textResult);
+        imageView = (ImageView) findViewById(R.id.imageView3);
+
         //ListView ls = (ListView)findViewById(R.id.listView2);
         //TextView t2 = (TextView) findViewById(R.id.textView2);
         //get button
@@ -50,16 +54,20 @@ public class Fragment3_Answer extends Activity {
 //display score
         switch (score) {
             case 0:
-                t.setText("Your score : " + score + "\n" + "Bad");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.bad);
                 break;
             case 1:
-                t.setText("Your score : " + score + "\n" + "Try again");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.tagain);
                 break;
             case 2:
-                t.setText("Your score : " + score + "\n" + "Good job");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.good);
                 break;
             case 3:
-                t.setText("Your score : " + score + "\n" + "Excellent!!");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.excellent);
                 break;
         }
 

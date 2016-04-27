@@ -31,7 +31,7 @@ public class Fragment4_mixtestPage extends Fragment {
     int score = 0;
     int qid = 0;
 
-    TextView txtQuestion;
+    TextView txtQuestion,txtScore;
     RadioButton rda, rdb, rdc, rdd;
     Button butNext;
 
@@ -41,6 +41,7 @@ public class Fragment4_mixtestPage extends Fragment {
         rootview = inflater.inflate(R.layout.layout3_test_page, container, false);
 
         txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
+        txtScore = (TextView) rootview.findViewById(R.id.textView_scoretest);
         rda = (RadioButton) rootview.findViewById(R.id.radioButton1);
         rdb = (RadioButton) rootview.findViewById(R.id.radioButton2);
         rdc = (RadioButton) rootview.findViewById(R.id.radioButton3);
@@ -91,6 +92,7 @@ public class Fragment4_mixtestPage extends Fragment {
         rdb.setText(currentMIX.getMixOPTB());
         rdc.setText(currentMIX.getMixOPTC());
         rdd.setText(currentMIX.getMixOPTD());
+        txtScore.setText(" " + score);
         qid++;
     }
 

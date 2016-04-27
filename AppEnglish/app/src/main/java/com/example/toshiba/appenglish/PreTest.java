@@ -31,7 +31,7 @@ public class PreTest extends Activity {
     Question currentQ;
     Answer currentA;
 
-    TextView txtQuestion;
+    TextView txtQuestion,txtScore;
     RadioButton rda, rdb, rdc, rdd;
     Button butNext;
 
@@ -41,6 +41,7 @@ public class PreTest extends Activity {
         setContentView(R.layout.layout3_test_page);
 
         txtQuestion = (TextView) findViewById(R.id.textView1);
+        txtScore = (TextView) findViewById(R.id.textView_scoretest);
         rda = (RadioButton) findViewById(R.id.radioButton1);
         rdb = (RadioButton) findViewById(R.id.radioButton2);
         rdc = (RadioButton) findViewById(R.id.radioButton3);
@@ -93,6 +94,7 @@ public class PreTest extends Activity {
         rdb.setText(currentA.getOPTB());
         rdc.setText(currentA.getOPTC());
         rdd.setText(currentA.getOPTD());
+        txtScore.setText(" " + score);
         qid++;
         ans++;
     }

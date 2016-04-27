@@ -36,7 +36,7 @@ public class Fragment4_mixtest extends Fragment {
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
-        scoreLt = databaseAccess.get_ScoreFu4();
+        scoreLt = databaseAccess.getScoreUnlockTest12();
         databaseAccess.close();
 
         starttest.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +53,7 @@ public class Fragment4_mixtest extends Fragment {
     private void setTestFuturePerCon() {
         if (scoreLt != null) {
             fu4 = scoreLt.getScore();
-            date = scoreLt.getDate();
+            //date = scoreLt.getDate();
             if (fu4 >= 2) {
                 Log.d("score", "Your score FuPerCon : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
@@ -63,7 +63,7 @@ public class Fragment4_mixtest extends Fragment {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
-                dialog.setMessage(" ต้องผ่านแบบทดสอบ Future Perfect Continuous tense ก่อน ");
+                dialog.setMessage(" ต้องผ่านแบบทดสอบ Tense ทั้งหมดก่อน ");
 
                 dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -77,7 +77,7 @@ public class Fragment4_mixtest extends Fragment {
             AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
             dialog.setTitle("Error");
             dialog.setCancelable(true);
-            dialog.setMessage(" ต้องผ่านแบบทดสอบ Future Perfect Continuous tense ก่อน ");
+            dialog.setMessage(" ต้องผ่านแบบทดสอบ Tense ทั้งหมดก่อน ");
 
             dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {

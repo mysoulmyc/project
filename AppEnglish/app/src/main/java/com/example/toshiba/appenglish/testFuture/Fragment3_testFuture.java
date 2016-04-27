@@ -17,9 +17,6 @@ import com.example.toshiba.appenglish.DB.DatabaseAccess;
 import com.example.toshiba.appenglish.DB.Score;
 import com.example.toshiba.appenglish.Fragment3_test;
 import com.example.toshiba.appenglish.R;
-import com.example.toshiba.appenglish.testPast.Fragment3_testPastPage2;
-import com.example.toshiba.appenglish.testPast.Fragment3_testPastPage3;
-import com.example.toshiba.appenglish.testPast.Fragment3_testPastPage4;
 
 /*
  * Created by Toshiba on 5/1/2559.
@@ -45,10 +42,10 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
-        scoreLt = databaseAccess.get_ScorePast4();
-        scoreLt2 = databaseAccess.get_ScoreFu1();
-        scoreLt3 = databaseAccess.get_ScoreFu2();
-        scoreLt4 = databaseAccess.get_ScoreFu3();
+        scoreLt = databaseAccess.getScoreUnlockTest8();
+        scoreLt2 = databaseAccess.getScoreUnlockTest9();
+        scoreLt3 = databaseAccess.getScoreUnlockTest10();
+        scoreLt4 = databaseAccess.getScoreUnlockTest11();
         databaseAccess.close();
 
         butback.setOnClickListener(this);
@@ -85,7 +82,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     private void setTestFutureSim() {
         if (scoreLt != null) {
             past4 = scoreLt.getScore();
-            date = scoreLt.getDate();
+            //date = scoreLt.getDate();
             if (past4 != 0 && past4 >= 2) {
                 Log.d("score", "Your score PastPerCon : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
@@ -124,11 +121,11 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     private void setTestFutureCon() {
         if (scoreLt2 != null) {
             fu1 = scoreLt2.getScore();
-            date = scoreLt2.getDate();
+            //date = scoreLt2.getDate();
             if (fu1 != 0 && fu1 >= 2) {
                 Log.d("score", "Your score FutureSim : " + scoreLt2.getScore());
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage2()).commit();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testFuturePage2()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FutureSim : " + scoreLt2.getScore());
@@ -163,11 +160,11 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     private void setTestFuturePer() {
         if (scoreLt3 != null) {
             fu2 = scoreLt3.getScore();
-            date = scoreLt3.getDate();
+            //date = scoreLt3.getDate();
             if (fu2 != 0 && fu2 >= 2) {
                 Log.d("score", "Your score FutureCon : " + scoreLt3.getScore());
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage3()).commit();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testFuturePage3()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FutureCon : " + scoreLt3.getScore());
@@ -202,11 +199,11 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     private void setTestFuturePerCon() {
         if (scoreLt4 != null) {
             fu3 = scoreLt4.getScore();
-            date = scoreLt4.getDate();
+            //date = scoreLt4.getDate();
             if (fu3 != 0 && fu3 >= 2) {
                 Log.d("score", "Your score FuturePer : " + scoreLt4.getScore());
                 FragmentManager fm = getFragmentManager();
-                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage4()).commit();
+                fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testFuturePage4()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FuturePer : " + scoreLt4.getScore());

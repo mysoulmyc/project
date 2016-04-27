@@ -142,7 +142,7 @@ public class Fragment3_testFuturePage3 extends Fragment {
     private void setScoreTest() {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
-        databaseAccess.addScore(7, score);
+        databaseAccess.addScore(11, score);
         Toast.makeText(getActivity(), "Inserted!", Toast.LENGTH_LONG).show();
         databaseAccess.close();
     }

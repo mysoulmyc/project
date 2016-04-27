@@ -46,7 +46,7 @@ public class Fragment3_AnswerMixtest extends Activity {
                 t.setText("Your score : " + score + "\n" + "Not good");
                 break;
             case 2:
-                t.setText("Your score : " + score + "\n" + "Try again");
+                t.setText("Your score : " + score + "\n" + "tagain again");
                 break;
             case 3:
                 t.setText("Your score : " + score + "\n" + "Don't Give up!");

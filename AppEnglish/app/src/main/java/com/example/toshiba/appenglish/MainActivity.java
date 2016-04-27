@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -83,14 +84,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent notificationIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
         notificationIntent.addCategory("android.intent.category.DEFAULT");
 
-        pendingIntent = PendingIntent.getBroadcast(this, 100, notificationIntent, 0);
+        pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(System.currentTimeMillis());
-        cal.set(Calendar.HOUR_OF_DAY, 21);
-        cal.set(Calendar.HOUR_OF_DAY, 22);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
+        Calendar alarmStartTime = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
+        alarmStartTime.setTimeInMillis(System.currentTimeMillis());
+        alarmStartTime.set(Calendar.HOUR_OF_DAY, 12);
+        alarmStartTime.set(Calendar.MINUTE,30);
+        alarmStartTime.set(Calendar.SECOND,0);
 
+        if (now.after(alarmStartTime)){
+            Log.d("Hey"," Added a day");
+            alarmStartTime.add(Calendar.DATE,1);
+        }
+        //cal.set(Calendar.MINUTE,52);
+        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), 1000 * 60 * 20, pendingIntent);
+        Log.d("Alarm", " Alarm set for everyday 12.30 pm");
     }
 
     @Override
