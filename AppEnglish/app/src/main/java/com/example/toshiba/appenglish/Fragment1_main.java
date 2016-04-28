@@ -54,7 +54,6 @@ public class Fragment1_main extends Fragment {
         scorePast4 = databaseAccess.getLv3();
         timeApp = databaseAccess.dateInOut();
         scoreMix = databaseAccess.dateScoreMix();
-
         databaseAccess.close();
 
         name.setText(character.getName());
@@ -80,7 +79,6 @@ public class Fragment1_main extends Fragment {
     }
 
     public void timeHP() {
-
 
         long d1 = timeApp.getDATEOUT();
         long d2 = timeApp.getDATEUSE();
@@ -150,7 +148,7 @@ public class Fragment1_main extends Fragment {
         if (character.getLEVEL() == 1) {
             if (scorePre4 != null) {
                 pre = scorePre4.getScore();
-                if (pre >= 2) {
+                if (pre >= 7) {
                     lv = 2;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.mlv2);
@@ -173,7 +171,7 @@ public class Fragment1_main extends Fragment {
         } else if (character.getLEVEL() == 2) {
             if (scorePast4 != null) {
                 past = scorePast4.getScore();
-                if (past >= 2) {
+                if (past >= 7) {
                     lv = 3;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.mlv3);
@@ -200,7 +198,7 @@ public class Fragment1_main extends Fragment {
         if (character.getLEVEL() == 1) {
             if (scorePre4 != null) {
                 pre = scorePre4.getScore();
-                if (pre >= 2) {
+                if (pre >= 7) {
                     lv = 2;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.fmlv2);
@@ -223,7 +221,7 @@ public class Fragment1_main extends Fragment {
         } else if (character.getLEVEL() == 2) {
             if (scorePast4 != null) {
                 past = scorePast4.getScore();
-                if (past >= 2) {
+                if (past >= 7) {
                     lv = 3;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.fmlv3);

@@ -14,9 +14,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.toshiba.appenglish.DB.Answer;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
-import com.example.toshiba.appenglish.DB.Question;
+import com.example.toshiba.appenglish.DB.MixQuestAns;
 import com.example.toshiba.appenglish.Fragment3_Answer;
 import com.example.toshiba.appenglish.R;
 
@@ -29,17 +28,14 @@ public class Fragment3_testPastPage4 extends Fragment {
 
     View rootview;
 
-    List<Question> quesList;
-    List<Answer> answerList;
+    List<MixQuestAns> mixList;
+    MixQuestAns currentMIX;
 
     int score = 0;
     int qid = 0;
     int ans = 0;
 
-    Question currentQ;
-    Answer currentA;
-
-    TextView txtQuestion,txtScore;
+    TextView txtQuestion,txtScore,txtTitle;
     RadioButton rda, rdb, rdc, rdd;
     Button butNext;
 
@@ -48,6 +44,7 @@ public class Fragment3_testPastPage4 extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.layout3_test_page, container, false);
 
+        txtTitle = (TextView) rootview.findViewById(R.id.textView_title);
         txtQuestion = (TextView) rootview.findViewById(R.id.textView1);
         txtScore = (TextView) rootview.findViewById(R.id.textView_scoretest);
         rda = (RadioButton) rootview.findViewById(R.id.radioButton1);
@@ -59,12 +56,11 @@ public class Fragment3_testPastPage4 extends Fragment {
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
-        quesList = databaseAccess.getTestPast4();
-        answerList = databaseAccess.getChoicePast4();
+        mixList = databaseAccess.getTestPast4();
         databaseAccess.close();
 
-        currentQ = quesList.get(qid);
-        currentA = answerList.get(ans);
+        txtTitle.setText("Past Perfect Continuous");
+        currentMIX = mixList.get(qid);
         setQuestionView();
 
 
@@ -100,11 +96,11 @@ public class Fragment3_testPastPage4 extends Fragment {
     }
 
     private void setQuestionView() {
-        txtQuestion.setText(currentQ.getQUESTION());
-        rda.setText(currentA.getOPTA());
-        rdb.setText(currentA.getOPTB());
-        rdc.setText(currentA.getOPTC());
-        rdd.setText(currentA.getOPTD());
+        txtQuestion.setText(currentMIX.getMixQUESTION());
+        rda.setText(currentMIX.getMixOPTA());
+        rdb.setText(currentMIX.getMixOPTB());
+        rdc.setText(currentMIX.getMixOPTC());
+        rdd.setText(currentMIX.getMixOPTD());
         txtScore.setText(" " + score);
         qid++;
         ans++;
@@ -117,14 +113,13 @@ public class Fragment3_testPastPage4 extends Fragment {
 
         grp.clearCheck();
 
-        if (currentA.getANSWER().equals(answer.getText())) {
+        if (currentMIX.getMixANSWER().equals(answer.getText())) {
             score++;
             Log.d("score", "Your score PastPerCon : " + score);
 
         }
-        if (qid < quesList.size() && ans != 0) {
-            currentQ = quesList.get(qid);
-            currentA = answerList.get(ans);
+        if (qid < mixList.size() && ans != 0) {
+            currentMIX = mixList.get(qid);
             setQuestionView();
 
         } else {
@@ -132,7 +127,6 @@ public class Fragment3_testPastPage4 extends Fragment {
             Intent intent = new Intent(getActivity(), Fragment3_Answer.class);
             Bundle b = new Bundle();
             b.putInt("score", score); //Your score
-            b.putString("yourans", currentA.getANSWER());
             intent.putExtras(b); //Put your score to your next Intent
             startActivity(intent);
             getActivity().finish();

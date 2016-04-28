@@ -41,6 +41,8 @@
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
 
+    <string name="presim">Present Simple Test</string>
+
     <!--<string-array name="drawer_presim">-->
     <!--<item >@drawable/a1</item>-->
     <!--<item >@drawable/a21</item>-->

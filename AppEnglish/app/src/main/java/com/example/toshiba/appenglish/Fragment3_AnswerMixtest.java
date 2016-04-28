@@ -43,18 +43,63 @@ public class Fragment3_AnswerMixtest extends Activity {
                 t.setText("Your score : " + score + "\n" + "Bad");
                 break;
             case 1:
-                t.setText("Your score : " + score + "\n" + "Not good");
+                t.setText("Your score : " + score + "\n" + "Bad");
                 break;
             case 2:
-                t.setText("Your score : " + score + "\n" + "tagain again");
+                t.setText("Your score : " + score + "\n" + "Bad");
                 break;
             case 3:
-                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                t.setText("Your score : " + score + "\n" + "Bad");
                 break;
             case 4:
-                t.setText("Your score : " + score + "\n" + "Good job");
+                t.setText("Your score : " + score + "\n" + "Not good");
                 break;
             case 5:
+                t.setText("Your score : " + score + "\n" + "Not good");
+                break;
+            case 6:
+                t.setText("Your score : " + score + "\n" + "Not good");
+                break;
+            case 7:
+                t.setText("Your score : " + score + "\n" + "Not good");
+                break;
+            case 8:
+                t.setText("Your score : " + score + "\n" + "tagain again");
+                break;
+            case 9:
+                t.setText("Your score : " + score + "\n" + "tagain again");
+                break;
+            case 10:
+                t.setText("Your score : " + score + "\n" + "tagain again");
+                break;
+            case 11:
+                t.setText("Your score : " + score + "\n" + "tagain again");
+                break;
+            case 12:
+                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                break;
+            case 13:
+                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                break;
+            case 14:
+                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                break;
+            case 15:
+                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                break;
+            case 16:
+                t.setText("Your score : " + score + "\n" + "Good job");
+                break;
+            case 17:
+                t.setText("Your score : " + score + "\n" + "Good job");
+                break;
+            case 18:
+                t.setText("Your score : " + score + "\n" + "Good job");
+                break;
+            case 19:
+                t.setText("Your score : " + score + "\n" + "Good job");
+                break;
+            case 20:
                 t.setText("Your score : " + score + "\n" + "Excellent!!");
                 break;
         }

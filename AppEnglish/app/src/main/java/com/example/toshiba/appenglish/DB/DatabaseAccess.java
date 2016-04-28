@@ -135,7 +135,8 @@ public class DatabaseAccess {
     public Score dateScoreMix(){
         database = openHelper.getReadableDatabase();
         //Cursor cursor = database.rawQuery("SELECT datehp FROM Point Where id_tense=14 ", null);
-        Cursor cursor = database.rawQuery("SELECT datehp, MAX(date) FROM Point Where id_tense=14 ", null);
+        Cursor cursor = database.rawQuery("SELECT datehp, date FROM Point Where id_tense=14 " +
+                "AND datehp = (SELECT MAX(datehp) FROM Point Where id_tense=14)", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score sc = new Score();
@@ -220,7 +221,7 @@ public class DatabaseAccess {
 //+++++++++++++++++++++++++++++++++++++++++++++ Test Part +++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
     ////////////////////// Pre Test //////////////////////////////////
-    public List<Question> getPreTest() {
+    /*public List<Question> getPreTest() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=13 ", null);
@@ -261,6 +262,33 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
+    }*/
+
+    public List<MixQuestAns> getPreTest(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question\n" +
+                "    ORDER BY RANDOM() LIMIT 20 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
     }
 
     public Score get_PreScore() {
@@ -284,21 +312,21 @@ public class DatabaseAccess {
 
 
     ////////////////////// Test Present Simple  //////////////////////////////////
-    public List<Question> getTest() {
+    /*public List<Question> getTest() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=1 ", null);
         //Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=2 ORDER BY RANDOM() Limit 6", null);
-        /*Cursor cursor = database.rawQuery("SELECT * FROM Question " +
-                "INNER JOIN  answer ON Question.id_question=answer.id_question WHERE Question.id_tense=1", null);*/
+        *//*Cursor cursor = database.rawQuery("SELECT * FROM Question " +
+                "INNER JOIN  answer ON Question.id_question=answer.id_question WHERE Question.id_tense=1", null);*//*
 
         //SELECT * FROM Question INNER JOIN  answer ON Question.id_question=answer.id_question WHERE Question.id_tense=1
 
-        /*cursor.moveToFirst();Question.question, answer.answer, answer.key
+        *//*cursor.moveToFirst();Question.question, answer.answer, answer.key
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(1));
             cursor.moveToNext();
-        }*/
+        }*//*
         //Question quest = null;
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -306,11 +334,11 @@ public class DatabaseAccess {
                     Question quest = new Question();
                     quest.setID(cursor.getInt(0));
                     quest.setQUESTION(cursor.getString(1));
-                    /*quest.setOPTA(cursor.getString(2));
+                    *//*quest.setOPTA(cursor.getString(2));
                     quest.setOPTB(cursor.getString(3));
                     quest.setOPTC(cursor.getString(4));
                     quest.setOPTD(cursor.getString(5));
-                    quest.setANSWER(cursor.getString(6));*/
+                    quest.setANSWER(cursor.getString(6));*//*
                     list.add(quest);
                 } while (cursor.moveToNext());
             }
@@ -343,7 +371,7 @@ public class DatabaseAccess {
         }
         cs.close();
         return ans;
-    }
+    }*/
 
     /*public List<Answer> getAnswer(){
         database = openHelper.getWritableDatabase();
@@ -378,6 +406,33 @@ public class DatabaseAccess {
 
     }*/
 
+    public List<MixQuestAns> getTest(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=1\n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
     public Score get_Score() {
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 1 ", null);
@@ -400,7 +455,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest1() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=1 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=1 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -415,7 +470,35 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Present Continuous  //////////////////////////////////
-    public List<Question> getTestPre2() {
+
+    public List<MixQuestAns> getTestPre2(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=2 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestPre2() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=2 ", null);
@@ -456,7 +539,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScorePre2() {
         database = openHelper.getReadableDatabase();
@@ -478,7 +561,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest2() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=2 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=2 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -493,7 +576,35 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Present Perfect  //////////////////////////////////
-    public List<Question> getTestPre3() {
+
+    public List<MixQuestAns> getTestPre3(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=3 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestPre3() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=3 ", null);
@@ -534,7 +645,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScorePre3() {
         database = openHelper.getReadableDatabase();
@@ -556,7 +667,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest3() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=3 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=3 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -571,7 +682,35 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Present Perfect Continuous  //////////////////////////////////
-    public List<Question> getTestPre4() {
+
+    public List<MixQuestAns> getTestPre4(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=4 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestPre4() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=4 ", null);
@@ -612,7 +751,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScorePre4() {
         database = openHelper.getReadableDatabase();
@@ -634,7 +773,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest4() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=4 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=4 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -649,7 +788,35 @@ public class DatabaseAccess {
     }
 
         ////////////////////// Test Past Simple  //////////////////////////////////
-    public List<Question> getTestPast1() {
+
+    public List<MixQuestAns> getTestPast1(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=5 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestPast1() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=5 ", null);
@@ -690,7 +857,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScorePast1() {
         database = openHelper.getReadableDatabase();
@@ -712,7 +879,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest5() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=5 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=5 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -727,7 +894,36 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Past Continuous  //////////////////////////////////
-    public List<Question> getTestPast2() {
+
+    public List<MixQuestAns> getTestPast2(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=6 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+
+    /*public List<Question> getTestPast2() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=6 ", null);
@@ -768,7 +964,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScorePast2() {
         database = openHelper.getReadableDatabase();
@@ -790,7 +986,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest6() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=6 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=6 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -805,7 +1001,36 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Past Perfect  //////////////////////////////////
-    public List<Question> getTestPast3() {
+
+    public List<MixQuestAns> getTestPast3(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=7 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+
+    /*public List<Question> getTestPast3() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=7 ", null);
@@ -846,7 +1071,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScorePast3() {
         database = openHelper.getReadableDatabase();
@@ -868,7 +1093,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest7() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=7 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=7 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -883,7 +1108,35 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Past Perfect Continuous  //////////////////////////////////
-    public List<Question> getTestPast4() {
+
+    public List<MixQuestAns> getTestPast4(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=8 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestPast4() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=8 ", null);
@@ -924,7 +1177,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScorePast4() {
         database = openHelper.getReadableDatabase();
@@ -946,7 +1199,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest8() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=8 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=8 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -961,7 +1214,35 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Future Simple  //////////////////////////////////
-    public List<Question> getTestFu1() {
+
+    public List<MixQuestAns> getTestFu1(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=9 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestFu1() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=9 ", null);
@@ -1002,7 +1283,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScoreFu1() {
         database = openHelper.getReadableDatabase();
@@ -1024,7 +1305,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest9() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=9 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=9 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -1039,7 +1320,35 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Future Continuous  //////////////////////////////////
-    public List<Question> getTestFu2() {
+
+    public List<MixQuestAns> getTestFu2(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=10 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestFu2() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=10 ", null);
@@ -1080,7 +1389,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScoreFu2() {
         database = openHelper.getReadableDatabase();
@@ -1102,7 +1411,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest10() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=10 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=10 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -1117,7 +1426,35 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Future Perfect  //////////////////////////////////
-    public List<Question> getTestFu3() {
+
+    public List<MixQuestAns> getTestFu3(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=11 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestFu3() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=11 ", null);
@@ -1158,7 +1495,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScoreFu3() {
         database = openHelper.getReadableDatabase();
@@ -1180,7 +1517,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest11() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=11 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=11 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -1195,7 +1532,35 @@ public class DatabaseAccess {
     }
 
     ////////////////////// Test Future Perfect Continuous  //////////////////////////////////
-    public List<Question> getTestFu4() {
+
+    public List<MixQuestAns> getTestFu4(){
+        database = openHelper.getReadableDatabase();
+        List<MixQuestAns> MIX = new ArrayList<>();
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+                " FROM Question\n" +
+                "    INNER JOIN answer\n" +
+                "    WHERE answer.id_answer=Question.id_question AND id_tense=12 \n" +
+                "    ORDER BY RANDOM() LIMIT 10 ", null);
+        if (cs != null && cs.getCount() > 0) {
+            if (cs.moveToFirst()) {
+                do {
+                    MixQuestAns mix = new MixQuestAns();
+                    mix.setMixQUESTION(cs.getString(0));
+                    mix.setMixOPTA(cs.getString(1));
+                    mix.setMixOPTB(cs.getString(2));
+                    mix.setMixOPTC(cs.getString(3));
+                    mix.setMixOPTD(cs.getString(4));
+                    mix.setMixANSWER(cs.getString(5));
+                    MIX.add(mix);
+                } while (cs.moveToNext());
+            }
+        }
+        cs.close();
+        database.close();
+        return MIX;
+    }
+
+    /*public List<Question> getTestFu4() {
         database = openHelper.getReadableDatabase();
         List<Question> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM Question WHERE id_tense=12 ", null);
@@ -1236,7 +1601,7 @@ public class DatabaseAccess {
         cs.close();
         database.close();
         return ans;
-    }
+    }*/
 
     public Score get_ScoreFu4() {
         database = openHelper.getReadableDatabase();
@@ -1258,7 +1623,7 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest12() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=12 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=12 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
@@ -1280,7 +1645,7 @@ public class DatabaseAccess {
                 " FROM Question\n" +
                 "    INNER JOIN answer\n" +
                 "    WHERE answer.id_answer=Question.id_question\n" +
-                "    ORDER BY RANDOM() LIMIT 5 ", null);
+                "    ORDER BY RANDOM() LIMIT 20 ", null);
         if (cs != null && cs.getCount() > 0) {
             if (cs.moveToFirst()) {
                 do {

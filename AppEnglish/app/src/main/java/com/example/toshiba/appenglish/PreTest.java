@@ -11,9 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.toshiba.appenglish.DB.Answer;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
-import com.example.toshiba.appenglish.DB.Question;
+import com.example.toshiba.appenglish.DB.MixQuestAns;
 
 import java.util.List;
 
@@ -22,14 +21,16 @@ import java.util.List;
  */
 public class PreTest extends Activity {
 
-    List<Question> quesList;
-    List<Answer> answerList;
+    //List<Question> quesList;
+    //List<Answer> answerList;
+    List<MixQuestAns> mixList;
+    MixQuestAns currentMIX;
     int score = 0;
     int qid = 0;
     int ans = 0;
 
-    Question currentQ;
-    Answer currentA;
+    //Question currentQ;
+    //Answer currentA;
 
     TextView txtQuestion,txtScore;
     RadioButton rda, rdb, rdc, rdd;
@@ -50,12 +51,14 @@ public class PreTest extends Activity {
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        quesList = databaseAccess.getPreTest();
-        answerList = databaseAccess.getPreChoice();
+        mixList = databaseAccess.getPreTest();
+        //quesList = databaseAccess.getPreTest();
+        //answerList = databaseAccess.getPreChoice();
         databaseAccess.close();
 
-        currentQ = quesList.get(qid);
-        currentA = answerList.get(ans);
+        //currentQ = quesList.get(qid);
+        //currentA = answerList.get(ans);
+        currentMIX = mixList.get(qid);
         setQuestionView();
 
 
@@ -89,11 +92,11 @@ public class PreTest extends Activity {
     }
 
     private void setQuestionView() {
-        txtQuestion.setText(currentQ.getQUESTION());
-        rda.setText(currentA.getOPTA());
-        rdb.setText(currentA.getOPTB());
-        rdc.setText(currentA.getOPTC());
-        rdd.setText(currentA.getOPTD());
+        txtQuestion.setText(currentMIX.getMixQUESTION());
+        rda.setText(currentMIX.getMixOPTA());
+        rdb.setText(currentMIX.getMixOPTB());
+        rdc.setText(currentMIX.getMixOPTC());
+        rdd.setText(currentMIX.getMixOPTD());
         txtScore.setText(" " + score);
         qid++;
         ans++;
@@ -106,22 +109,22 @@ public class PreTest extends Activity {
 
         grp.clearCheck();
 
-        if (currentA.getANSWER().equals(answer.getText())) {
+        if (currentMIX.getMixANSWER().equals(answer.getText())) {
             score++;
             Log.d("score", "Your score PreTest : " + score);
 
         }
-        if (qid < quesList.size() && ans != 0) {
-            currentQ = quesList.get(qid);
-            currentA = answerList.get(ans);
+        if (qid < mixList.size() && ans != 0) {
+            //currentQ = quesList.get(qid);
+            //currentA = answerList.get(ans);
+            currentMIX = mixList.get(qid);
             setQuestionView();
 
         } else {
             setScoreTest();
-            Intent intent = new Intent(this, Fragment3_Answer.class);
+            Intent intent = new Intent(this, Fragment3_AnswerMixtest.class);
             Bundle b = new Bundle();
             b.putInt("score", score); //Your score
-            b.putString("yourans", currentA.getANSWER());
             intent.putExtras(b); //Put your score to your next Intent
             startActivity(intent);
             this.finish();

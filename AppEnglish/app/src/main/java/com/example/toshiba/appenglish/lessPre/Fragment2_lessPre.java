@@ -284,7 +284,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
         if (scoreLt != null) {
             pre1 = scoreLt.getScore();
             date = scoreLt.getDate();
-            if (pre1 != 0 && pre1 >= 2) {
+            if (pre1 != 0 && pre1 >= 7) {
                 Log.d("score", "Your score PreSim : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page2()).commit();
@@ -322,7 +322,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
         if (scoreLt2 != null) {
             pre2 = scoreLt2.getScore();
             date = scoreLt2.getDate();
-            if (pre2 != 0 && pre2 >= 2) {
+            if (pre2 != 0 && pre2 >= 7) {
                 Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page3()).commit();
@@ -361,7 +361,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
         if (scoreLt3 != null) {
             pre3 = scoreLt3.getScore();
             date = scoreLt3.getDate();
-            if (pre3 != 0 && pre3 >= 2) {
+            if (pre3 != 0 && pre3 >= 7) {
                 Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonPre_page4()).commit();

@@ -30,6 +30,7 @@ public class Fragment4_mixtestPage extends Fragment {
     MixQuestAns currentMIX;
     int score = 0;
     int qid = 0;
+    int ans = 0;
 
     TextView txtQuestion,txtScore;
     RadioButton rda, rdb, rdc, rdd;
@@ -94,6 +95,7 @@ public class Fragment4_mixtestPage extends Fragment {
         rdd.setText(currentMIX.getMixOPTD());
         txtScore.setText(" " + score);
         qid++;
+        ans++;
     }
 
     private void setActivity() {

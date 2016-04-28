@@ -85,7 +85,7 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
         if (scoreLt != null) {
             past4 = scoreLt.getScore();
             date = scoreLt.getDate();
-            if (past4 != 0 && past4 >= 2) {
+            if (past4 != 0 && past4 >= 7) {
                 Log.d("score", "Your score PastPerCon : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonFu_page1()).commit();
@@ -124,7 +124,7 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
         if (scoreLt2 != null) {
             fu1 = scoreLt2.getScore();
             date = scoreLt2.getDate();
-            if (fu1 != 0 && fu1 >= 2) {
+            if (fu1 != 0 && fu1 >= 7) {
                 Log.d("score", "Your score FutureSim : " + scoreLt2.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonFu_page2()).commit();
@@ -163,7 +163,7 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
         if (scoreLt3 != null) {
             fu2 = scoreLt3.getScore();
             date = scoreLt3.getDate();
-            if (fu2 != 0 && fu2 >= 2) {
+            if (fu2 != 0 && fu2 >= 7) {
                 Log.d("score", "Your score FutureCon : " + scoreLt3.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonFu_page3()).commit();
@@ -202,7 +202,7 @@ public class Fragment2_lessFuture extends Fragment implements View.OnClickListen
         if (scoreLt4 != null) {
             fu3 = scoreLt4.getScore();
             date = scoreLt4.getDate();
-            if (fu3 != 0 && fu3 >= 2) {
+            if (fu3 != 0 && fu3 >= 7) {
                 Log.d("score", "Your score FuturePer : " + scoreLt4.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessonFu_page4()).commit();

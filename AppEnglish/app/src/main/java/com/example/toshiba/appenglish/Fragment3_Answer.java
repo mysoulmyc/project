@@ -59,13 +59,41 @@ public class Fragment3_Answer extends Activity {
                 break;
             case 1:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.tagain);
+                imageView.setImageResource(R.drawable.bad);
                 break;
             case 2:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.good);
+                imageView.setImageResource(R.drawable.bad);
                 break;
             case 3:
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.bad);
+                break;
+            case 4:
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.tagain);
+                break;
+            case 5:
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.tagain);
+                break;
+            case 6:
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.tagain);
+                break;
+            case 7:
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.good);
+                break;
+            case 8:
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.good);
+                break;
+            case 9:
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.good);
+                break;
+            case 10:
                 t.setText("Your score : " + score);
                 imageView.setImageResource(R.drawable.excellent);
                 break;

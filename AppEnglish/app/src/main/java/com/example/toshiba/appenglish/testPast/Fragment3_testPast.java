@@ -87,7 +87,7 @@ public class Fragment3_testPast extends Fragment implements View.OnClickListener
         if (scoreLt != null) {
             pre4 = scoreLt.getScore();
             //date = scoreLt.getDate();
-            if (pre4 != 0 && pre4 >= 2) {
+            if (pre4 != 0 && pre4 >= 7) {
                 Log.d("score", "Your score PrePerCon : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage1()).commit();
@@ -126,7 +126,7 @@ public class Fragment3_testPast extends Fragment implements View.OnClickListener
         if (scoreLt2 != null) {
             past1 = scoreLt2.getScore();
             //date = scoreLt2.getDate();
-            if (past1 != 0 && past1 >= 2) {
+            if (past1 != 0 && past1 >= 7) {
                 Log.d("score", "Your score PastSim : " + scoreLt2.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage2()).commit();
@@ -165,7 +165,7 @@ public class Fragment3_testPast extends Fragment implements View.OnClickListener
         if (scoreLt3 != null) {
             past2 = scoreLt3.getScore();
             //date = scoreLt3.getDate();
-            if (past2 != 0 && past2 >= 2) {
+            if (past2 != 0 && past2 >= 7) {
                 Log.d("score", "Your score PastCon : " + scoreLt3.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage3()).commit();
@@ -204,7 +204,7 @@ public class Fragment3_testPast extends Fragment implements View.OnClickListener
         if (scoreLt4 != null) {
             past3 = scoreLt4.getScore();
             //date = scoreLt4.getDate();
-            if (past3 != 0 && past3 >= 2) {
+            if (past3 != 0 && past3 >= 7) {
                 Log.d("score", "Your score PastPer : " + scoreLt4.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment3_testPastPage4()).commit();
