@@ -96,14 +96,27 @@ public class Fragment1_main extends Fragment {
                 if (diff2 == 0){
                     hp.setImageResource(R.drawable.heart3);
                 }
-                else if (diff2 >= 2){
+                else if (diff2 == 2 || diff2 == 3){
                     hp.setImageResource(R.drawable.heart2);
+                    if (character.getSEX() == 1){
+                        gmv.setMovieResource(R.drawable.mlv3hp2);
+                    }
+                    Log.d("Hp ","Hp : 2 / Diff : 0 / Diff2 : >=2");
                 }
-                else if (diff2 >= 4){
+                else if (diff2 == 4 || diff2 == 5){
                     hp.setImageResource(R.drawable.heart1);
+                    if (character.getSEX() == 1){
+                        gmv.setMovieResource(R.drawable.mlv3hp2);
+                    }
+
+                    Log.d("Hp ","Hp : 1 / Diff : 0 / Diff2 : >=4");
                 }
                 else if (diff2 >= 6){
                     hp.setImageResource(R.drawable.heart0);
+                    if (character.getSEX() == 1){
+                        gmv.setMovieResource(R.drawable.mlv2);
+                    }
+                    Log.d("Hp ","Hp : 0 / Diff : 0 / Diff2 : >=6");
                 }
             }
             if (diff >= 2){
@@ -112,6 +125,10 @@ public class Fragment1_main extends Fragment {
                 }
                 else if (diff2 >= 2 || diff2 < -69){
                     hp.setImageResource(R.drawable.heart2);
+                    if (character.getSEX() == 1){
+                        gmv.setMovieResource(R.drawable.mlv3hp2);
+                    }
+                    Log.d("Hp ","Hp : 2 / Diff : >=2 / Diff2 : >=2");
                     //gmv.setMovieResource(R.drawable.gifegg);
                 }
             }
@@ -121,6 +138,10 @@ public class Fragment1_main extends Fragment {
                     //hp.setImageResource(R.drawable.heart2);
                 } else if(diff2 >= 4 || diff2 < -69) {
                     hp.setImageResource(R.drawable.heart1);
+                    if (character.getSEX() == 1){
+                        gmv.setMovieResource(R.drawable.mlv3hp2);
+                    }
+                    Log.d("Hp ","Hp : 1 / Diff : >=4 / Diff2 : >= 4");
                 }
             }
             if (diff >= 6){
@@ -129,6 +150,10 @@ public class Fragment1_main extends Fragment {
                     //hp.setImageResource(R.drawable.heart1);
                 } else if (diff >= 6 || diff2 < -69 ){
                     hp.setImageResource(R.drawable.heart0);
+                    if (character.getSEX() == 1){
+                        gmv.setMovieResource(R.drawable.mlv3hp2);
+                    }
+                    Log.d("Hp ","Hp : 0 / Diff : >=6 / Diff2 : >=6");
                 }
             }
 
