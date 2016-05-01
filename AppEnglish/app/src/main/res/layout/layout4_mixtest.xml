@@ -31,7 +31,7 @@
             android:height="60dp"
             android:text="START test"
             android:textSize="20dp"
-            android:backgroundTint="#FF009688"
+            android:background="#FF009688"
             android:padding="16dp"
             android:textColor="#ffffff" />
 

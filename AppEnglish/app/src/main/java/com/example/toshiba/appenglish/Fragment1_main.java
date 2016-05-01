@@ -94,44 +94,46 @@ public class Fragment1_main extends Fragment {
 
             if(diff==0){
                 if (diff2 == 0){
-                    hp.setImageResource(R.drawable.hp100);
+                    hp.setImageResource(R.drawable.heart3);
                 }
                 else if (diff2 >= 2){
-                    hp.setImageResource(R.drawable.hp70);
+                    hp.setImageResource(R.drawable.heart2);
                 }
                 else if (diff2 >= 4){
-                    hp.setImageResource(R.drawable.hp40);
+                    hp.setImageResource(R.drawable.heart1);
                 }
                 else if (diff2 >= 6){
-                    hp.setImageResource(R.drawable.hp20);
+                    hp.setImageResource(R.drawable.heart0);
                 }
             }
             if (diff >= 2){
                 if (diff2 == 0){
-                    hp.setImageResource(R.drawable.hp100);
+                    hp.setImageResource(R.drawable.heart3);
                 }
                 else if (diff2 >= 2 || diff2 < -69){
-                    hp.setImageResource(R.drawable.hp70);
+                    hp.setImageResource(R.drawable.heart2);
                     //gmv.setMovieResource(R.drawable.gifegg);
                 }
             }
             if ((diff >= 4 )) {
                 if (diff2 == 0) {
-                    hp.setImageResource(R.drawable.hp70);
+                    hp.setImageResource(R.drawable.heart3);
+                    //hp.setImageResource(R.drawable.heart2);
                 } else if(diff2 >= 4 || diff2 < -69) {
-                    hp.setImageResource(R.drawable.hp40);
+                    hp.setImageResource(R.drawable.heart1);
                 }
             }
             if (diff >= 6){
                 if (diff2 == 0) {
-                    hp.setImageResource(R.drawable.hp40);
+                    hp.setImageResource(R.drawable.heart3);
+                    //hp.setImageResource(R.drawable.heart1);
                 } else if (diff >= 6 || diff2 < -69 ){
-                    hp.setImageResource(R.drawable.hp20);
+                    hp.setImageResource(R.drawable.heart0);
                 }
             }
 
         } else {
-            hp.setImageResource(R.drawable.hp100);
+            hp.setImageResource(R.drawable.heart3);
         }
 
     }
@@ -165,7 +167,7 @@ public class Fragment1_main extends Fragment {
                     dialog.show();
                 }
             } else {
-                gmv.setMovieResource(R.drawable.gifegg);
+                gmv.setMovieResource(R.drawable.egglv1);
 
             }
         } else if (character.getLEVEL() == 2) {
@@ -201,7 +203,7 @@ public class Fragment1_main extends Fragment {
                 if (pre >= 7) {
                     lv = 2;
                     updateLevelChar();
-                    gmv.setMovieResource(R.drawable.fmlv2);
+                    gmv.setMovieResource(R.drawable.wlv2);
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                     dialog.setTitle("ยินดีด้วย!");
                     dialog.setCancelable(true);
@@ -215,7 +217,7 @@ public class Fragment1_main extends Fragment {
                     dialog.show();
                 }
             } else {
-                gmv.setMovieResource(R.drawable.gifegg);
+                gmv.setMovieResource(R.drawable.egglv1);
 
             }
         } else if (character.getLEVEL() == 2) {
@@ -223,8 +225,9 @@ public class Fragment1_main extends Fragment {
                 past = scorePast4.getScore();
                 if (past >= 7) {
                     lv = 3;
+                    level.setText("3");
                     updateLevelChar();
-                    gmv.setMovieResource(R.drawable.fmlv3);
+                    gmv.setMovieResource(R.drawable.wlv3);
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                     dialog.setTitle("ยินดีด้วย!");
                     dialog.setCancelable(true);
@@ -238,10 +241,10 @@ public class Fragment1_main extends Fragment {
                     dialog.show();
                 }
             } else {
-                gmv.setMovieResource(R.drawable.fmlv2);
+                gmv.setMovieResource(R.drawable.wlv2);
             }
         } else if (character.getLEVEL() == 3) {
-            gmv.setMovieResource(R.drawable.fmlv3);
+            gmv.setMovieResource(R.drawable.wlv3);
         }
     }
 

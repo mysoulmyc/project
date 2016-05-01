@@ -19,33 +19,39 @@ public class AlarmReceiver extends BroadcastReceiver {
         //Calendar now = GregorianCalendar.getInstance();
         //int dayOfWeek = now.get(Calendar.DATE);
         //if (dayOfWeek != 1 && dayOfWeek != 7) {
-        Intent notificationIntent = new Intent(context, StartActivity.class);
+        //if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
 
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(StartActivity.class);
-        stackBuilder.addNextIntent(notificationIntent);
+            Intent notificationIntent = new Intent(context, StartActivity.class);
 
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+            stackBuilder.addParentStack(StartActivity.class);
+            stackBuilder.addNextIntent(notificationIntent);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+            PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Notification notification = builder.setContentTitle("EngApp Notification")
-                .setContentText("We miss you!")
-                .setTicker("New Message Alert!")
-                .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentIntent(pendingIntent).build();
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
-        notification.defaults |= Notification.DEFAULT_VIBRATE;
-        //notification.flags |= Notification.FLAG_ONGOING_EVENT;
-        notification.flags |= Notification.FLAG_SHOW_LIGHTS;
-        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+            Notification notification = builder.setContentTitle("EngApp Notification")
+                    .setContentText("We miss you!")
+                    .setTicker("New Message Alert!")
+                    .setAutoCancel(true)
+                    //.setOngoing(true)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentIntent(pendingIntent).build();
 
+            notification.defaults |= Notification.DEFAULT_VIBRATE;
+            //notification.flags |= Notification.FLAG_ONGOING_EVENT;
+            notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+            notification.flags |= Notification.FLAG_AUTO_CANCEL;
+            //notification.flags |= Notification.FLAG_NO_CLEAR;
 
-        builder.setContentIntent(pendingIntent);
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notification);
-        Log.d("Notification", " : Notification sent!");
-        //}
+            builder.setContentIntent(pendingIntent);
+            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(0, notification);
+            //builder.setProgress(0, 0, true);
+
+            Log.d("Notification", " : Notification sent!");
+            //}
+       //}
     }
 }

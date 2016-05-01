@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /*
@@ -14,6 +15,7 @@ import android.widget.TextView;
 public class Fragment3_AnswerMixtest extends Activity {
 
     Button bt;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class Fragment3_AnswerMixtest extends Activity {
         setContentView(R.layout.layout3_answer);
 ////////get text view
         TextView t = (TextView) findViewById(R.id.textResult);
+        imageView = (ImageView) findViewById(R.id.imageView3);
         //TextView t2 = (TextView) findViewById(R.id.textView2);
 ////////get button
         bt = (Button) findViewById(R.id.button_score);
@@ -40,67 +43,88 @@ public class Fragment3_AnswerMixtest extends Activity {
 //////////////display score
         switch (score) {
             case 0:
-                t.setText("Your score : " + score + "\n" + "Bad");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 1:
-                t.setText("Your score : " + score + "\n" + "Bad");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 2:
-                t.setText("Your score : " + score + "\n" + "Bad");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 3:
-                t.setText("Your score : " + score + "\n" + "Bad");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 4:
-                t.setText("Your score : " + score + "\n" + "Not good");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 5:
-                t.setText("Your score : " + score + "\n" + "Not good");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 6:
-                t.setText("Your score : " + score + "\n" + "Not good");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo2);
                 break;
             case 7:
-                t.setText("Your score : " + score + "\n" + "Not good");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo2);
                 break;
             case 8:
-                t.setText("Your score : " + score + "\n" + "tagain again");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo2);
                 break;
             case 9:
-                t.setText("Your score : " + score + "\n" + "tagain again");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo2);
                 break;
             case 10:
-                t.setText("Your score : " + score + "\n" + "tagain again");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo2);
                 break;
             case 11:
-                t.setText("Your score : " + score + "\n" + "tagain again");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo3);
                 break;
             case 12:
-                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo3);
                 break;
             case 13:
-                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo3);
                 break;
             case 14:
-                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo3);
                 break;
             case 15:
-                t.setText("Your score : " + score + "\n" + "Don't Give up!");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo3);
                 break;
             case 16:
-                t.setText("Your score : " + score + "\n" + "Good job");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
             case 17:
-                t.setText("Your score : " + score + "\n" + "Good job");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
             case 18:
-                t.setText("Your score : " + score + "\n" + "Good job");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
             case 19:
-                t.setText("Your score : " + score + "\n" + "Good job");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
             case 20:
-                t.setText("Your score : " + score + "\n" + "Excellent!!");
+                t.setText("Your score : " + score);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
         }
 

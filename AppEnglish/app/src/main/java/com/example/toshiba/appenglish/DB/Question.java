@@ -1,8 +1,11 @@
+/*
 package com.example.toshiba.appenglish.DB;
 
+*/
 /*
  * Created by Toshiba on 27/2/2559.
- */
+ *//*
+
 
 public class Question {
     private int ID;
@@ -16,11 +19,13 @@ public class Question {
     public Question() {
         ID = 0;
         QUESTION = "";
+*/
 /*        OPTA = "";
         OPTB = "";
         OPTC = "";
         OPTD = "";
-        ANSWER = "";*/
+        ANSWER = "";*//*
+
         //Boolean
         //ANSWER != null ? true : false;
     }
@@ -29,11 +34,13 @@ public class Question {
 
         ID = id;
         QUESTION = qUESTION;
+*/
 /*        OPTA = oPTA;
         OPTB = oPTB;
         OPTC = oPTC;
         OPTD = oPTD;
-        ANSWER = aNSWER;*/
+        ANSWER = aNSWER;*//*
+
         //Boolean, String oPTA, String oPTB, String oPTC, String oPTD, String aNSWER
     }
 
@@ -46,6 +53,7 @@ public class Question {
         return QUESTION;
     }
 
+*/
 /*   public String getOPTA() {
         return OPTA;
     }
@@ -65,7 +73,8 @@ public class Question {
     public String getANSWER() {
         //Boolean
         return ANSWER;
-    }*/
+    }*//*
+
 
     public void setID(int id) {
         ID = id;
@@ -75,6 +84,7 @@ public class Question {
         QUESTION = qUESTION;
     }
 
+*/
 /*   public void setOPTA(String oPTA) {
         OPTA = oPTA;
     }
@@ -94,7 +104,9 @@ public class Question {
     public void setANSWER(String aNSWER) {
         //Boolean
         ANSWER = aNSWER;
-    }*/
+    }*//*
+
 
 }
 
+*/

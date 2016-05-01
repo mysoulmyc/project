@@ -50,7 +50,7 @@
                     android:layout_marginTop="20dp"
                     android:height="60dp"
                     android:textSize="20dp"
-                    android:backgroundTint="#b2dfdb"
+                    android:background="#b2dfdb"
                     />
 
                 <Button
@@ -63,7 +63,7 @@
                     android:height="60dp"
                     android:textColor="#fff"
                     android:textSize="20dp"
-                    android:backgroundTint="@color/accent_material_light" />
+                    android:background="@color/accent_material_light" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                     android:layout_marginTop="20dp"
                     android:height="60dp"
                     android:textSize="20dp"
-                    android:backgroundTint="#b2dfdb" />
+                    android:background="#b2dfdb" />
 
 <!--
                 <LinearLayout

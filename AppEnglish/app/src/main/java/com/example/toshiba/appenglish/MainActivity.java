@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dateout = databaseAccess.getCharacter();
         databaseAccess.close();
 
+
+        ///////////// alarm manager
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         Intent notificationIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
@@ -89,18 +91,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Calendar alarmStartTime = Calendar.getInstance();
         Calendar now = Calendar.getInstance();
         alarmStartTime.setTimeInMillis(System.currentTimeMillis());
-        alarmStartTime.set(Calendar.HOUR_OF_DAY, 12);
-        alarmStartTime.set(Calendar.MINUTE,30);
+        alarmStartTime.set(Calendar.HOUR_OF_DAY, 9);
+        alarmStartTime.set(Calendar.MINUTE,0);
         alarmStartTime.set(Calendar.SECOND,0);
 
         if (now.after(alarmStartTime)){
             Log.d("Hey"," Added a day");
-            alarmStartTime.add(Calendar.DATE,1);
+            //alarmStartTime.add(Calendar.DATE,1);
+            alarmManager.cancel(pendingIntent);
         }
         //cal.set(Calendar.MINUTE,52);
-        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), 1000 * 60 * 20, pendingIntent);
-        Log.d("Alarm", " Alarm set for everyday 12.30 pm");
+        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), AlarmManager.INTERVAL_HALF_DAY, pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), 1000 * 60 * 60 * 2 , pendingIntent);
+        Log.d("Alarm", " Alarm set for everyday 9.00 am and Repeat again in 9.00 pm");
     }
 
     @Override

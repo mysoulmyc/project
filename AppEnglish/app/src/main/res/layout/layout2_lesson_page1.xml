@@ -138,7 +138,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:textColor="#DE000000"
-            android:text="Back" />
+            android:text="Back"
+            android:background="#d0d0d0" />
 
         <Button
             android:id="@+id/button_next"
@@ -147,7 +148,7 @@
             android:layout_weight="0.5"
             android:textColor="#FFFFFF"
             android:text="Test now!"
-            android:backgroundTint="#FF009688" />
+            android:background="#FF009688" />
     </LinearLayout>
 
     <!--

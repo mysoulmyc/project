@@ -12,6 +12,7 @@
         <item>Score</item>
         <item>Credit</item>
     </string-array>
+
     <string name="drawer_open">Open Navigation drawer</string>
     <string name="drawer_close">Close Navigation drawer</string>
 

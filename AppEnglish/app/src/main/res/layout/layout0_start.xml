@@ -53,9 +53,9 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
                     android:height="60dp"
-                    android:backgroundTint="#FF009688"
                     android:textColor="#FFFFFF"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:background="#FF009688" />
 
                 <!--<Button
                     android:layout_width="wrap_content"

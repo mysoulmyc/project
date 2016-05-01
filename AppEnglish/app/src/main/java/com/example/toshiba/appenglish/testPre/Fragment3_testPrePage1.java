@@ -17,11 +17,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.toshiba.appenglish.DB.Answer;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
 import com.example.toshiba.appenglish.DB.DbHelper;
 import com.example.toshiba.appenglish.DB.MixQuestAns;
-import com.example.toshiba.appenglish.DB.Question;
 import com.example.toshiba.appenglish.DB.Score;
 import com.example.toshiba.appenglish.Fragment3_Answer;
 import com.example.toshiba.appenglish.R;
@@ -55,8 +53,8 @@ public class Fragment3_testPrePage1 extends Fragment {
     int qid = 0;
     int ans = 0;
 
-    Question currentQ;
-    Answer currentA;
+    //Question currentQ;
+    //Answer currentA;
     Score currentS;
 
     TextView txtQuestion,txtScore,txtTitle;

@@ -1,8 +1,11 @@
+/*
 package com.example.toshiba.appenglish.DB;
 
+*/
 /**
  * Created by Toshiba on 27/3/2559.
- */
+ *//*
+
 public class Answer {
     private int ID;
     private String OPTA;
@@ -81,3 +84,4 @@ public class Answer {
 
 
 }
+*/

@@ -15,14 +15,14 @@
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="40dp"
             android:text="back"
             android:textColor="#fff"
             android:id="@+id/button_back"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#ff4081" />
+            android:background="#ff4081" />
     </LinearLayout>
 
 
@@ -56,7 +56,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColorHighlight="@color/accent_material_light"
-                    android:backgroundTint="#febed5" />
+                    android:background="#febed5" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                     android:height="60dp"
                     android:textColor="#fff"
                     android:textSize="20dp"
-                    android:backgroundTint="#ff4081" />
+                    android:background="#ff4081" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
                     android:height="60dp"
                     android:textColor="#181818"
                     android:textSize="20dp"
-                    android:backgroundTint="#febed5" />
+                    android:background="#febed5" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
                     android:height="60dp"
                     android:textColor="#fff"
                     android:textSize="20dp"
-                    android:backgroundTint="#ff4081" />
+                    android:background="#ff4081" />
 
             </LinearLayout>
 

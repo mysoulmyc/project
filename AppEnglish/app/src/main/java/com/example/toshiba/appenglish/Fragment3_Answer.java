@@ -55,47 +55,47 @@ public class Fragment3_Answer extends Activity {
         switch (score) {
             case 0:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.bad);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 1:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.bad);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 2:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.bad);
+                imageView.setImageResource(R.drawable.emo1);
                 break;
             case 3:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.bad);
+                imageView.setImageResource(R.drawable.emo2);
                 break;
             case 4:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.tagain);
+                imageView.setImageResource(R.drawable.emo2);
                 break;
             case 5:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.tagain);
+                imageView.setImageResource(R.drawable.emo3);
                 break;
             case 6:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.tagain);
+                imageView.setImageResource(R.drawable.emo3);
                 break;
             case 7:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.good);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
             case 8:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.good);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
             case 9:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.good);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
             case 10:
                 t.setText("Your score : " + score);
-                imageView.setImageResource(R.drawable.excellent);
+                imageView.setImageResource(R.drawable.emo4);
                 break;
         }
 

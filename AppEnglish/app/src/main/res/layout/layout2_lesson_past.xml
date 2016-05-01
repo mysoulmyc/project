@@ -13,13 +13,13 @@
         <Button
             android:id="@+id/button_back"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="40dp"
             android:textColor="#fff"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:text="back"
-            android:backgroundTint="#3f51b5" />
+            android:background="#3f51b5" />
     </LinearLayout>
 
 
@@ -47,7 +47,7 @@
             android:textColor="#181818"
             android:text="                      Simple                     "
             android:textSize="20dp"
-            android:backgroundTint="#c5cae9" />
+            android:background="#c5cae9" />
 
         <Button
             android:id="@+id/but_lessPast2"
@@ -58,7 +58,7 @@
             android:textColor="#fff"
             android:text="                Continuous                "
             android:textSize="20dp"
-            android:backgroundTint="#3f51b5" />
+            android:background="#3f51b5" />
 
         <Button
             android:id="@+id/but_lessPast3"
@@ -69,7 +69,7 @@
             android:textColor="#181818"
             android:text="                    Perfect                    "
             android:textSize="20dp"
-            android:backgroundTint="#c5cae9" />
+            android:background="#c5cae9" />
 
         <Button
             android:id="@+id/but_lessPast4"
@@ -80,7 +80,7 @@
             android:textColor="#fff"
             android:text="       Perfect continuous       "
             android:textSize="20dp"
-            android:backgroundTint="#3f51b5" />
+            android:background="#3f51b5" />
 
 
     </LinearLayout>

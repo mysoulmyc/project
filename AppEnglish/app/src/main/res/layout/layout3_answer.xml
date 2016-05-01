@@ -19,7 +19,8 @@
             android:text="Score"
             android:textColor="#181818"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:layout_marginTop="40dp" />
 
         <ImageView
             android:layout_width="wrap_content"
