@@ -65,7 +65,7 @@ public class Fragment4_mixtest extends Fragment {
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Tense ทั้งหมดก่อน ");
 
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
@@ -79,7 +79,7 @@ public class Fragment4_mixtest extends Fragment {
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Tense ทั้งหมดก่อน ");
 
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }

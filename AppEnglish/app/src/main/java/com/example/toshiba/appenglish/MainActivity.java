@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         //cal.set(Calendar.MINUTE,52);
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), AlarmManager.INTERVAL_HALF_DAY, pendingIntent);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), 1000 * 60 * 60 * 2 , pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), 1000 * 60 * 60 * 6 , pendingIntent);
         Log.d("Alarm", " Alarm set for everyday 9.00 am and Repeat again in 9.00 pm");
     }
 

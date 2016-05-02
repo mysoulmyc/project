@@ -3,12 +3,14 @@ package com.example.toshiba.appenglish;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.toshiba.appenglish.DB.CharacterInfo;
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
+import com.example.toshiba.appenglish.DB.Score;
 
 /**
  * Created by Toshiba on 11/2/2559.
@@ -16,6 +18,9 @@ import com.example.toshiba.appenglish.DB.DatabaseAccess;
 public class StartActivity extends Activity implements View.OnClickListener {
     Button butstart;
     CharacterInfo character;
+    Score preScore;
+    int score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,18 +32,27 @@ public class StartActivity extends Activity implements View.OnClickListener {
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         character = databaseAccess.getCharacter();
+        preScore = databaseAccess.get_PreScore();
         databaseAccess.close();
+
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.but_start) {
             if (character != null) {
-                updateTime();
-                //Log.d("time", "Time update : " + character);
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-                finish();
+                if (preScore != null) {
+                    updateTime();
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i);
+                    finish();
+                } else {
+                    Log.d("Alert", "Null Pre-test");
+                    Toast.makeText(this, " เริ่มทำแบบทดสอบ Pre-test อีกครั้ง ", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), PreTest.class);
+                    startActivity(i);
+                    finish();
+                }
             } else {
                 Intent i = new Intent(getApplicationContext(), CreateCharacter.class);
                 startActivity(i);

@@ -44,6 +44,10 @@
 
     <string name="presim">Present Simple Test</string>
 
+    <string name="enterName">โปรดใส่ชื่อตัวละคร</string>
+    <string name="testAgain">กลับไปทวนบทเรียนอีกนิดนึงนะ</string>
+    <string name="testPass">คุณสามารถเรียนบทเรียนถัดไปได้</string>
+
     <!--<string-array name="drawer_presim">-->
     <!--<item >@drawable/a1</item>-->
     <!--<item >@drawable/a21</item>-->

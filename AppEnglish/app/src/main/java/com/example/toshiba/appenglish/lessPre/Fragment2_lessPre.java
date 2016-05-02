@@ -296,7 +296,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ");
 
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
@@ -309,7 +309,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ");
 
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
@@ -334,7 +334,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Continuous tense ก่อน ");
 
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
@@ -347,7 +347,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Continuous tense ก่อน ");
 
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
@@ -373,7 +373,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ");
 
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
@@ -386,7 +386,7 @@ public class Fragment2_lessPre extends Fragment implements View.OnClickListener 
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ");
 
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }

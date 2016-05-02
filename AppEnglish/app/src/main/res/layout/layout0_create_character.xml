@@ -23,9 +23,12 @@
 
         <EditText
             android:id="@+id/username"
+            android:maxLength="10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:singleLine="true"
+            android:hint="@string/enterName" />
 
         <!--<Button
         android:layout_width="match_parent"

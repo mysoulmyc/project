@@ -73,7 +73,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
     }
 
     private void CreateCharW() {
-        name = editName.getText().toString();
+        //name = editName.getText().toString();
         if (name.length() != 0) {
             sex = 2;
             setCreateCharacter();
@@ -91,7 +91,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         dialog.setCancelable(true);
         dialog.setMessage(" โปรดใส่ชื่อตัวละครของคุณ ");
 
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
@@ -105,7 +105,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         dialog.setCancelable(true);
         dialog.setMessage(" โปรดเลือกเพศของตัวละคร ");
 
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
@@ -117,7 +117,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         databaseAccess.createCharacter(name, sex, 1);
-        Toast.makeText(this, "Create!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "สร้างตัวละครแล้ว เริ่มทำแบบทดสอบ Pre-Test!", Toast.LENGTH_LONG).show();
         databaseAccess.close();
     }
 

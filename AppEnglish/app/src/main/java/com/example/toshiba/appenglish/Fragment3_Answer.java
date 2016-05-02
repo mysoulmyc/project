@@ -32,6 +32,7 @@ public class Fragment3_Answer extends Activity {
         //RatingBar bar=(RatingBar)findViewById(R.id.ratingBar);
 //get text view
         TextView t = (TextView) findViewById(R.id.textResult);
+        TextView showText = (TextView) findViewById(R.id.textResult2);
         imageView = (ImageView) findViewById(R.id.imageView3);
 
         //ListView ls = (ListView)findViewById(R.id.listView2);
@@ -55,46 +56,57 @@ public class Fragment3_Answer extends Activity {
         switch (score) {
             case 0:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testAgain);
                 imageView.setImageResource(R.drawable.emo1);
                 break;
             case 1:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testAgain);
                 imageView.setImageResource(R.drawable.emo1);
                 break;
             case 2:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testAgain);
                 imageView.setImageResource(R.drawable.emo1);
                 break;
             case 3:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testAgain);
                 imageView.setImageResource(R.drawable.emo2);
                 break;
             case 4:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testAgain);
                 imageView.setImageResource(R.drawable.emo2);
                 break;
             case 5:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testAgain);
                 imageView.setImageResource(R.drawable.emo3);
                 break;
             case 6:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testAgain);
                 imageView.setImageResource(R.drawable.emo3);
                 break;
             case 7:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testPass);
                 imageView.setImageResource(R.drawable.emo4);
                 break;
             case 8:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testPass);
                 imageView.setImageResource(R.drawable.emo4);
                 break;
             case 9:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testPass);
                 imageView.setImageResource(R.drawable.emo4);
                 break;
             case 10:
                 t.setText("Your score : " + score);
+                showText.setText(R.string.testPass);
                 imageView.setImageResource(R.drawable.emo4);
                 break;
         }

@@ -1,8 +1,10 @@
 package com.example.toshiba.appenglish;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +34,7 @@ public class PreTest extends Activity {
     //Question currentQ;
     //Answer currentA;
 
-    TextView txtQuestion,txtScore;
+    TextView txtQuestion,txtScore,txtTitle;
     RadioButton rda, rdb, rdc, rdd;
     Button butNext;
 
@@ -41,6 +43,7 @@ public class PreTest extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3_test_page);
 
+        txtTitle = (TextView) findViewById(R.id.textView_title);
         txtQuestion = (TextView) findViewById(R.id.textView1);
         txtScore = (TextView) findViewById(R.id.textView_scoretest);
         rda = (RadioButton) findViewById(R.id.radioButton1);
@@ -58,6 +61,7 @@ public class PreTest extends Activity {
 
         //currentQ = quesList.get(qid);
         //currentA = answerList.get(ans);
+        txtTitle.setText("Pre-Test");
         currentMIX = mixList.get(qid);
         setQuestionView();
 
@@ -137,5 +141,25 @@ public class PreTest extends Activity {
         databaseAccess.addScore(13, score);
         Toast.makeText(getApplicationContext(), "Inserted!", Toast.LENGTH_LONG).show();
         databaseAccess.close();
+    }
+
+    public void onBackPressed() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Exit");
+        dialog.setCancelable(true);
+        dialog.setMessage("Do you want to exit?");
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        dialog.show();
     }
 }

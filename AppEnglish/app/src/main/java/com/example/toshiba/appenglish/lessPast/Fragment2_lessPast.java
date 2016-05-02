@@ -98,7 +98,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect Continuous tense ก่อน ");
 
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
@@ -111,7 +111,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect Continuous tense ก่อน ");
 
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
@@ -137,7 +137,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Simple tense ก่อน ");
 
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
@@ -150,7 +150,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Simple tense ก่อน ");
 
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
@@ -176,7 +176,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Continuous tense ก่อน ");
 
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
@@ -189,7 +189,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Continuous tense ก่อน ");
 
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }
@@ -215,7 +215,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Perfect tense ก่อน ");
 
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
@@ -228,7 +228,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Perfect tense ก่อน ");
 
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
                 }

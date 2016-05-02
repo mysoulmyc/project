@@ -115,6 +115,23 @@ public class DatabaseAccess {
         return null;
     }
 
+    //// Lv4 unLock MixTest
+    public Score getUnLockMixtest() {
+        database = openHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense=12 ", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                Score ss = new Score();
+                ss.setiD(cursor.getInt(0));
+                ss.setScore(cursor.getInt(1));
+                cursor.close();
+                database.close();
+                return ss;
+            }
+        }
+        return null;
+    }
+
     /////// date in / out app
     public CharacterInfo dateInOut(){
         database = openHelper.getReadableDatabase();
@@ -293,14 +310,13 @@ public class DatabaseAccess {
 
     public Score get_PreScore() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 13", null);
-        // and point>=2
+        Cursor cursor = database.rawQuery("SELECT id_tense,point FROM Point Where id_tense= 13", null);
+        // and point>=2,MAX(date)ss.setDateTime(cursor.getInt(2));
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();
                 ss.setiD(cursor.getInt(0));
                 ss.setScore(cursor.getInt(1));
-                ss.setDateTime(cursor.getInt(2));
                 cursor.close();
                 database.close();
                 return ss;
