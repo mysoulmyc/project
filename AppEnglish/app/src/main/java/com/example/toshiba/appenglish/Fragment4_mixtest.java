@@ -54,13 +54,13 @@ public class Fragment4_mixtest extends Fragment {
         if (scoreLt != null) {
             fu4 = scoreLt.getScore();
             //date = scoreLt.getDate();
-            if (fu4 >= 2) {
+            if (fu4 >= 7) {
                 Log.d("score", "Your score FuPerCon : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
                 fm.beginTransaction().replace(R.id.maincontent, new Fragment4_mixtestPage()).commit();
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Tense ทั้งหมดก่อน ");
@@ -74,7 +74,7 @@ public class Fragment4_mixtest extends Fragment {
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Tense ทั้งหมดก่อน ");

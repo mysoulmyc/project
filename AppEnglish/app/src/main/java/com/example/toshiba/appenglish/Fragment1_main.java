@@ -100,19 +100,25 @@ public class Fragment1_main extends Fragment {
                     hp.setImageResource(R.drawable.heart2);
                     if (character.getSEX() == 1) {
                         gmv.setMovieResource(R.drawable.mlv3hp2);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp2);
                     }
                     Log.d("Hp ", "Hp : 2 / Diff : 0 / Diff2 : >=2");
                 } else if (diff2 == 4 || diff2 == 5) {
                     hp.setImageResource(R.drawable.heart1);
                     if (character.getSEX() == 1) {
-                        gmv.setMovieResource(R.drawable.mlv3hp2);
+                        gmv.setMovieResource(R.drawable.mlv3hp1);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp1);
                     }
 
                     Log.d("Hp ", "Hp : 1 / Diff : 0 / Diff2 : >=4");
                 } else if (diff2 >= 6) {
                     hp.setImageResource(R.drawable.heart0);
                     if (character.getSEX() == 1) {
-                        gmv.setMovieResource(R.drawable.mlv2);
+                        gmv.setMovieResource(R.drawable.mlv3hp0);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp0);
                     }
                     Log.d("Hp ", "Hp : 0 / Diff : 0 / Diff2 : >=6");
                 }
@@ -120,25 +126,61 @@ public class Fragment1_main extends Fragment {
             if (diff >= 2) {
                 if (diff2 == 0) {
                     hp.setImageResource(R.drawable.heart3);
-                } else if (diff2 >= 2 || diff2 < -69) {
+                } else if (diff2 == 2 || diff2 == 3 || diff2 < -69) {
                     hp.setImageResource(R.drawable.heart2);
+                    Log.d("Hp ", "Hp : 2 / Diff : >=2 / Diff2 : >=2");
                     if (character.getSEX() == 1) {
                         gmv.setMovieResource(R.drawable.mlv3hp2);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp2);
                     }
-                    Log.d("Hp ", "Hp : 2 / Diff : >=2 / Diff2 : >=2");
-                    //gmv.setMovieResource(R.drawable.gifegg);
+                } else if (diff2 == 4 || diff2 == 5 || diff2 < -69) {
+                    hp.setImageResource(R.drawable.heart1);
+                    Log.d("Hp ", "Hp : 1 / Diff : >=2 / Diff2 : >=3");
+                    if (character.getSEX() == 1) {
+                        gmv.setMovieResource(R.drawable.mlv3hp1);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp1);
+                    }
+                } else if (diff2 >= 6 || diff2 < -69) {
+                    hp.setImageResource(R.drawable.heart0);
+                    Log.d("Hp ", "Hp : 0 / Diff : >=2 / Diff2 : >=6");
+                    if (character.getSEX() == 1) {
+                        gmv.setMovieResource(R.drawable.mlv3hp0);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp0);
+                    }
                 }
             }
             if ((diff >= 4)) {
                 if (diff2 == 0) {
                     hp.setImageResource(R.drawable.heart3);
-                    //hp.setImageResource(R.drawable.heart2);
-                } else if (diff2 >= 4 || diff2 < -69) {
-                    hp.setImageResource(R.drawable.heart1);
+                }
+                /*else if (diff2 == 2 || diff2 == 3 || diff2 < -69) {
+                    hp.setImageResource(R.drawable.heart2);
+                    Log.d("Hp ", "Hp : 2 / Diff : >=2 / Diff2 : >=2");
                     if (character.getSEX() == 1) {
                         gmv.setMovieResource(R.drawable.mlv3hp2);
+                    } else if (character.getSEX() == 2){
+                        gmv.setMovieResource(R.drawable.wlv3hp2);
+                    }*/
+                //}
+                else if (diff2 == 4 || diff2 == 5 || diff2 < -69) {
+                    hp.setImageResource(R.drawable.heart1);
+                    Log.d("Hp ", "Hp : 1 / Diff : >=2 / Diff2 : >=3");
+                    if (character.getSEX() == 1) {
+                        gmv.setMovieResource(R.drawable.mlv3hp1);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp1);
                     }
-                    Log.d("Hp ", "Hp : 1 / Diff : >=4 / Diff2 : >= 4");
+                } else if (diff2 >= 6 || diff2 < -69) {
+                    hp.setImageResource(R.drawable.heart0);
+                    Log.d("Hp ", "Hp : 0 / Diff : >=2 / Diff2 : >=6");
+                    if (character.getSEX() == 1) {
+                        gmv.setMovieResource(R.drawable.mlv3hp0);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp0);
+                    }
                 }
             }
             if (diff >= 6) {
@@ -148,7 +190,9 @@ public class Fragment1_main extends Fragment {
                 } else if (diff >= 6 || diff2 < -69) {
                     hp.setImageResource(R.drawable.heart0);
                     if (character.getSEX() == 1) {
-                        gmv.setMovieResource(R.drawable.mlv3hp2);
+                        gmv.setMovieResource(R.drawable.mlv3hp0);
+                    } else if (character.getSEX() == 2) {
+                        gmv.setMovieResource(R.drawable.wlv3hp0);
                     }
                     Log.d("Hp ", "Hp : 0 / Diff : >=6 / Diff2 : >=6");
                 }
@@ -176,7 +220,7 @@ public class Fragment1_main extends Fragment {
                     lv = 2;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.mlv2);
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.Base_Theme_AppCompat_Dialog_Alert);
                     dialog.setTitle("ยินดีด้วย!");
                     dialog.setCancelable(true);
                     dialog.setMessage(" คุณผ่านแบบทดสอบ Present Tense ทั้งหมดแล้ว " + character.getName() + " ของคุณได้พัฒนาเป็นเลเวล 2 แล้ว! ^ ^ ");
@@ -199,7 +243,7 @@ public class Fragment1_main extends Fragment {
                     lv = 3;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.mlv3);
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.Base_Theme_AppCompat_Dialog_Alert);
                     dialog.setTitle("ยินดีด้วย!");
                     dialog.setCancelable(true);
                     dialog.setMessage(" คุณผ่านแบบทดสอบ Past Tense ทั้งหมดแล้ว " + character.getName() + " ของคุณได้พัฒนาเป็นเลเวล 3 แล้ว! ^ ^ ");
@@ -220,7 +264,7 @@ public class Fragment1_main extends Fragment {
                     lv = 4;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.mlv3);
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.Base_Theme_AppCompat_Dialog_Alert);
                     dialog.setTitle("ยินดีด้วย!");
                     dialog.setCancelable(true);
                     dialog.setMessage(" คุณผ่านแบบทดสอบ Tense ทั้งหมดแล้ว คุณสามารถทำแบบทดสอบ Mixtest ได้แล้ว! ^ ^ ");
@@ -247,7 +291,7 @@ public class Fragment1_main extends Fragment {
                     lv = 2;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.wlv2);
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.Base_Theme_AppCompat_Dialog_Alert);
                     dialog.setTitle("ยินดีด้วย!");
                     dialog.setCancelable(true);
                     dialog.setMessage(" คุณผ่านแบบทดสอบ Present Tense ทั้งหมดแล้ว " + character.getName() + " ของคุณได้พัฒนาเป็นเลเวล 2 แล้ว! ^ ^ ");
@@ -270,7 +314,7 @@ public class Fragment1_main extends Fragment {
                     lv = 3;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.wlv3);
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.Base_Theme_AppCompat_Dialog_Alert);
                     dialog.setTitle("ยินดีด้วย!");
                     dialog.setCancelable(true);
                     dialog.setMessage(" คุณผ่านแบบทดสอบ Past Tense ทั้งหมดแล้ว " + character.getName() + " ของคุณได้พัฒนาเป็นเลเวล 3 แล้ว! ^ ^ ");
@@ -292,7 +336,7 @@ public class Fragment1_main extends Fragment {
                     lv = 4;
                     updateLevelChar();
                     gmv.setMovieResource(R.drawable.wlv3);
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.Base_Theme_AppCompat_Dialog_Alert);
                     dialog.setTitle("ยินดีด้วย!");
                     dialog.setCancelable(true);
                     dialog.setMessage(" คุณผ่านแบบทดสอบ Tense ทั้งหมดแล้ว คุณสามารถทำแบบทดสอบ Mixtest ได้แล้ว! ^ ^ ");

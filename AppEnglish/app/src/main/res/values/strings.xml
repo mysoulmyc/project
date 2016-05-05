@@ -48,6 +48,22 @@
     <string name="testAgain">กลับไปทวนบทเรียนอีกนิดนึงนะ</string>
     <string name="testPass">คุณสามารถเรียนบทเรียนถัดไปได้</string>
 
+    <string name="tutorial11">เลือกเมนูที่คุณต้องการ</string>
+    <string name="tutorial12">คุณสามารถเลือกเมนูได้ เพียงคุณกด icon มุมซ้ายด้านบน หรือสไลด์นิ้วไปทางด้านขวาของจอ
+    คุณก็จะพบกับเมนูให้คุณได้เลือกใช้</string>
+
+    <string name="tutorial21">เลือกใช้งานได้ตามใจของคุณ</string>
+    <string name="tutorial22">คุณสามารถเลือกเข้าศึกษาบทเรียนและทำแบบทดสอบได้ รวมถึงคุณสามารถตรวจสอบคะแนนของคุณได้</string>
+
+    <string name="tutorial31">เรามีระบบพัฒนาเลเวลของตัวละครของคุณด้วย</string>
+    <string name="tutorial32">ตัวละครของคุณสามารถพัฒนาเลเวลได้จากการสอบ อย่าลืมทำแบบทดสอบให้ตัวละครของคุณพัฒนาล่ะ!</string>
+    <string name="tutorial33">ระดับหัวใจเพิ่มลดได้นะ!</string>
+    <string name="tutorial34">หากคุณผ่านแบบทดสอบทั้งหมดแล้ว หัวใจจะสามารถเพิ่มลดได้ อย่าลืมเข้ามาใช้งานแอพพลิเคชันบ่อยล่ะ ^^</string>
+
+    <string name="tutorial41">เอาล่ะ...คุณพร้อมแล้วใช่ไหม? </string>
+    <string name="tutorial42">มาเริ่มทำแบบทดสอบก่อนเรียนกันเถอะ! ^ ^</string>
+    <string name="tutorial43">กดปุ่ม START เพื่อเริ่มแบบทดสอบ</string>
+
     <!--<string-array name="drawer_presim">-->
     <!--<item >@drawable/a1</item>-->
     <!--<item >@drawable/a21</item>-->

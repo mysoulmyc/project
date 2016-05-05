@@ -149,9 +149,7 @@ public class Fragment3_testPrePage1 extends Fragment {
             public void onClick(View v) {
 
                 RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.radioGroup1);
-
                 int radioCheckedId = radioGroup.getCheckedRadioButtonId();
-
                 switch (radioCheckedId){
                     case R.id.radioButton1 : setActivity();
                         break;

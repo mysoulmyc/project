@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     // exit app
     public void onBackPressed() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this,R.style.Base_Theme_AppCompat_Dialog_Alert);
         dialog.setTitle("Exit");
         dialog.setCancelable(true);
         dialog.setMessage("Do you want to exit?");

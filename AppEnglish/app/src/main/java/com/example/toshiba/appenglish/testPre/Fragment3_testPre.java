@@ -365,7 +365,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
                 Log.d("score", "Your score PreSim : " + scoreLt.getScore());
                 //butCon.setClickable(false);
                 //Toast.makeText(getActivity(), " ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ", Toast.LENGTH_LONG).show();
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ");
@@ -389,7 +389,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         } else {
             //a = false;
             //butCon.setClickable(false);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Simple tense ก่อน ");
@@ -421,7 +421,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
                 //if (pre2 == 0 || pre2 < 2)
                 Log.d("score", "Your score PreCon : " + scoreLt2.getScore());
                 //butPer.setClickable(false);
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Continuous tense ก่อน ");
@@ -437,7 +437,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
         } else {
             //b = false;
             //butPer.setClickable(false);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Continuous tense ก่อน ");
@@ -467,7 +467,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
                 //if (pre3 == 0 || pre3 < 2)
                 Log.d("score", "Your score PrePer : " + scoreLt3.getScore());
                 //butPerCon.setClickable(false);
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ");
@@ -483,7 +483,7 @@ public class Fragment3_testPre extends Fragment implements View.OnClickListener 
             }
         } else {
             //butPerCon.setClickable(false);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect tense ก่อน ");

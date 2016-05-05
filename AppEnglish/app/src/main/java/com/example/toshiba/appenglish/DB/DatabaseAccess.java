@@ -284,7 +284,8 @@ public class DatabaseAccess {
     public List<MixQuestAns> getPreTest(){
         database = openHelper.getReadableDatabase();
         List<MixQuestAns> MIX = new ArrayList<>();
-        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, answer.optC, answer.optD, answer.key " +
+        Cursor cs = database.rawQuery("SELECT Question.question, answer.optA, answer.optB, " +
+                "answer.optC, answer.optD, answer.key " +
                 " FROM Question\n" +
                 "    INNER JOIN answer\n" +
                 "    WHERE answer.id_answer=Question.id_question\n" +
@@ -451,7 +452,8 @@ public class DatabaseAccess {
 
     public Score get_Score() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) FROM Point Where id_tense= 1 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,point,MAX(date) " +
+                "FROM Point Where id_tense= 1 ", null);
         // and point>=2
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -471,7 +473,8 @@ public class DatabaseAccess {
 
     public Score getScoreUnlockTest1() {
         database = openHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) FROM Point Where id_tense=1 ", null);
+        Cursor cursor = database.rawQuery("SELECT id_tense,MAX(point) " +
+                "FROM Point Where id_tense=1 ", null);
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 Score ss = new Score();

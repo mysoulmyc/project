@@ -57,6 +57,7 @@
         <activity android:name=".Fragment3_AnswerMixtest" />
         <activity android:name=".CreateCharacter" />
         <activity android:name=".PreTest"/>
+        <activity android:name=".tutorial.TutorialPage"/>
     </application>
 
 </manifest>

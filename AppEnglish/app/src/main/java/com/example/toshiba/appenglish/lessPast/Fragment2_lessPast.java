@@ -93,7 +93,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score PrePerCon : " + scoreLt.getScore());
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect Continuous tense ก่อน ");
@@ -106,7 +106,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect Continuous tense ก่อน ");
@@ -132,7 +132,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score PastSim : " + scoreLt2.getScore());
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Simple tense ก่อน ");
@@ -145,7 +145,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Simple tense ก่อน ");
@@ -171,7 +171,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score PastCon : " + scoreLt3.getScore());
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Continuous tense ก่อน ");
@@ -184,7 +184,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Continuous tense ก่อน ");
@@ -210,7 +210,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score PastPer : " + scoreLt4.getScore());
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Perfect tense ก่อน ");
@@ -223,7 +223,7 @@ public class Fragment2_lessPast extends Fragment implements OnClickListener {
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Perfect tense ก่อน ");

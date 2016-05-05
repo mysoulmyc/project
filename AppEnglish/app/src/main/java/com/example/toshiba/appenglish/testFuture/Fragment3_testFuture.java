@@ -90,7 +90,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score PastPerCon : " + scoreLt.getScore());
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Past Perfect Continuous tense ก่อน ");
@@ -103,7 +103,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Present Perfect Continuous tense ก่อน ");
@@ -129,7 +129,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FutureSim : " + scoreLt2.getScore());
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Future Simple tense ก่อน ");
@@ -142,7 +142,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Future Simple tense ก่อน ");
@@ -168,7 +168,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FutureCon : " + scoreLt3.getScore());
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Future Continuous tense ก่อน ");
@@ -181,7 +181,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Future Continuous tense ก่อน ");
@@ -207,7 +207,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
                 Toast.makeText(getActivity(), " Unlock!! ", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("score", "Your score FuturePer : " + scoreLt4.getScore());
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
                 dialog.setTitle("Error");
                 dialog.setCancelable(true);
                 dialog.setMessage(" ต้องผ่านแบบทดสอบ Future Perfect tense ก่อน ");
@@ -220,7 +220,7 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
                 dialog.show();
             }
         } else {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),R.style.Base_Theme_AppCompat_Dialog_Alert);
             dialog.setTitle("Error");
             dialog.setCancelable(true);
             dialog.setMessage(" ต้องผ่านแบบทดสอบ Future Perfect tense ก่อน ");

@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
+import com.example.toshiba.appenglish.tutorial.TutorialPage;
 
 /**
  * Created by Toshiba on 12/4/2559.
@@ -64,7 +65,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         if (name.length() != 0) {
             sex = 1;
             setCreateCharacter();
-            Intent i = new Intent(getApplicationContext(), PreTest.class);
+            Intent i = new Intent(getApplicationContext(), TutorialPage.class);
             startActivity(i);
             finish();
         } else {
@@ -77,7 +78,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         if (name.length() != 0) {
             sex = 2;
             setCreateCharacter();
-            Intent i = new Intent(getApplicationContext(), PreTest.class);
+            Intent i = new Intent(getApplicationContext(), TutorialPage.class);
             startActivity(i);
             finish();
         } else {
@@ -86,7 +87,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
     }
 
     private void AlertAddName() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this,R.style.Base_Theme_AppCompat_Dialog_Alert);
         dialog.setTitle("Error");
         dialog.setCancelable(true);
         dialog.setMessage(" โปรดใส่ชื่อตัวละครของคุณ ");
@@ -100,7 +101,7 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
     }
 
     private void AlertSelectSex() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this,R.style.Base_Theme_AppCompat_Dialog_Alert);
         dialog.setTitle("Error");
         dialog.setCancelable(true);
         dialog.setMessage(" โปรดเลือกเพศของตัวละคร ");
@@ -117,12 +118,12 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         databaseAccess.createCharacter(name, sex, 1);
-        Toast.makeText(this, "สร้างตัวละครแล้ว เริ่มทำแบบทดสอบ Pre-Test!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "สร้างตัวละครเรียบร้อยแล้ว!", Toast.LENGTH_LONG).show();
         databaseAccess.close();
     }
 
     public void onBackPressed() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this,R.style.Base_Theme_AppCompat_Dialog_Alert);
         dialog.setTitle("Exit");
         dialog.setCancelable(true);
         dialog.setMessage("Do you want to exit?");
