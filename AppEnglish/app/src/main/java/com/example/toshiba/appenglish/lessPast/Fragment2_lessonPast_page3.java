@@ -27,7 +27,6 @@ public class Fragment2_lessonPast_page3 extends Fragment implements View.OnClick
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
         rootview = inflater.inflate(R.layout.layout2_lesson_page1, container, false);
 
         webView = (WebView) rootview.findViewById(R.id.webview);

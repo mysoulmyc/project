@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Calendar alarmStartTime = Calendar.getInstance();
         Calendar now = Calendar.getInstance();
         alarmStartTime.setTimeInMillis(System.currentTimeMillis());
-        alarmStartTime.set(Calendar.HOUR_OF_DAY, 9);
+        alarmStartTime.set(Calendar.HOUR_OF_DAY, 8);
         alarmStartTime.set(Calendar.MINUTE,0);
         alarmStartTime.set(Calendar.SECOND,0);
 
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         //cal.set(Calendar.MINUTE,52);
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), AlarmManager.INTERVAL_HALF_DAY, pendingIntent);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), 1000 * 60 * 60 * 6 , pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, alarmStartTime.getTimeInMillis(), 1000 * 60 * 60 * 12 , pendingIntent);
         Log.d("Alarm", " Alarm set for everyday 9.00 am and Repeat again in 9.00 pm");
     }
 
@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //update the main content by replacing fragment
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.maincontent, objFragment).commit();
-        //getFragmentManager().popBackStack();
 
     }
 
@@ -183,10 +182,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return null;
     }
 
-/*    private void startActivity(Fragment objFragment) {
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.maincontent, objFragment).commit();
-    }*/
 
     public void setTitle(String title){
         getSupportActionBar().setTitle(title);
@@ -244,46 +239,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         databaseAccess.close();
     }
 
-
-
-
-    /////////////////////////////////// setting on actionbar
-    /*    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        String stateSaved = savedInstanceState.getString("save_state");
-
-        if (stateSaved == null){
-            Toast.makeText(MainActivity.this,"onRestoreInstanceState:\nNo state saved!",Toast.LENGTH_LONG).show();
-        }
-        else {
-            Toast.makeText(MainActivity.this,"onRestoreInstanceState:\nsaved state = " + stateSaved,Toast.LENGTH_LONG).show();
-
-
-        }
-    }*/
-
-    //================= Not use
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
-//    @Override
-//    public void onClick(View v) {
-//
-//    }
 
 
 }

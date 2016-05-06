@@ -41,11 +41,8 @@ public class Fragment7_tutorial_page4 extends Fragment implements View.OnClickLi
             Toast.makeText(getActivity(), " เริ่มทำแบบทดสอบ Pre-Test! ", Toast.LENGTH_LONG).show();
             Intent i = new Intent(getActivity(), PreTest.class);
             startActivity(i);
-            finish();
+            getActivity().finish();
         }
     }
 
-    private void finish() {
-        finish();
-    }
 }

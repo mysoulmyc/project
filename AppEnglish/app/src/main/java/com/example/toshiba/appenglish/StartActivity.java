@@ -19,7 +19,6 @@ public class StartActivity extends Activity implements View.OnClickListener {
     Button butstart;
     CharacterInfo character;
     Score preScore;
-    int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

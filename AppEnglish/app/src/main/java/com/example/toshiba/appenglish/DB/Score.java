@@ -37,10 +37,6 @@ public class Score {
     }
 
     public void setDateTime(int date) {
-        /*SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        Date date = new Date();
-        return dateFormat.format(date);*/
         dATE = date;
     }
 

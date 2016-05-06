@@ -28,16 +28,10 @@ public class Fragment3_Answer extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3_answer);
-//get rating bar object
-        //RatingBar bar=(RatingBar)findViewById(R.id.ratingBar);
-//get text view
+
         TextView t = (TextView) findViewById(R.id.textResult);
         TextView showText = (TextView) findViewById(R.id.textResult2);
         imageView = (ImageView) findViewById(R.id.imageView3);
-
-        //ListView ls = (ListView)findViewById(R.id.listView2);
-        //TextView t2 = (TextView) findViewById(R.id.textView2);
-        //get button
         bt = (Button) findViewById(R.id.button_score);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,11 +42,11 @@ public class Fragment3_Answer extends Activity {
             }
         });
 
-//get score
+        //get score
         Bundle b = getIntent().getExtras();
         int score = b.getInt("score");
 
-//display score
+        //display score
         switch (score) {
             case 0:
                 t.setText("Your score : " + score);
@@ -111,31 +105,6 @@ public class Fragment3_Answer extends Activity {
                 break;
         }
 
-
-//        mHelper = new DbHelper(this);
-//        mDb = mHelper.getWritableDatabase();
-//        String sql = "INSERT INTO Point (point) VALUES " + score ;
-//        mDb.execSQL(sql);
-//        Toast.makeText(getApplicationContext(), "Records Saved Successfully", Toast.LENGTH_LONG).show();
-//        mDb.close();
-
-
-        //String ans = b.getString("yourans");
-        //t2.setText(ans);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(, android.R.layout.simple_list_item_1, ans);
-        // ls.setAdapter(adapter);
-
-
-
-        /*bt = (Button) findViewById(R.id.button_score);
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });*/
     }
 
     @Override

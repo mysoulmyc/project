@@ -31,12 +31,7 @@ public class Fragment1_main extends Fragment {
     Score scorePre4, scorePast4, scoreFuture4, scoreMix;
     GifMovieView gmv;
     int pre, past, future;
-    //mix
     int lv;
-    int time1, time2;
-
-/*    ImageView imageView;
-    WebView webView;*/
 
     @Nullable
     @Override
@@ -61,12 +56,6 @@ public class Fragment1_main extends Fragment {
         level.setText("" + character.getLEVEL());
 
         gmv = (GifMovieView) rootview.findViewById(R.id.gifMovieView);
-        /*imageView = (ImageView) rootview.findViewById(R.id.imageView);
-        imageView.setImageResource(R.drawable.gif1);*/
-/*        webView = (WebView) rootview.findViewById(R.id.webview);
-        webView.loadUrl("file:///android_asset/Credit.html");*/
-
-        //timeHP();
 
         if (character.getSEX() == 1) {
             maleCharacter();
@@ -186,7 +175,6 @@ public class Fragment1_main extends Fragment {
             if (diff >= 6) {
                 if (diff2 == 0) {
                     hp.setImageResource(R.drawable.heart3);
-                    //hp.setImageResource(R.drawable.heart1);
                 } else if (diff >= 6 || diff2 < -69) {
                     hp.setImageResource(R.drawable.heart0);
                     if (character.getSEX() == 1) {
@@ -355,12 +343,4 @@ public class Fragment1_main extends Fragment {
         }
     }
 
-
-/*    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    public void onDestroyView() {
-        super.onDestroyView();
-    }*/
 }

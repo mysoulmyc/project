@@ -138,7 +138,6 @@ public class Fragment4_mixtestPage extends Fragment {
     /*SELECT * FROM Question
     INNER JOIN answer
     WHERE answer.id_answer=Question.id_question
-    ORDER BY RANDOM() LIMIT 2
-*/
+    ORDER BY RANDOM() LIMIT 2*/
 
 }

@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.toshiba.appenglish.DB.DatabaseAccess;
 import com.example.toshiba.appenglish.DB.MixQuestAns;
-import com.example.toshiba.appenglish.DB.Score;
 import com.example.toshiba.appenglish.Fragment3_Answer;
 import com.example.toshiba.appenglish.R;
 
@@ -28,18 +27,12 @@ import java.util.List;
 public class Fragment3_testPrePage3 extends Fragment {
 
     View rootview;
-
     List<MixQuestAns> mixList;
     MixQuestAns currentMIX;
-
 
     int score = 0;
     int qid = 0;
     int ans = 0;
-
-    //Question currentQ;
-    //Answer currentA;
-    Score currentS;
 
     TextView txtQuestion,txtScore,txtTitle;
     RadioButton rda, rdb, rdc, rdd;

@@ -23,16 +23,11 @@ import java.util.List;
  */
 public class PreTest extends Activity {
 
-    //List<Question> quesList;
-    //List<Answer> answerList;
     List<MixQuestAns> mixList;
     MixQuestAns currentMIX;
     int score = 0;
     int qid = 0;
     int ans = 0;
-
-    //Question currentQ;
-    //Answer currentA;
 
     TextView txtQuestion,txtScore,txtTitle;
     RadioButton rda, rdb, rdc, rdd;
@@ -42,6 +37,8 @@ public class PreTest extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3_test_page);
+
+        Toast.makeText(getApplicationContext(), " เริ่มทำแบบทดสอบ Pre-Test! ", Toast.LENGTH_LONG).show();
 
         txtTitle = (TextView) findViewById(R.id.textView_title);
         txtQuestion = (TextView) findViewById(R.id.textView1);
@@ -55,12 +52,8 @@ public class PreTest extends Activity {
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         mixList = databaseAccess.getPreTest();
-        //quesList = databaseAccess.getPreTest();
-        //answerList = databaseAccess.getPreChoice();
         databaseAccess.close();
 
-        //currentQ = quesList.get(qid);
-        //currentA = answerList.get(ans);
         txtTitle.setText("Pre-Test");
         currentMIX = mixList.get(qid);
         setQuestionView();
@@ -119,8 +112,6 @@ public class PreTest extends Activity {
 
         }
         if (qid < mixList.size() && ans != 0) {
-            //currentQ = quesList.get(qid);
-            //currentA = answerList.get(ans);
             currentMIX = mixList.get(qid);
             setQuestionView();
 
@@ -144,7 +135,7 @@ public class PreTest extends Activity {
     }
 
     public void onBackPressed() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this,R.style.Base_Theme_AppCompat_Dialog_Alert);
         dialog.setTitle("Exit");
         dialog.setCancelable(true);
         dialog.setMessage("Do you want to exit?");

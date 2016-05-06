@@ -8,18 +8,11 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Created by Toshiba on 5/5/2559.
  */
 public class MyPageAdapter extends FragmentPagerAdapter  {
-    /*private final int[] ICON_INDICATOR = { R.drawable.ic_textsms  implements IconPagerAdapter
-            , R.drawable.ic_action_stat_reply
-            , R.drawable.ic_action_stat_share };*/
     private final int NUM_ITEMS = 4;
 
     public MyPageAdapter(FragmentManager fm) {
         super(fm);
     }
-
-    /*public int getIconResId(int index) {
-        return ICON_INDICATOR[index];
-    }*/
 
     public int getCount() {
         return NUM_ITEMS;

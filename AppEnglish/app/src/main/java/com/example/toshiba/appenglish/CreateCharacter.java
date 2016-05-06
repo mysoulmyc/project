@@ -74,7 +74,6 @@ public class CreateCharacter extends Activity implements View.OnClickListener {
     }
 
     private void CreateCharW() {
-        //name = editName.getText().toString();
         if (name.length() != 0) {
             sex = 2;
             setCreateCharacter();

@@ -13,7 +13,6 @@ import android.widget.Button;
 
 import com.example.toshiba.appenglish.Fragment3_test;
 import com.example.toshiba.appenglish.R;
-import com.example.toshiba.appenglish.lessPast.Fragment2_lessonPast_page2;
 
 
 /**
@@ -28,7 +27,6 @@ public class Fragment2_lessonFu_page2 extends Fragment implements View.OnClickLi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
         rootview = inflater.inflate(R.layout.layout2_lesson_page1, container, false);
 
         webView = (WebView) rootview.findViewById(R.id.webview);

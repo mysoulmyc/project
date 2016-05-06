@@ -28,18 +28,12 @@ public class Fragment3_testFuturePage1 extends Fragment {
 
     View rootview;
 
-    /*List<Question> quesList;
-    List<Answer> answerList;*/
-
     List<MixQuestAns> mixList;
     MixQuestAns currentMIX;
 
     int score = 0;
     int qid = 0;
     int ans = 0;
-
-    /*Question currentQ;
-    Answer currentA;*/
 
     TextView txtQuestion,txtScore,txtTitle;
     RadioButton rda, rdb, rdc, rdd;
@@ -63,8 +57,6 @@ public class Fragment3_testFuturePage1 extends Fragment {
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
         mixList = databaseAccess.getTestFu1();
-        //quesList = databaseAccess.getTestFu1();
-        //answerList = databaseAccess.getChoiceFu1();
         databaseAccess.close();
 
         txtTitle.setText("Future Simple");

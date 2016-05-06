@@ -21,11 +21,10 @@ public class Fragment3_AnswerMixtest extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3_answer);
-////////get text view
+
         TextView t = (TextView) findViewById(R.id.textResult);
         imageView = (ImageView) findViewById(R.id.imageView3);
-        //TextView t2 = (TextView) findViewById(R.id.textView2);
-////////get button
+
         bt = (Button) findViewById(R.id.button_score);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override

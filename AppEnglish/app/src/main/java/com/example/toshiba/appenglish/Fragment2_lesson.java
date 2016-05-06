@@ -35,9 +35,6 @@ public class Fragment2_lesson extends Fragment implements View.OnClickListener {
         butPast.setOnClickListener(this);
         butFuture.setOnClickListener(this);
 
-
-
-
         //อีกแบบ
 //        butPre.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -52,9 +49,6 @@ public class Fragment2_lesson extends Fragment implements View.OnClickListener {
 //        });
 
         return rootview;
-
-//        return super.onCreateView(inflater, container, savedInstanceState);
-
     }
 
     public void onClick(View v) {
@@ -63,7 +57,6 @@ public class Fragment2_lesson extends Fragment implements View.OnClickListener {
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessPre()).addToBackStack(null).commit();
             Toast.makeText(getActivity(), " Lesson Present Tense was selected. ", Toast.LENGTH_LONG).show();
-            //getFragmentManager().popBackStack();
 
             //อีกแบบ
 //                //FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -74,58 +67,14 @@ public class Fragment2_lesson extends Fragment implements View.OnClickListener {
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessPast()).addToBackStack(null).commit();
             Toast.makeText(getActivity(), " Lesson Past Tense was selected. ", Toast.LENGTH_LONG).show();
-            //getFragmentManager().popBackStack();
         }
         else if(v.getId()==R.id.but_lessFuture){
             FragmentManager fm = getFragmentManager();
             fm.beginTransaction().replace(R.id.maincontent, new Fragment2_lessFuture()).addToBackStack(null).commit();
             Toast.makeText(getActivity(), " Lesson Future Tense was selected. ", Toast.LENGTH_LONG).show();
-            //getFragmentManager().popBackStack();
         }
 
 
     }
-
-
-    //    @Override
-//    public void onClick(View v) {
-//        if (v.getId()==R.id.but_lessPre) {
-//            ((Fragment2_lessPre)getActivity()).replaceFragment();
-//        }
-//
-//    }
-
-
-    //@Override
-    //public void onClick(View v) {
-
-//        Fragment objFragment = null;
-//
-//        if (v.getId()==R.id.but_lessPre){
-//            Intent newActivityReminder = new Intent();
-//            newActivityReminder.setClass(getActivity(), Fragment2_lessPre.class);
-//           // newActivityReminder.putExtra("index","test");//ส่งค่าตัวหลังเป็น Value
-//
-//            startActivity(newActivityReminder);
-//        }
-//        else if(v.getId()==R.id.but_lessPast){
-//            Intent newActivityReminder = new Intent();
-//            newActivityReminder.setClass(getActivity(),Fragment2_lessPast.class);
-//            //newActivityReminder.putExtra("index","test");//ส่งค่าตัวหลังเป็น Value
-//
-//            startActivity(newActivityReminder);
-//        }
-//        else if(v.getId()==R.id.but_lessFuture){
-//            Intent newActivityReminder = new Intent();
-//            newActivityReminder.setClass(getActivity(),Fragment2_lessFuture.class);
-//            //newActivityReminder.putExtra("index","test");//ส่งค่าตัวหลังเป็น Value
-//
-//            startActivity(newActivityReminder);
-//        }
-//
-//        FragmentManager fm = getFragmentManager();
-//        fm.beginTransaction().replace(R.id.maincontent, objFragment).commit();
-
-    //}
 
 }

@@ -27,7 +27,6 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     Button butback,butSim, butCon, butPer, butPerCon;
     Score scoreLt, scoreLt2, scoreLt3, scoreLt4;
     int past4, fu1, fu2, fu3;
-    int date;
 
     @Nullable
     @Override
@@ -82,7 +81,6 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     private void setTestFutureSim() {
         if (scoreLt != null) {
             past4 = scoreLt.getScore();
-            //date = scoreLt.getDate();
             if (past4 != 0 && past4 >= 7) {
                 Log.d("score", "Your score PastPerCon : " + scoreLt.getScore());
                 FragmentManager fm = getFragmentManager();
@@ -121,7 +119,6 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     private void setTestFutureCon() {
         if (scoreLt2 != null) {
             fu1 = scoreLt2.getScore();
-            //date = scoreLt2.getDate();
             if (fu1 != 0 && fu1 >= 7) {
                 Log.d("score", "Your score FutureSim : " + scoreLt2.getScore());
                 FragmentManager fm = getFragmentManager();
@@ -160,7 +157,6 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     private void setTestFuturePer() {
         if (scoreLt3 != null) {
             fu2 = scoreLt3.getScore();
-            //date = scoreLt3.getDate();
             if (fu2 != 0 && fu2 >= 7) {
                 Log.d("score", "Your score FutureCon : " + scoreLt3.getScore());
                 FragmentManager fm = getFragmentManager();
@@ -199,7 +195,6 @@ public class Fragment3_testFuture extends Fragment implements View.OnClickListen
     private void setTestFuturePerCon() {
         if (scoreLt4 != null) {
             fu3 = scoreLt4.getScore();
-            //date = scoreLt4.getDate();
             if (fu3 != 0 && fu3 >= 7) {
                 Log.d("score", "Your score FuturePer : " + scoreLt4.getScore());
                 FragmentManager fm = getFragmentManager();

@@ -38,8 +38,8 @@
             android:background="#ff2d2d"
             android:textColor="#ffffff"
             android:textSize="30dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
 
@@ -52,6 +52,7 @@
             android:padding="8dp"
             android:textColor="#3e3e3e"
             android:layout_marginTop="5dp" />
+
 
     </LinearLayout>
 

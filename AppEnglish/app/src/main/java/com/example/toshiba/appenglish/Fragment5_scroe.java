@@ -20,14 +20,9 @@ public class Fragment5_scroe extends Fragment {
 
     TextView pre, post ,pre1, pre2, pre3, pre4, past1, past2, past3, past4, fu1, fu2, fu3, fu4;
 
-    TextView test;
-
     Score scorePre, scorePost, scorePre1, scorePre2, scorePre3, scorePre4, scorePast1, scorePast2, scorePast3,
             scorePast4, scoreFu1, scoreFu2, scoreFu3, scoreFu4;
 
-    Score currentS;
-    int sc1;
-    int date;
 
     @Nullable
     @Override
@@ -52,8 +47,6 @@ public class Fragment5_scroe extends Fragment {
         fu3 = (TextView) rootview.findViewById(R.id.textView_fupertest1);
         fu4 = (TextView) rootview.findViewById(R.id.textView_fupercontest1);
 
-        //test = (TextView) rootview.findViewById(R.id.textView_presimtest2);
-
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getActivity());
         databaseAccess.open();
 
@@ -76,10 +69,6 @@ public class Fragment5_scroe extends Fragment {
         scoreFu4 = databaseAccess.get_ScoreFu4();
 
         databaseAccess.close();
-
-        //sc1 = scorePre1.getScore();
-
-        //scorePre1.getScore();
 
         setScoreView();
 
