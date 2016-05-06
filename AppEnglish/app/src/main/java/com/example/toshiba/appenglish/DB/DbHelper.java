@@ -9,7 +9,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
  * Created by Toshiba on 27/2/2559.
  */
 public class DbHelper extends SQLiteAssetHelper {
-    private static final int DATABASE_VERSION = 36;
+    private static final int DATABASE_VERSION = 37;
     private static Context myContext;
     /*// Database Name
     private static final String DATABASE_NAME = "triviaQuiz";
